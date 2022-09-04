@@ -1,0 +1,90 @@
+.Profile{
+    display: flex;
+    flex-direction: row;
+    width: 65%;
+    height: 320px;
+    justify-content: space-between;
+    margin: 100px 0;
+}
+
+.ProfileAvatar{
+    width: 300px;
+    height: 300px;
+    max-width: 302px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.ProfileAvatarImg{
+    width: 300px;
+    height: 300px;
+}
+
+.ProfileData{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ProfileDataTitle{
+    width: 80%;
+}
+
+.ProfileDataTitle > h1 {
+    text-align: center;
+    font-size: 55px;
+    color: white;
+    margin: 0;
+}
+
+.ProfileDataContent{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 80%;
+}
+
+.ProfileDataContentTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+}
+
+.ProfileDataContentBottom{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ProfileDataContentID{
+    color: white;
+    text-align: start;
+    font-size: 35px;
+    margin: 0
+}
+.ProfileDataContentStatus{
+    color: white;
+    text-align: end;
+    font-size: 35px;
+    margin: 0
+}
+.ProfileDataContentRank{
+    color: white;
+    text-align: start;
+    font-size: 35px;
+    margin: 0
+}
+.ProfileDataContentPoints{
+    color: white;
+    text-align: end;
+    font-size: 35px;
+    margin: 0
+}

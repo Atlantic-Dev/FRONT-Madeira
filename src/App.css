@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap');
+
 .App {
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #202224;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
@@ -26,13 +35,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
