@@ -49,9 +49,7 @@ const Header = () => {
                 </div>
             </div>
             {openModal ? 
-            <div className='HeaderShadow'>
-
-            </div>
+            <div className='HeaderShadow' onClick={handleClose}/>
             : null}
             {openModal ?
                 <div className='HeaderModalLogin'>
