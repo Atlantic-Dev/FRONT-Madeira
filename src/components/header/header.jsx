@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Login from '../login/login modal/login';
 import './header.css'
 
-const pathLoc = window.location.pathname
+const pathLoc = window.location.pathname //HTTP://LOL.COM/HOME
 
 const Header = () => {
 
@@ -35,10 +35,15 @@ const Header = () => {
                     <a href='/about' className={ pathLoc === '/about' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     ABOUT
                     </a>
-                </div>
+                </div>{/* 
                 <div className='HeaderButtonDiv'>
                     <a href='/profile' className={ pathLoc === '/profile' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     PROFILE
+                    </a> 
+                </div> */}
+                <div className='HeaderButtonDiv'>
+                    <a href='/register' className={ pathLoc === '/register' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    REGISTER
                     </a> 
                 </div>
                 {/* <div className='HeaderButtonDiv'>

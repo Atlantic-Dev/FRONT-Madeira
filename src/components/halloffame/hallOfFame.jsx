@@ -104,19 +104,21 @@ const HallOfFame = () => {
                         <span className='HofTopUserTitle'>
                             User
                         </span>
-                        <span>
-                            Id
-                        </span>
-                        <span>
-                            Status
-                        </span>
-                        <span>
-                            Points
-                        </span>
+                        <div className='HofTopUserData'>
+                            <span>
+                                Id
+                            </span>
+                            <span>
+                                Status
+                            </span>
+                            <span>
+                                Points
+                            </span>
+                        </div>
                     </div>
                 </div>
-                {sortPlayers.map((player) => {
-                    console.log(sortPlayers.indexOf(player))
+                {sortPlayers.map((player, index) => {
+                    console.log("el index",index)
                     return (
                         sortPlayers.indexOf(player) === 0 
                         ? 
