@@ -1,0 +1,58 @@
+.Login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.LoginOr{
+    font-size: 20px;
+    color: #A7A7A7;
+}
+
+.LoginInputUsername{
+    background-color: #31313C;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color:white
+}
+
+.LoginInputPassword{
+    background-color: #31313C;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    color:white
+}
+
+.LoginSubmit{
+    background-color: #09461A;
+    color: white;
+    padding: 10px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 15px;
+}
+
+.LoginSubmit:hover{
+    cursor: pointer;
+    background-color: #087125;
+}
+
+.LoginGoogle{
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+
+.LoginGoogle:hover{
+    cursor: pointer
+}

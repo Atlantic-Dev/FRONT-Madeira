@@ -1,0 +1,133 @@
+.Hof{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+
+.HofContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+}
+
+.HofTopGrey{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #31313C;
+    padding: 10px 25px;
+    gap: 40px;
+}
+
+.HofTopDark{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c0f118e;
+    padding: 10px 25px;
+    gap: 40px;
+}
+
+.HofTopTitles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px 25px 10px 25px;
+    width: 100%;
+    gap: 40px;
+}
+
+.HofTopTitles > div > span {
+    color: white;
+    font-size: 28px
+}
+
+.HofTopFirstDiv{
+    max-width: 190px;
+    min-width: 190px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.HeaderShadow{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0f11aa;
+}
+
+.HofTopUserTitle{
+    width: 500px;
+    min-width: 500px;
+    max-width: 500px;
+    text-align: start;
+}
+
+.HofTopSecondDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.HofTopImageCont{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+}
+
+.HofTopTextCont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.HofTopImg{
+    width: 60px;
+    height: 60px;
+}
+
+.HofTopAvatar{
+    width: 80px;
+    height: 80px;
+}
+
+.HofTopNicknameDiv{
+    width: 530px;
+    min-width: 530px;
+    max-width: 530px;
+    text-align: start;
+}
+
+.HofTopData{
+    display: flex;
+    flex-direction: row;
+    min-width: 410px;
+    max-width: 430px;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+
+.HofTopIdDiv{
+    min-width: 75px;
+    text-align: start;
+}
+
+.HofTopNickname, .HofTopId, .HofTopStatus, .HofTopPoints{
+    color: white;
+    font-size: 35px;
+}

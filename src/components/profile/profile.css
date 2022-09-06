@@ -1,10 +1,19 @@
 .Profile{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
     width: 65%;
+    margin: 100px 0;
+    gap: 60px;
+}
+
+.ProfileInfoTop{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     height: 320px;
     justify-content: space-between;
-    margin: 100px 0;
+    margin-bottom: 50px;
 }
 
 .ProfileAvatar{
@@ -28,6 +37,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 400px;
 }
 
 .ProfileDataTitle{
@@ -46,6 +56,7 @@
     flex-direction: column;
     gap: 30px;
     width: 80%;
+    align-items: center;
 }
 
 .ProfileDataContentTop{
@@ -87,4 +98,62 @@
     text-align: end;
     font-size: 35px;
     margin: 0
+}
+
+.ProfileDataEditBtn{
+    background-color: #B76935;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    width: fit-content;
+    font-family: 'Kanit';
+    transition: all 0.3s ease;
+}
+
+.ProfileDataEditBtn:hover{
+    background-color: #F98702;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.ProfileInfoBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.ProfileInfoBottomTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.ProfileInfoBottomTitle>h3{
+    font-size: 30px;
+    color: white;
+    width: 200px;
+    margin: 0;
+}
+
+.ProfileInfoBottomData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #31313C;
+    border-radius: 15px;
+    padding: 5px 3px;
+}
+
+.ProfileInfoBottomData>h3{
+    font-size: 30px;
+    color: white;
+    width: 200px;
+    margin: 0;
 }

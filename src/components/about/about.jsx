@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function about() {
+const About = () => {
   return (
     <div className="aboutDivGen">
         <h1 className="aboutTitle">What is Madeira?</h1>
@@ -9,3 +9,4 @@ export default function about() {
   )
 }
 
+export default About
