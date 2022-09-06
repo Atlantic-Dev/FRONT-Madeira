@@ -43,17 +43,24 @@
     justify-content: space-between;
     padding: 0px 25px 10px 25px;
     width: 100%;
-    gap: 40px;
+    gap: 35px;
 }
 
-.HofTopTitles > div > span {
+.HofTopUserData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.HofTopTitles > div > span, .HofTopSecondDiv > div > span  {
     color: white;
-    font-size: 28px
+    font-size: 20px
 }
 
 .HofTopFirstDiv{
-    max-width: 190px;
-    min-width: 190px;
+    max-width: 145px;
+    min-width: 145px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -68,9 +75,9 @@
 }
 
 .HofTopUserTitle{
-    width: 500px;
-    min-width: 500px;
-    max-width: 500px;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
     text-align: start;
 }
 
@@ -97,19 +104,19 @@
 
 
 .HofTopImg{
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 }
 
 .HofTopAvatar{
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
 }
 
 .HofTopNicknameDiv{
-    width: 530px;
-    min-width: 530px;
-    max-width: 530px;
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
     text-align: start;
 }
 
@@ -129,5 +136,5 @@
 
 .HofTopNickname, .HofTopId, .HofTopStatus, .HofTopPoints{
     color: white;
-    font-size: 35px;
+    font-size: 25px;
 }

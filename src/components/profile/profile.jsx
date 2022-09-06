@@ -7,6 +7,9 @@ const Profile = () => {
             <div className='ProfileInfoTop'>
                 <div className='ProfileAvatar'>
                     <img className='ProfileAvatarImg' src={avatar} alt='Avatar'/>
+                        <div className='ProfileDataEditDiv'>
+                            <button className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                        </div>
                 </div>
                 <div className='ProfileData'>
                     <div className='ProfileDataTitle'>
@@ -19,10 +22,7 @@ const Profile = () => {
                         </div>
                         <div className='ProfileDataContentBottom'>
                             <h3 className='ProfileDataContentRank'>Rank #18</h3>
-                            <h3 className='ProfileDataContentPoints'>1930</h3>
-                        </div>
-                        <div className='ProfileDataEditDiv'>
-                            <button className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                            <h3 className='ProfileDataContentPoints'>1930 LP</h3>
                         </div>
                     </div>
                 </div>
