@@ -1,0 +1,59 @@
+.Register{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.RegisterForm{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.RegisterForm > input {
+    color:white;
+    font-family: 'Kanit';
+    font-size: 20px;
+    width: 400px;
+    border-radius: 15px;
+    border: none;
+    padding: 7px 12px;
+    background-color: #31313C;
+}
+
+.RegisterForm > input::placeholder {
+    color: rgba(255, 255, 255, 0.61);
+}
+.RegisterSelect{
+    color:white;
+    font-family: 'Kanit';
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+    padding: 7px 12px;
+    background-color: #31313C;
+}
+
+.RegisterForm > select > option {
+    background-image: url('../../images/avatar1.png');
+}
+
+/* .RegisterSelect option{
+    background-image: url('../../images/avatar1.png');
+    padding: 100px 0;
+    -webkit-appearance: none; 
+    font-weight: 400;
+    display: flex;
+    white-space: nowrap;
+    min-height: 30px; */
+    /* background-position: initial;
+    appearance: none;
+    -moz-appearance: none;
+    */
+    /* background-color: black;
+    background-size: 48px 48px;
+    background-repeat:no-repeat; 
+}
+*/

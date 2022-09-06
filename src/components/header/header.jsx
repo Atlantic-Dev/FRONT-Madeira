@@ -1,50 +1,64 @@
+import { useState } from 'react';
+import Login from '../login/login modal/login';
 import './header.css'
 
 const pathLoc = window.location.pathname
 
-const Header = () => {  
+const Header = () => {
+
+    const [openModal, setOpenModal] = useState(false);
+
+    function handleOpen() {
+        console.log("open")
+        setOpenModal(true)
+    }
+
+    function handleClose() {
+        console.log("close")
+        setOpenModal(false)
+    }
+    
     return (
-        <div className="Header">
-            <div className='HeaderButtonDiv'>
-               { pathLoc === '/' ? 
-               <a href='/' className="HeaderButtonSelected">
-                HOME
-               </a> : 
-               <a href='/' className="HeaderButton">
-                HOME
-               </a> }
+        <header className="Header">
+            <div className="Header">
+                <div className='HeaderButtonDiv'>
+                    <a href='/' className={ pathLoc === '/' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    HOME
+                    </a>
+                </div>
+                <div className='HeaderButtonDiv'>               
+                    <a href='/list' className={ pathLoc === '/list' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    PLAYERS LIST
+                    </a>
+                </div>
+                <div className='HeaderButtonDiv'>
+                    <a href='/about' className={ pathLoc === '/about' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    ABOUT
+                    </a>
+                </div>
+                <div className='HeaderButtonDiv'>
+                    <a href='/profile' className={ pathLoc === '/profile' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    PROFILE
+                    </a> 
+                </div>
+                {/* <div className='HeaderButtonDiv'>
+                    <a className="HeaderButton">LOG OUT</a>
+                </div> */}
+                <div className='HeaderButtonDiv'>
+                    <a onClick={openModal === true ? handleClose : handleOpen} className={openModal === true ? "HeaderButtonSelected" : 'HeaderButton'}>LOG IN</a>
+                </div>
             </div>
-            <div className='HeaderButtonDiv'>
-               { pathLoc === '/list' ? 
-               <a href='/list' className="HeaderButtonSelected">
-                PLAYERS LIST
-               </a> : 
-               <a href='/list' className="HeaderButton">
-                PLAYERS LIST
-               </a> }
+            {openModal ? 
+            <div className='HeaderShadow'>
+
             </div>
-            <div className='HeaderButtonDiv'>
-               { pathLoc === '/about' ? 
-               <a href='/about' className="HeaderButtonSelected">
-                ABOUT
-               </a> : 
-               <a href='/about' className="HeaderButton">
-                ABOUT
-               </a> }
-            </div>
-            <div className='HeaderButtonDiv'>
-               { pathLoc === '/profile' ? 
-               <a href='/profile' className="HeaderButtonSelected">
-                PROFILE
-               </a> : 
-               <a href='/profile' className="HeaderButton">
-                PROFILE
-               </a> }
-            </div>
-            <div className='HeaderButtonDiv'>
-                <a className="HeaderButton">LOG OUT</a>
-            </div>
-        </div>
+            : null}
+            {openModal ?
+                <div className='HeaderModalLogin'>
+                    <Login close={handleClose} />
+                </div> : null
+            }
+        </header>
     )
 }
 
