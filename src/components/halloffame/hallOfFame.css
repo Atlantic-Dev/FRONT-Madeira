@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: auto;
+    width: 60vw;
 }
 
 
@@ -16,7 +17,7 @@
 }
 
 .HofTopGrey{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -27,7 +28,7 @@
 }
 
 .HofTopDark{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -42,7 +43,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 0px 25px 10px 25px;
-    width: 100%;
+    width: 90%;
     gap: 35px;
 }
 
@@ -59,8 +60,8 @@
 }
 
 .HofTopFirstDiv{
-    max-width: 145px;
-    min-width: 145px;
+    max-width: 125px;
+    min-width: 125px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -91,7 +92,7 @@
 .HofTopImageCont{
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 30px;
     align-items: center;
 }
 
@@ -99,7 +100,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
 }
 
 
@@ -114,27 +115,26 @@
 }
 
 .HofTopNicknameDiv{
-    width: 360px;
-    min-width: 360px;
-    max-width: 360px;
+    width: 50%;
+    min-width: 50%;
+    max-width: 50%;
     text-align: start;
 }
 
 .HofTopData{
     display: flex;
     flex-direction: row;
-    min-width: 410px;
-    max-width: 430px;
+    min-width: 50%;
+    max-width: 50%;
     justify-content: space-between;
-    padding-right: 5px;
 }
 
 .HofTopIdDiv{
-    min-width: 75px;
+    min-width: 25px;
     text-align: start;
 }
 
 .HofTopNickname, .HofTopId, .HofTopStatus, .HofTopPoints{
     color: white;
-    font-size: 25px;
+    font-size: 20px;
 }
