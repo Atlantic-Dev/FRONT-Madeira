@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1px;
 }
 
 .HofTopGrey{
@@ -65,14 +64,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.HeaderShadow{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #0c0f11c8;
 }
 
 .HofTopUserTitle{
