@@ -1,0 +1,16 @@
+.aboutTitle{
+    color: white;
+    text-align: center;
+    font-size: 55px;
+    margin-top: 30px;
+}
+.aboutText {
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    font-size: 35px;
+    display: flex;
+    flex-direction: column;
+    width: 60vw
+}
