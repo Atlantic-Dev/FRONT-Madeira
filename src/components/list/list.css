@@ -1,0 +1,127 @@
+.ListContainer{
+    background-color: #202224;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 50px 0;
+}
+
+.List{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 60vw;
+}
+
+.ListRanking{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ListRankingTitle{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 25px 10px 25px;
+    width: 91%;
+    gap: 30px;
+}
+
+.ListRankingTitleFirst{
+    max-width: 125px;
+    min-width: 125px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ListRankingTitleSecondSub{
+    display: flex;
+    flex-direction: row;
+    width: 170px;
+    justify-content: space-between;
+}
+
+.ListRankingTitleSecond{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ListRankingTitleText {
+    color: white;
+    font-size: 20px
+}
+
+.ListCustomerEven{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #31313C;
+    padding: 5px 25px;
+    gap: 40px;
+}
+
+.ListCustomerOdd{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #0c0f118e;
+    padding: 5px 25px;
+    gap: 40px;
+}
+
+.ListCustomerFirst{
+    max-width: 115px;
+    min-width: 115px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ListCustomerRank{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ListCustomerRank > span {
+    color: white;
+    font-size: 18px
+}
+
+.ListCustomerAvatar{
+    width: 40px;
+    height: 40px;
+}
+
+.ListCustomerSecond{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ListCustomerData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 170px;
+}
+
+.ListCustomerNickname, .ListCustomerStatus, .ListCustomerPoints{
+    color: white;
+    font-size: 18px
+}

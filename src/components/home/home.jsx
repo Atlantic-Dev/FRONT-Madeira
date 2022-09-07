@@ -2,16 +2,17 @@ import './home.css'
 import HallOfFame from '../halloffame/hallOfFame'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCustomers } from '../../redux/actions'
+import { useEffect } from 'react'
 
 const Home = () => {
+
     const dispatch = useDispatch()
-
-    const allCustomers = useSelector((state) => state.customers)
-
-    function handleClick(e){
-        e.preventDefault()
+    
+    useEffect(() => {
         dispatch(getAllCustomers())
-    }
+    },[])
+    
+    const allCustomers = useSelector((state) => state.customers)
 
     function handleConsole(e){
         e.preventDefault()
@@ -24,7 +25,6 @@ const Home = () => {
             <span className='HomeBannerContent'>AQUÍ IRIA EL BANNER</span>
         </div>
         <div className='HomeHallOfFame'>
-            <button onClick={(e) => handleClick(e)}>ACTION</button>
             <button onClick={(e) => handleConsole(e)}>console</button>
             <HallOfFame/>
         </div>

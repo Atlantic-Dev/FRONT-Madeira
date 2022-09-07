@@ -38,12 +38,14 @@
     text-align: center;
     text-justify: center;
     border-radius: 25px;
-    transition: all 0.3s ease;
+    transition-delay: 0.2s;
+    transition: 0.8s;
     margin-bottom: 50px;
 }
 
 .HomeListButton:hover{
     background-color: #F8B406;
+    cursor: pointer;
     color: #0C0F11;
     transform: scale(1.1);
 }
