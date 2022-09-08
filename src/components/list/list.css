@@ -17,6 +17,67 @@
     width: 60vw;
 }
 
+.ListPageButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.ListPageButtonsNumbers{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.ListPageButtonActive{
+    background-color: #FCA311;
+    font-family: 'Kanit';
+    font-size: 15px;
+    min-width: 32px;
+    max-width: 32px;
+}
+.ListPageButtonActive:hover{
+    cursor: pointer;
+}
+
+.ListPageButton{
+    background-color: #31313C;
+    font-family: 'Kanit';
+    font-size: 15px;
+    min-width: 32px;
+    max-width: 32px;
+    color: white;
+    transition: 0.3s ease;
+}
+.ListPageButton:hover{
+    cursor: pointer;
+    background-color: #FCA311;
+    transform: scale(1.1);
+    color: black;
+}
+
+.ListPageButtonDisabled{
+    background-color: #0b0b0bc0;
+    font-family: 'Kanit';
+    color: #505058;
+    border-width: 2px;
+    border-style:solid;
+    border-color: #31313c;
+    border-image: initial;
+    font-size: 15px;
+    min-width: 32px;
+    max-width: 32px;
+}
+.ListPageButtonDisabled:hover{
+    cursor: not-allowed;
+}
+
 .ListRanking{
     width: 100%;
     display: flex;
