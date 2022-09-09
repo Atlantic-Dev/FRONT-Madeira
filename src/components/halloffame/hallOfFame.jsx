@@ -83,7 +83,7 @@ const HallOfFame = () => {
                                         </span>
                                     </div>
                                     <div className='HofTopStatusDiv'>
-                                        <span className='HofTopStatus'>
+                                        <span className={`HofTopStatus${player.status}`}>
                                             {player.status}
                                         </span>
                                     </div>
@@ -118,7 +118,7 @@ const HallOfFame = () => {
                                         </span>
                                     </div>
                                     <div className='HofTopStatusDiv'>
-                                        <span className='HofTopStatus'>
+                                        <span className={`HofTopStatus${player.status}`}>
                                             {player.status}
                                         </span>
                                     </div>

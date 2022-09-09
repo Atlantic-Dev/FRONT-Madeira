@@ -257,7 +257,36 @@
     width: 170px;
 }
 
-.ListCustomerNickname, .ListCustomerStatus, .ListCustomerPoints{
+.ListCustomerNickname, .ListCustomerPoints{
     color: white;
     font-size: 18px
+}
+
+.ListCustomerStatusRuby{
+    color: #a70505;
+    font-size: 18px
+}
+.ListCustomerStatusDiamond{
+    color: #3B729E;
+    font-size: 18px 
+}
+.ListCustomerStatusPlatinum{
+    color: #8FBABA;
+    font-size: 18px   
+}
+.ListCustomerStatusGold{
+    color: #FCA311;
+    font-size: 18px   
+}
+.ListCustomerStatusSilver{
+    color:#D9D9D9;
+    font-size: 18px  
+}
+.ListCustomerStatusBronze{
+    color: #CD7F32;
+    font-size: 18px   
+}
+.ListCustomerStatusCopper{
+    color: #CB6D51;
+    font-size: 18px   
 }
