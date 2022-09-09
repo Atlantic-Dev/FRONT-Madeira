@@ -11,9 +11,9 @@ const Register = () => {
     const navigate = useNavigate()
 
     const [input, setInput] = useState({
-        username: "",
+        nickname: "",
         name: "",
-        lastname: "",
+        surname: "",
         email: "",
         password: "",
         passwordCheck: "",
@@ -24,14 +24,14 @@ const Register = () => {
 
     function validate (input){
         let errors = {}
-        if(!input.username){
-            errors.username = 'The username field is required'
+        if(!input.nickname){
+            errors.nickname = 'The nickname field is required'
         }
-        else if(input.username.length < 4){
-            errors.username = 'Minimum 4 letters'
+        else if(input.nickname.length < 4){
+            errors.nickname = 'Minimum 4 letters'
         }
-        else if(input.username.length > 10 ){
-            errors.username = 'Maximum 10 letters'
+        else if(input.nickname.length > 15 ){
+            errors.nickname = 'Maximum 15 letters'
         }
         if(!input.name){
             errors.name = 'The name field is required'
@@ -39,17 +39,17 @@ const Register = () => {
         else if(input.name.length < 4){
             errors.name = 'Minimum 4 letters'
         }
-        else if(input.name.length > 10 ){
-            errors.name = 'Maximum 10 letters'
+        else if(input.name.length > 15 ){
+            errors.name = 'Maximum 15 letters'
         }
-        if(!input.lastname){
-            errors.lastname = 'The lastname field is required'
+        if(!input.surname){
+            errors.surname = 'The surname field is required'
         }
-        else if(input.lastname.length < 4){
-            errors.lastname = 'Minimum 4 letters'
+        else if(input.surname.length < 4){
+            errors.surname = 'Minimum 4 letters'
         }
-        else if(input.lastname.length > 15 ){
-            errors.lastname = 'Maximum 15 letters'
+        else if(input.surname.length > 15 ){
+            errors.surname = 'Maximum 15 letters'
         }   
         else if(!input.email){
             errors.email = 'The email field is required'
@@ -101,8 +101,8 @@ const Register = () => {
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!input.username || !input.email || !input.password || !input.passwordCheck || input.avatar === '0') alert("Input cannot be an empty value")
-        else if (errors.username) alert(errors.username)
+        if(!input.nickname || !input.email || !input.password || !input.passwordCheck || input.avatar === '0') alert("Input cannot be an empty value")
+        else if (errors.nickname) alert(errors.nickname)
         else if (errors.email) alert(errors.email)
         else if (errors.password) alert(errors.password)
         else if (errors.passwordCheck) alert(errors.passwordCheck)
@@ -110,9 +110,9 @@ const Register = () => {
         else {
             dispatch(registerCustomer(input))
             setInput({
-                username: "",
+                nickname: "",
                 name: "",
-                lastname: "",
+                surname: "",
                 email: "",
                 password: "",
                 passwordCheck: "",
@@ -131,9 +131,9 @@ const Register = () => {
         <div className="Register">
             <form className="RegisterForm">
                 <input type="text" 
-                name='username' 
-                placeholder='Username'
-                value={input.username}
+                name='nickname' 
+                placeholder='Nickname'
+                value={input.nickname}
                 onChange={(e) => handleChange(e) }/>
                 <input type="text" 
                 name='name' 
@@ -141,9 +141,9 @@ const Register = () => {
                 value={input.name}
                 onChange={(e) => handleChange(e) }/>
                 <input type="text" 
-                name='lastname' 
-                placeholder='Lastname'
-                value={input.lastname}
+                name='surname' 
+                placeholder='Surname'
+                value={input.surname}
                 onChange={(e) => handleChange(e) }/>
                 <input type="email" 
                 name='email' 
