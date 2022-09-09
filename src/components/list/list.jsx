@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllCustomers } from "../../redux/actions"
+import { getAllCustomers, searchCustomers } from "../../redux/actions"
 import './list.css'
 import {BsSearch} from 'react-icons/bs'
 
@@ -94,6 +94,11 @@ const List = () => {
         return n % 2
     }
 
+    //Conexión del search al reducer
+    function handleSearch(e){
+        dispatch(searchCustomers(e.target.value))
+    }
+
     return(
         <div className="ListContainer">
             <div className="List">
@@ -101,13 +106,13 @@ const List = () => {
                     <button className={currentPage > 4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageStart}>1</button>
                     <button className={currentPage > 5 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPagePrevFive}>{currentPage-5 < 1 ? 1 : currentPage-5}</button>
                     <div className="ListPageButtonsNumbers">
-                    {pagination}
+                        {pagination}
                     </div>
                     <button className={currentPage < pageLimit-4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
                     <button className={currentPage < pageLimit-3 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{pageLimit}</button>
                 </div>
                 <div className="ListPageSearchFilter">
-                    <form className="ListPageSearchForm">
+                    <form onSubmit={handleSearch} className="ListPageSearchForm">
                         <input type="text" className="ListPageSearch" placeholder="Search a player"/>
                         <button type="submit" className="ListPageSearchSubmit" name="" id="">
                             <BsSearch alt="SearchIcon" className="ListPageSearchIcon" />
@@ -152,7 +157,8 @@ const List = () => {
                     <div className="ListRankingCustomers">
                     {slicedList?.map((player, index) => {
                         return(
-                            isEven(index) === 0 ?
+                            isEven(index) === 0 
+                            ?
                             <div className='ListCustomerEven'>
                                 <div className='ListCustomerFirst'>
                                     <div className='ListCustomerRank'>
@@ -170,7 +176,7 @@ const List = () => {
                                     </div>
                                     <div className='ListCustomerData'>
                                         <div className='ListCustomerStatusDiv'>
-                                            <span className='ListCustomerStatus'>
+                                            <span className={`ListCustomerStatus${player.status}`}>
                                                 {player.status}
                                             </span>
                                         </div>
@@ -200,7 +206,7 @@ const List = () => {
                                     </div>
                                     <div className='ListCustomerData'>
                                         <div className='ListCustomerStatusDiv'>
-                                            <span className='ListCustomerStatus'>
+                                            <span className={`ListCustomerStatus${player.status}`}>
                                                 {player.status}
                                             </span>
                                         </div>

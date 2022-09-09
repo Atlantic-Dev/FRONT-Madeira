@@ -125,7 +125,36 @@
     text-align: start;
 }
 
-.HofTopNickname, .HofTopId, .HofTopStatus, .HofTopPoints{
+.HofTopNickname, .HofTopId, .HofTopPoints{
     color: white;
+    font-size: 20px;
+}
+
+.HofTopStatusRuby{
+    color: #a70505;
+    font-size: 20px;
+}
+.HofTopStatusDiamond{
+    color: #3B729E;
+    font-size: 20px;
+}
+.HofTopStatusPlatinum{
+    color: #8FBABA;
+    font-size: 20px;
+}
+.HofTopStatusGold{
+    color: #FCA311;
+    font-size: 20px;
+}
+.HofTopStatusSilver{
+    color: #D9D9D9;
+    font-size: 20px;
+}
+.HofTopStatusBronze{
+    color: #CD7F32;
+    font-size: 20px;
+}
+.HofTopStatusCopper{
+    color: #CB6D51;
     font-size: 20px;
 }

@@ -1,9 +1,19 @@
 import './register.css'
 import { useState } from 'react'
+import { registerCustomer } from '../../redux/actions'
+import Swal from 'sweetalert2'
+import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
 
 const Register = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     const [input, setInput] = useState({
         username: "",
+        name: "",
+        lastname: "",
         email: "",
         password: "",
         passwordCheck: "",
@@ -15,7 +25,7 @@ const Register = () => {
     function validate (input){
         let errors = {}
         if(!input.username){
-          errors.username = 'The username field is required'
+            errors.username = 'The username field is required'
         }
         else if(input.username.length < 4){
             errors.username = 'Minimum 4 letters'
@@ -23,6 +33,24 @@ const Register = () => {
         else if(input.username.length > 10 ){
             errors.username = 'Maximum 10 letters'
         }
+        if(!input.name){
+            errors.name = 'The name field is required'
+        }
+        else if(input.name.length < 4){
+            errors.name = 'Minimum 4 letters'
+        }
+        else if(input.name.length > 10 ){
+            errors.name = 'Maximum 10 letters'
+        }
+        if(!input.lastname){
+            errors.lastname = 'The lastname field is required'
+        }
+        else if(input.lastname.length < 4){
+            errors.lastname = 'Minimum 4 letters'
+        }
+        else if(input.lastname.length > 15 ){
+            errors.lastname = 'Maximum 15 letters'
+        }   
         else if(!input.email){
             errors.email = 'The email field is required'
         }
@@ -44,6 +72,8 @@ const Register = () => {
         return errors
       }
 
+    //Cambios de estado y verificacion de errores de inputs Text
+
     function handleChange(e) {
         setInput({
            ...input,
@@ -56,14 +86,20 @@ const Register = () => {
         console.log(input)
     }
 
+    //Cambios de estado y verificacion de errores de select avatar
     const handleSelect = (e) => {
         e.preventDefault()
         setInput({
             ...input,
             avatar: e.target.value
         })
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
+        }))
     }
 
+    //Control de información y dispatch de action register
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!input.username || !input.email || !input.password || !input.passwordCheck || input.avatar === '0') alert("Input cannot be an empty value")
@@ -72,16 +108,25 @@ const Register = () => {
         else if (errors.password) alert(errors.password)
         else if (errors.passwordCheck) alert(errors.passwordCheck)
         else if (errors.avatar) alert(errors.avatar)
-        console.log('EH¡¡¡???')
+        else {
+            dispatch(registerCustomer(input))
+            setInput({
+                username: "",
+                name: "",
+                lastname: "",
+                email: "",
+                password: "",
+                passwordCheck: "",
+                avatar: "0",
+            })
+            Swal.fire("User created successfully","You can now login", "success")
+            .then((result) => {
+                if(result.isConfirmed){
+                    navigate('/', {replace: true})
+                }
+            })            
+        }
     } 
-    // alert("User created successfully")
-    // setInput({
-    //     username: "",
-    //     email: "",
-    //     password: "",
-    //     passwordCheck: "",
-    //     avatar: "",
-    // })
 
     return(
         <div className="Register">
@@ -91,22 +136,32 @@ const Register = () => {
                 placeholder='Username'
                 value={input.username}
                 onChange={(e) => handleChange(e) }/>
+                <input type="text" 
+                name='name' 
+                placeholder='Name'
+                value={input.name}
+                onChange={(e) => handleChange(e) }/>
+                <input type="text" 
+                name='lastname' 
+                placeholder='Lastname'
+                value={input.lastname}
+                onChange={(e) => handleChange(e) }/>
                 <input type="email" 
                 name='email' 
                 placeholder='Email'
                 value={input.email}
-                onChange={(e) => handleChange(e) }
+                onChange={(e) => handleChange(e)}
                 />
                 <input type="password" 
                 name='password' 
                 placeholder='Password'
                 value={input.password}
-                onChange={(e) => handleChange(e) }/>
+                onChange={(e) => handleChange(e)}/>
                 <input type="password" 
                 name='passwordCheck' 
                 placeholder='Repeat password'
                 value={input.passwordCheck}
-                onChange={(e) => handleChange(e) }/>
+                onChange={(e) => handleChange(e)}/>
                 <select className='RegisterSelect' onChange={handleSelect} name="avatar">
                     <option value='hidden' hidden>Select Avatar</option>
                     <option className='RegisterOptionAvatar1' value="1">Avatar1</option>
