@@ -6,3 +6,16 @@ export function getAllCustomers(){
         return dispatch({type: 'GET_ALL', payload: response.data})
     } 
 }
+
+export function postLogin(user) {
+    return async function(dispatch) {
+        try {
+            let response = await axios({
+                method: "post",
+                url: ""
+            })
+        } catch(e) {
+
+        }
+    }
+}
