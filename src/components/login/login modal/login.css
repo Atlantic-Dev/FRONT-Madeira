@@ -9,6 +9,7 @@
 .LoginOr{
     font-size: 20px;
     color: #A7A7A7;
+    margin-top: 12px;
 }
 
 .LoginInputUsername{
@@ -18,7 +19,8 @@
     padding: 10px 15px;
     margin-bottom: 10px;
     font-size: 25px;
-    color:white
+    color:white;
+    margin-top: 12px;
 }
 
 .LoginInputPassword{
@@ -28,7 +30,8 @@
     padding: 10px 15px;
     margin-bottom: 10px;
     font-size: 25px;
-    color:white
+    color:white;
+    margin-top: 12px;
 }
 
 .LoginSubmit{
@@ -38,11 +41,15 @@
     font-size: 20px;
     border: none;
     border-radius: 15px;
+    margin-top: 15px;
 }
 
 .LoginSubmit:hover{
     cursor: pointer;
     background-color: #087125;
+    transition-delay: 0.2s;
+    transition: 0.8s;
+    transform: scale(1.1);
 }
 
 .LoginGoogle{
@@ -51,8 +58,36 @@
     font-size: 25px;
     padding: 5px 15px;
     border-radius: 15px;
+    margin-top: 15px;
 }
 
 .LoginGoogle:hover{
-    cursor: pointer
+    cursor: pointer;
+    transition-delay: 0.2s;
+    transition: 0.8s;
+    transform: scale(1.1);
+}
+
+.LoginClose:hover{
+    cursor: pointer;
+    color: #CB156A;
+    transition-delay: 0.2s;
+    transition: 0.8s;
+    transform: scale(1.1);
+
+}
+
+.LoginClose {
+    width: 40px;
+    height: 40px;
+    color: #9d0208;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+
+.LoginDivClose {
+    display: flex;
+    margin-bottom: 5%;
+    
 }
