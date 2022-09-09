@@ -1,27 +1,13 @@
 import './register.css'
 import { useState } from 'react'
-import avatar1 from '../../images/avatar1.png'
-import avatar2 from '../../images/avatar2.png'
-import avatar3 from '../../images/avatar3.png'
-import avatar4 from '../../images/avatar4.png'
-import avatar5 from '../../images/avatar5.png'
-import avatar6 from '../../images/avatar6.png'
-import avatar7 from '../../images/avatar7.png'
 
 const Register = () => {
-    const [state, setState] = useState({
-        username: '',
-        email: '',
-        password: '',
-        avatar: ''
-    })
-
     const [input, setInput] = useState({
         username: "",
         email: "",
         password: "",
         passwordCheck: "",
-        avatar: "",
+        avatar: "0",
     })
     
     const [errors, setErrors] = useState({})
@@ -52,15 +38,11 @@ const Register = () => {
         else if(input.password !== input.passwordCheck){
           errors.password = 'The password must match' 
         }
-        else if(!input.avatar) {
+        else if(input.avatar === '0') {
             errors.avatar = "Avatar is required"
         }
         return errors
       }
-
-    //   else if(){
-    //     errors= ''
-    //   }
 
     function handleChange(e) {
         setInput({
@@ -74,14 +56,23 @@ const Register = () => {
         console.log(input)
     }
 
+    const handleSelect = (e) => {
+        e.preventDefault()
+        setInput({
+            ...input,
+            avatar: e.target.value
+        })
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if((!input.username) || (!input.email) || (!input.password) || (!input.passwordCheck) || (!input.avatar)) alert("Input cannot be an empty value")
+        if(!input.username || !input.email || !input.password || !input.passwordCheck || input.avatar === '0') alert("Input cannot be an empty value")
         else if (errors.username) alert(errors.username)
         else if (errors.email) alert(errors.email)
         else if (errors.password) alert(errors.password)
         else if (errors.passwordCheck) alert(errors.passwordCheck)
         else if (errors.avatar) alert(errors.avatar)
+        console.log('EH¡¡¡???')
     } 
     // alert("User created successfully")
     // setInput({
@@ -116,7 +107,7 @@ const Register = () => {
                 placeholder='Repeat password'
                 value={input.passwordCheck}
                 onChange={(e) => handleChange(e) }/>
-                <select className='RegisterSelect' name="avatar">
+                <select className='RegisterSelect' onChange={handleSelect} name="avatar">
                     <option value='hidden' hidden>Select Avatar</option>
                     <option className='RegisterOptionAvatar1' value="1">Avatar1</option>
                     <option className='RegisterOptionAvatar2' value="2">Avatar2</option>

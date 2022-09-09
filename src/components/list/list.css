@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0 50px 0;
+    padding: 10px 0;
 }
 
 .List{
@@ -24,7 +24,7 @@
     align-items: center;
     width: 100%;
     gap: 30px;
-    margin-bottom: 30px;
+    padding: 10px 0;
 }
 
 .ListPageButtonsNumbers{
@@ -41,6 +41,7 @@
     font-size: 15px;
     min-width: 32px;
     max-width: 32px;
+    border-radius: 3px;
 }
 .ListPageButtonActive:hover{
     cursor: pointer;
@@ -52,6 +53,7 @@
     font-size: 15px;
     min-width: 32px;
     max-width: 32px;
+    border-radius: 3px;
     color: white;
     transition: 0.3s ease;
 }
@@ -66,6 +68,7 @@
     background-color: #0b0b0bc0;
     font-family: 'Kanit';
     color: #505058;
+    border-radius: 3px;
     border-width: 2px;
     border-style:solid;
     border-color: #31313c;
@@ -76,6 +79,78 @@
 }
 .ListPageButtonDisabled:hover{
     cursor: not-allowed;
+}
+
+.ListPageSearchFilter{
+    padding: 5px 30px;
+    width: 80%;
+    background-color: #31313C;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+.ListPageSearchForm{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ListPageSearch{
+    background-color: #31313C;
+    border: none;
+    outline: none;
+    font-family: 'Kanit';
+    font-size: 16px;
+    width: 80%;
+    color:white;
+}
+.ListPageSearch:focus-visible{
+    border: none;
+    outline: none;
+}
+
+.ListPageSearchSubmit{
+    background-color: transparent;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.ListPageSearchSubmit:hover{
+    cursor: pointer;
+}
+
+.ListPageSearchIcon{
+    color: white;
+    background-color: transparent;
+}
+
+.ListPageSearchHr{
+    font-size: 2px;
+    margin: 0 5px 0 10px;
+    border: none;
+    background-color: white;
+}
+
+.ListPageFilterSelect{
+    background-color: #31313C;
+    font-family: 'Kanit';
+    font-size: 15px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 3px 10px;
+    width: 100px;
+    outline: none;
+}
+.ListPageFilterSelect:focus{
+    outline: none;
+}
+.ListPageFilterSelect:hover{
+    cursor: pointer;
 }
 
 .ListRanking{
