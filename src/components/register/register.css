@@ -40,11 +40,6 @@
     cursor: pointer;
 }
 
-.RegisterForm > select > option {
-    background-image: url('../../images/avatar1.png');
-    
-}
-
 /* .RegisterSelect option{
     background-image: url('../../images/avatar1.png');
     padding: 100px 0;

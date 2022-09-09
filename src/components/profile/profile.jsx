@@ -1,12 +1,12 @@
 import './profile.css'
-import avatar from '../../images/avatar1.png'
+
 
 const Profile = () => {
     return (
         <div className='Profile'>
             <div className='ProfileInfoTop'>
                 <div className='ProfileAvatar'>
-                    <img className='ProfileAvatarImg' src={avatar} alt='Avatar'/>
+                    {/* <img className='ProfileAvatarImg' src={avatar} alt='Avatar'/> */}
                         <div className='ProfileDataEditDiv'>
                             <button className='ProfileDataEditBtn'>EDIT PROFILE</button>
                         </div>
