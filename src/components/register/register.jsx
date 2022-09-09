@@ -73,7 +73,6 @@ const Register = () => {
       }
 
     //Cambios de estado y verificacion de errores de inputs Text
-
     function handleChange(e) {
         setInput({
            ...input,

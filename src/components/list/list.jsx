@@ -96,7 +96,10 @@ const List = () => {
 
     //Conexión del search al reducer
     function handleSearch(e){
-        dispatch(searchCustomers(e.target.value))
+        e.preventDefault()
+        let inputValue = document.getElementsByClassName("ListPageSearch")[0].value
+        console.log("value", inputValue)
+        dispatch(searchCustomers(inputValue))
     }
 
     return(
