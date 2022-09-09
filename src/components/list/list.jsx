@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllCustomers } from "../../redux/actions"
-import avatar1 from '../../images/avatar1.png'
 import './list.css'
+import {BsSearch} from 'react-icons/bs'
 
 const List = () => {    
     const dispatch = useDispatch()
@@ -23,6 +23,13 @@ const List = () => {
     const indexOfLast = currentPage * customersPerPage
     const indexOfFirst = indexOfLast - customersPerPage 
 
+    //Filtro por status
+    const [filter, setFilter] = useState('all')
+
+    function handleSelect(e){
+        setFilter(e.target.value)
+    }
+
     //Cantidad de paginas
     let pageLimit = Math.ceil(completeList?.length  / customersPerPage)
     let pageNumbers = []
@@ -36,7 +43,13 @@ const List = () => {
     }}
 
     //Pagina mostrada
-    const slicedList = completeList?.slice(indexOfFirst, indexOfLast)
+
+    let filtredList = completeList
+    if (filter !== 'all') {
+        filtredList = completeList.filter((p) => p.status === filter) 
+    }
+
+    const slicedList = filtredList?.slice(indexOfFirst, indexOfLast)
 
     //Cambio de pagina
     const handlePage = (e) =>{
@@ -58,18 +71,23 @@ const List = () => {
         e.preventDefault()
         if(currentPage-5 > 0)setCurrentPage(currentPage-5)
     }
+
     const setPageNextFive = (e) => {
         e.preventDefault()
         if(currentPage+5 < pageLimit+1)setCurrentPage(currentPage+5)
     }
-    
 
     //Renderizado de botones
-    const pagination =  pageNumbers.map((p) => {
+    const pagination = pageNumbers.map((p) => {
         return (             
             <button className={currentPage === p ? "ListPageButtonActive" : "ListPageButton"} key={p} id={p} onClick={handlePage}> {p} </button>             
         )}
     )
+
+    //Numero de ranking
+    function rankOf (customer) {
+        return completeList?.indexOf(customer)+1
+    }
 
     //Par o impar para definir className del div (diferentes BG-color)
     function isEven(n) {
@@ -87,6 +105,25 @@ const List = () => {
                     </div>
                     <button className={currentPage < pageLimit-4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
                     <button className={currentPage < pageLimit-3 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{pageLimit}</button>
+                </div>
+                <div className="ListPageSearchFilter">
+                    <form className="ListPageSearchForm">
+                        <input type="text" className="ListPageSearch" placeholder="Search a player"/>
+                        <button type="submit" className="ListPageSearchSubmit" name="" id="">
+                            <BsSearch alt="SearchIcon" className="ListPageSearchIcon" />
+                        </button>
+                    </form>
+                    <hr className="ListPageSearchHr"/>
+                    <select onChange={handleSelect} className="ListPageFilterSelect">
+                        <option value="all">All</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Bronze">Bronze</option>
+                        <option value="Copper">Copper</option>
+                    </select>
                 </div>
                 <div className="ListRanking">
                     <div className='ListRankingTitle'>
@@ -119,10 +156,10 @@ const List = () => {
                             <div className='ListCustomerEven'>
                                 <div className='ListCustomerFirst'>
                                     <div className='ListCustomerRank'>
-                                        <span>{index+1+((currentPage-1)*100)}</span>
+                                        <span>{rankOf(player)}</span>
                                     </div>
                                     <div className='ListCustomerAvatar'>
-                                        <img className='ListCustomerAvatar' src={avatar1}/>
+                                        <img className='ListCustomerAvatar' src={'./images/avatar'+player.avatar+'.png'}/>
                                     </div>
                                 </div>
                                 <div className='ListCustomerSecond'>
@@ -149,10 +186,10 @@ const List = () => {
                             <div className='ListCustomerOdd'>
                                 <div className='ListCustomerFirst'>
                                     <div className='ListCustomerRank'>
-                                        <span>{index+1+((currentPage-1)*100)}</span>
+                                        <span>{rankOf(player)}</span>
                                     </div>
                                     <div className='ListCustomerAvatar'>
-                                        <img className='ListCustomerAvatar' src={avatar1}/>
+                                        <img className='ListCustomerAvatar' src={`./images/avatar${player.avatar}.png`}/>
                                     </div>
                                 </div>
                                 <div className='ListCustomerSecond'>
