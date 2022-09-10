@@ -23,15 +23,9 @@ const Register = () => {
     const [errors, setErrors] = useState({})
 
     function validate (input){
-<<<<<<< HEAD
         let errors = {};
-        if(!input.username){
-            errors.username = 'The username field is required'
-=======
-        let errors = {}
         if(!input.nickname){
             errors.nickname = 'The nickname field is required'
->>>>>>> b5eb90ac32a2e85a952da30794397bc8ab0fe414
         }
         else if(input.nickname.length < 4){
             errors.nickname = 'Minimum 4 letters'
@@ -48,13 +42,8 @@ const Register = () => {
         else if(input.name.length > 15 ){
             errors.name = 'Maximum 15 letters'
         }
-<<<<<<< HEAD
-        else if(input.lastname === ""){
-            errors.lastname = 'The lastname field is required'
-=======
-        if(!input.surname){
+        else if(input.surname === ""){
             errors.surname = 'The surname field is required'
->>>>>>> b5eb90ac32a2e85a952da30794397bc8ab0fe414
         }
         else if(input.surname.length < 4){
             errors.surname = 'Minimum 4 letters'
@@ -142,16 +131,10 @@ const Register = () => {
         <div className="Register">
             <form className="RegisterForm">
                 <input type="text" 
-<<<<<<< HEAD
                 className="inputUser"
-                name='username' 
-                placeholder='Username'
-                value={input.username}
-=======
                 name='nickname' 
                 placeholder='Nickname'
                 value={input.nickname}
->>>>>>> b5eb90ac32a2e85a952da30794397bc8ab0fe414
                 onChange={(e) => handleChange(e) }/>
                                     {
                         errors.username && (
