@@ -15,10 +15,14 @@ export function searchCustomers(string){
 }
 
 export function registerCustomer(input){
-    return async function (dispatch){
-        let response = await axios.post('http://54.160.226.161:3000/auth/sign-up')
-        return response.data
-    } 
+    try{
+        return async function(dispatch){
+        let response = await axios.post('http://54.160.226.161:3000/customers/sign-up', input)
+        return dispatch({type: 'CREATE', payload: response.data})
+        }
+    } catch (e) {
+        console.log(e)
+    }
 }
 export function postLogin(user) {
     return async function(dispatch) {
