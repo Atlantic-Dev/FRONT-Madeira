@@ -1,6 +1,7 @@
 const initialState ={
     customers: [],
-    hallOfFame: []
+    hallOfFame: [],
+    openModal: false,
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,6 +10,16 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 customers: action.payload
+            }
+        case "OPEN_MODAL":
+            return {
+                ...state,
+                openModal: true,
+            }
+        case "CLOSE_MODAL":
+            return {
+                ...state,
+                openModal: false,
             }
         default: return state
     }

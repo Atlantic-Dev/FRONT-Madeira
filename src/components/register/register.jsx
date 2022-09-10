@@ -23,7 +23,7 @@ const Register = () => {
     const [errors, setErrors] = useState({})
 
     function validate (input){
-        let errors = {}
+        let errors = {};
         if(!input.username){
             errors.username = 'The username field is required'
         }
@@ -33,7 +33,7 @@ const Register = () => {
         else if(input.username.length > 10 ){
             errors.username = 'Maximum 10 letters'
         }
-        if(!input.name){
+        else if(input.name === ""){
             errors.name = 'The name field is required'
         }
         else if(input.name.length < 4){
@@ -42,7 +42,7 @@ const Register = () => {
         else if(input.name.length > 10 ){
             errors.name = 'Maximum 10 letters'
         }
-        if(!input.lastname){
+        else if(input.lastname === ""){
             errors.lastname = 'The lastname field is required'
         }
         else if(input.lastname.length < 4){
@@ -64,7 +64,7 @@ const Register = () => {
           errors.passwordCheck = 'The password field is required'
         }
         else if(input.password !== input.passwordCheck){
-          errors.password = 'The password must match' 
+          errors.passwordCheck = 'The password must match' 
         }
         else if(input.avatar === '0') {
             errors.avatar = "Avatar is required"
@@ -131,36 +131,67 @@ const Register = () => {
         <div className="Register">
             <form className="RegisterForm">
                 <input type="text" 
+                className="inputUser"
                 name='username' 
                 placeholder='Username'
                 value={input.username}
                 onChange={(e) => handleChange(e) }/>
+                                    {
+                        errors.username && (
+                            <p className='ErrorText'>{errors.username}</p>
+                        )
+                    }
                 <input type="text" 
                 name='name' 
                 placeholder='Name'
                 value={input.name}
                 onChange={(e) => handleChange(e) }/>
+                                    {
+                        errors.name && (
+                            <p className='ErrorText'>{errors.name}</p>
+                        )
+                    }
                 <input type="text" 
                 name='lastname' 
                 placeholder='Lastname'
                 value={input.lastname}
                 onChange={(e) => handleChange(e) }/>
+                                    {
+                        errors.lastname && (
+                            <p className='ErrorText'>{errors.lastname}</p>
+                        )
+                    }
                 <input type="email" 
                 name='email' 
                 placeholder='Email'
                 value={input.email}
                 onChange={(e) => handleChange(e)}
                 />
+                                    {
+                        errors.email && (
+                            <p className='ErrorText'>{errors.email}</p>
+                        )
+                    }
                 <input type="password" 
                 name='password' 
                 placeholder='Password'
                 value={input.password}
                 onChange={(e) => handleChange(e)}/>
+                                                    {
+                        errors.password && (
+                            <p className='ErrorText'>{errors.password}</p>
+                        )
+                    }
                 <input type="password" 
                 name='passwordCheck' 
                 placeholder='Repeat password'
                 value={input.passwordCheck}
                 onChange={(e) => handleChange(e)}/>
+                                    {
+                        errors.passwordCheck && (
+                            <p className='ErrorText'>{errors.passwordCheck}</p>
+                        )
+                    }
                 <select className='RegisterSelect' onChange={handleSelect} name="avatar">
                     <option value='hidden' hidden>Select Avatar</option>
                     <option className='RegisterOptionAvatar1' value="1">Avatar1</option>

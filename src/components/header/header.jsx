@@ -1,38 +1,40 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCloseModal, setOpenModal } from '../../redux/actions';
 import Login from '../login/login modal/login';
 import './header.css'
 
-const pathLoc = window.location.pathname //HTTP://LOL.COM/HOME
+const pathLoc = window.location.pathname 
 
 const Header = () => {
 
-    const [openModal, setOpenModal] = useState(false);
+    const dispatch = useDispatch()
+    const modal = useSelector((state) => state.openModal)
 
-    function handleOpen() {
-        console.log("open")
-        setOpenModal(true)
+    function handleOpenModal(e) {
+        e.preventDefault(e)
+        dispatch(setOpenModal())
     }
 
-    function handleClose() {
-        console.log("close")
-        setOpenModal(false)
+    function handleCloseModal(e) {
+        e.preventDefault(e)
+        dispatch(setCloseModal())
     }
-    
+
     return (
         <header className="Header">
             <div className="Header">
                 <div className='HeaderButtonDiv'>
-                    <a href='/' className={ pathLoc === '/' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a href='/' className={ pathLoc === '/' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     HOME
                     </a>
                 </div>
                 <div className='HeaderButtonDiv'>               
-                    <a href='/list' className={ pathLoc === '/list' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a href='/list' className={ pathLoc === '/list' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     PLAYERS LIST
                     </a>
                 </div>
                 <div className='HeaderButtonDiv'>
-                    <a href='/about' className={ pathLoc === '/about' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a href='/about' className={ pathLoc === '/about' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     ABOUT
                     </a>
                 </div>{/* 
@@ -42,7 +44,7 @@ const Header = () => {
                     </a> 
                 </div> */}
                 <div className='HeaderButtonDiv'>
-                    <a href='/register' className={ pathLoc === '/register' && openModal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a href='/register' className={ pathLoc === '/register' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     REGISTER
                     </a> 
                 </div>
@@ -50,15 +52,15 @@ const Header = () => {
                     <a className="HeaderButton">LOG OUT</a>
                 </div> */}
                 <div className='HeaderButtonDiv'>
-                    <a onClick={openModal === true ? handleClose : handleOpen} className={openModal === true ? "HeaderButtonSelected" : 'HeaderButton'}>LOG IN</a>
+                    <a onClick={modal === true ? handleCloseModal : handleOpenModal} className={modal === true ? "HeaderButtonSelected" : 'HeaderButton'}>LOG IN</a>
                 </div>
             </div>
-            {openModal ? 
-            <div className='HeaderShadow' onClick={handleClose}/>
+            {modal === true ? 
+            <div className='HeaderShadow' onClick={handleCloseModal}/>
             : null}
-            {openModal ?
+            {modal === true ?
                 <div className='HeaderModalLogin'>
-                    <Login close={handleClose} />
+                    <Login close={handleCloseModal} />
                 </div> : null
             }
         </header>

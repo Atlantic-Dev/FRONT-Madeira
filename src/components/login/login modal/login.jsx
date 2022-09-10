@@ -1,15 +1,45 @@
-import './login.css'
+import './login.css';
 import { IoCloseCircle } from 'react-icons/io5';
+import {useDispatch} from "react-redux";
+import { postLogin, setCloseModal } from '../../../redux/actions';
+import { useState } from 'react';
+
 
 const Login = () => {
+
+    const [input, setInput] = useState({
+        username: "",
+        password: "",
+    })
+    const dispatch = useDispatch()
+
+    function handleLogin(e) {
+        e.preventDefault(e);
+        dispatch(postLogin(input))
+
+    }
+
+    function handleChange(e) {
+        e.preventDefault(e);
+        setInput({...input, [e.target.name]: e.target.value })
+    }
+
+    function handleCloseModal(e) {
+        e.preventDefault(e)
+        dispatch(setCloseModal())
+    }
+
     return (
         <div className="Login">
             <div className='LoginDivClose'>
-            <IoCloseCircle className='LoginClose'/>
+            <IoCloseCircle className='LoginClose' onClick={handleCloseModal}/>
             </div>
-            <input type="text" placeholder='Username' name='username' className='LoginInputUsername'/>
-            <input type="password" placeholder='Password' name='password' className='LoginInputPassword'/>
+            <form className="LoginForm"
+            onSubmit={handleLogin}>
+            <input type="text" placeholder='Username' name='username' className='LoginInputUsername' onChange={handleChange}/>
+            <input type="password" placeholder='Password' name='password' className='LoginInputPassword' onChange={handleChange}/>
             <input type="submit" value="LOG IN" className='LoginSubmit'/>
+            </form>
             <span className='LoginOr'>or</span>
             <span className='LoginGoogle'>Login with Google</span>
         </div>
