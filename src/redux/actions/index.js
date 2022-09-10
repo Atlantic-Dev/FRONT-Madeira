@@ -27,12 +27,33 @@ export function registerCustomer(input){
 export function postLogin(user) {
     return async function(dispatch) {
         try {
-            let response = await axios({
-                method: "post",
-                url: ""
+            let response = await axios.post("http://54.160.226.161:3000/auth/sign-in", user)
+            console.log(response.data)
+        } catch(e) {
+            console.log("error login")
+        }
+    }
+}
+export function setOpenModal() {
+    return async function(dispatch) {
+        try{
+            return dispatch({
+                type: "OPEN_MODAL"
             })
         } catch(e) {
+            console.log("Fail open modal")
+        }
+    }
+}
 
+export function setCloseModal() {
+    return async function(dispatch) {
+        try{
+            return dispatch({
+                type: "CLOSE_MODAL"
+            })
+        } catch(e) {
+            console.log("Fail close modal")
         }
     }
 }
