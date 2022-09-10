@@ -235,7 +235,8 @@
 
 .ListCustomerRank > span {
     color: white;
-    font-size: 18px
+    font-size: 18px;
+    text-shadow: 1px black;
 }
 
 .ListCustomerAvatar{
@@ -257,9 +258,15 @@
     width: 170px;
 }
 
-.ListCustomerNickname, .ListCustomerPoints{
+.ListCustomerPoints{
     color: white;
     font-size: 18px
+}
+
+.ListCustomerNickname{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
 }
 
 .ListCustomerStatusRuby{

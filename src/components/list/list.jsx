@@ -159,6 +159,7 @@ const List = () => {
                     </div>
                     <div className="ListRankingCustomers">
                     {slicedList?.map((player, index) => {
+                        console.log(player)
                         return(
                             isEven(index) === 0 
                             ?
@@ -173,9 +174,9 @@ const List = () => {
                                 </div>
                                 <div className='ListCustomerSecond'>
                                     <div className='ListCustomerNameDiv'>
-                                        <span className='ListCustomerNickname'>
+                                        <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
                                             {player.nickname}
-                                        </span>
+                                        </a>
                                     </div>
                                     <div className='ListCustomerData'>
                                         <div className='ListCustomerStatusDiv'>

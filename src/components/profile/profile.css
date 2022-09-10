@@ -2,7 +2,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 65%;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    background-color: #202224;
+}
+
+.ProfileContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
     margin: 100px 0;
     gap: 60px;
 }
@@ -62,9 +72,10 @@
 
 .ProfileDataContentTop{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
+    gap: 10px;
     height: auto;
 }
 
@@ -76,14 +87,18 @@
     width: 100%;
 }
 
-.ProfileDataContentID{
+.ProfileDataContentTop > h2 {
+    text-align: center;
+    font-size: 40px;
     color: white;
-    text-align: start;
-    font-size: 35px;
     margin: 0;
-    background-color: #31313C;
-    border-radius: 15px;
-    padding: 5px 25px;
+}
+
+.ProfileDataContentID{
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    margin: 0;
 }
 .ProfileDataContentStatus{
     color: white;
