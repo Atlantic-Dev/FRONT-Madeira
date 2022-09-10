@@ -137,8 +137,8 @@ const Register = () => {
                 value={input.nickname}
                 onChange={(e) => handleChange(e) }/>
                                     {
-                        errors.username && (
-                            <p className='ErrorText'>{errors.username}</p>
+                        errors.nickname && (
+                            <p className='ErrorText'>{errors.nickname}</p>
                         )
                     }
                 <input type="text" 
@@ -157,8 +157,8 @@ const Register = () => {
                 value={input.surname}
                 onChange={(e) => handleChange(e) }/>
                                     {
-                        errors.lastname && (
-                            <p className='ErrorText'>{errors.lastname}</p>
+                        errors.surname && (
+                            <p className='ErrorText'>{errors.surname}</p>
                         )
                     }
                 <input type="email" 
