@@ -72,9 +72,9 @@ const HallOfFame = () => {
                             </div>
                             <div className='HofTopTextCont'>
                                 <div className='HofTopNicknameDiv'>
-                                    <span className='HofTopNickname'>
+                                    <a href={`/profile/${player._id}`} className='HofTopNickname'>
                                         {player.nickname}
-                                    </span>
+                                    </a>
                                 </div>
                                 <div className='HofTopData'>
                                     <div className='HofTopIdDiv'>
@@ -107,9 +107,9 @@ const HallOfFame = () => {
                             </div>
                             <div className='HofTopTextCont'>
                                 <div className='HofTopNicknameDiv'>
-                                    <span className='HofTopNickname'>
+                                    <a href={`/profile/${player._id}`} className='HofTopNickname'>
                                         {player.nickname}
-                                    </span>
+                                    </a>
                                 </div>
                                 <div className='HofTopData'>
                                     <div className='HofTopIdDiv'>

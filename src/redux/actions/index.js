@@ -2,26 +2,34 @@ import axios from 'axios';
 
 export function getAllCustomers(){
     return async function (dispatch){
-        let response = await axios.get('http://54.160.226.161:3000/customers')
-        return dispatch({type: 'GET_ALL', payload: response.data})
+        try{
+            let response = await axios.get('http://54.160.226.161:3000/customers')
+            return dispatch({type: 'GET_ALL', payload: response.data})
+        } catch (e) {
+            console.log(e)
+        }
     } 
 }
 export function searchCustomers(string){
     return async function (dispatch){
-        let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
-        console.log(response)
-        return dispatch({type: 'SEARCH', payload: response.data})
+        try{
+            let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
+            console.log(response)
+            return dispatch({type: 'SEARCH', payload: response.data})
+        } catch (e) {
+            console.log(e)
+        }
     } 
 }
 
 export function registerCustomer(input){
-    try{
-        return async function(dispatch){
+    return async function(dispatch){
+        try{
         let response = await axios.post('http://54.160.226.161:3000/customers/sign-up', input)
         return dispatch({type: 'CREATE', payload: response.data})
+        } catch (e) {
+            console.log(e)
         }
-    } catch (e) {
-        console.log(e)
     }
 }
 export function postLogin(user) {
@@ -47,7 +55,7 @@ export function setOpenModal() {
 }
 
 export function setCloseModal() {
-    return async function(dispatch) {
+    return async function(dispatch){
         try{
             return dispatch({
                 type: "CLOSE_MODAL"
@@ -56,4 +64,16 @@ export function setCloseModal() {
             console.log("Fail close modal")
         }
     }
+}
+
+export function getProfile(id){
+    return async function (dispatch){
+        try{
+            let response = await axios.get(`http://54.160.226.161:3000/customers/search/${id}`)
+            dispatch({type: "CUSTOMER_PROFILE", payload: response.data})
+        }catch (e){
+            console.log("This ID doesn't match any customer")
+        }
+    }
+
 }

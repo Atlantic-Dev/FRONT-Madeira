@@ -112,6 +112,12 @@
     text-align: start;
 }
 
+.HofTopNickname{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;    
+}
+
 .HofTopData{
     display: flex;
     flex-direction: row;
@@ -125,7 +131,7 @@
     text-align: start;
 }
 
-.HofTopNickname, .HofTopId, .HofTopPoints{
+.HofTopId, .HofTopPoints{
     color: white;
     font-size: 20px;
 }

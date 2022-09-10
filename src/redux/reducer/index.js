@@ -2,6 +2,7 @@ const initialState ={
     customers: [],
     hallOfFame: [],
     openModal: false,
+    profile: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 openModal: false,
+            }
+        case "CUSTOMER_PROFILE":
+            return {
+                ...state,
+                profile: action.payload[0]
             }
         default: return state
     }
