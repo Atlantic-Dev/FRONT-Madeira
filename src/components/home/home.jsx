@@ -3,13 +3,14 @@ import HallOfFame from '../halloffame/hallOfFame'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCustomers } from '../../redux/actions'
 import { useEffect } from 'react'
+import banner from '../../images/Banner.png'
 
 const Home = () => {
 
     return (
     <div className="Home">
         <div className="HomeBanner">
-            <span className='HomeBannerContent'>AQUÍ IRIA EL BANNER</span>
+            <img className='HomeBannerImg' src={banner} />
         </div>
         <div className='HomeHallOfFame'>
             <HallOfFame/>
