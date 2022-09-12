@@ -12,8 +12,10 @@ const List = () => {
     },[])
     
     //Lista completa de users
-    const allCustomers = useSelector((state) => state.customers.data)
-    const completeList = allCustomers?.Ruby.concat(allCustomers?.Diamond.concat(allCustomers?.Platinum.concat(allCustomers?.Gold.concat(allCustomers?.Silver.concat(allCustomers?.Bronze.concat(allCustomers?.Copper.concat()))))))
+    const allCustomers = useSelector((state) => state.customers)
+    console.log("all",allCustomers)
+    const backUpList = useSelector((state) => state.backup)
+    /*const completeList = allCustomers?.Ruby?.concat(allCustomers?.Diamond.concat(allCustomers?.Platinum.concat(allCustomers?.Gold.concat(allCustomers?.Silver.concat(allCustomers?.Bronze.concat(allCustomers?.Copper.concat())))))) */
 
     //Paginado
     const customersPerPage = 100
@@ -28,13 +30,16 @@ const List = () => {
 
     function handleSelect(e){
         setFilter(e.target.value)
+        setCurrentPage(1)
     }
 
     //Cantidad de paginas
-    let pageLimit = Math.ceil(completeList?.length  / customersPerPage)
+    let pageLimit = Math.ceil(allCustomers?.length  / customersPerPage)
     let pageNumbers = []
     if (currentPage < 5) {
-        pageNumbers = [1, 2, 3, 4, 5, 6, 7]
+        for (let i = 0; i < pageLimit && i < 7; i++){
+        pageNumbers.push(i+1)
+    }
     } else if (currentPage > (pageLimit - 4)){
         pageNumbers = [pageLimit-6, pageLimit-5, pageLimit-4, pageLimit-3, pageLimit-2, pageLimit-1, pageLimit]
     } else {
@@ -44,9 +49,9 @@ const List = () => {
 
     //Pagina mostrada
 
-    let filtredList = completeList
+    let filtredList = allCustomers
     if (filter !== 'all') {
-        filtredList = completeList.filter((p) => p.status === filter) 
+        filtredList = allCustomers.filter((p) => p.status === filter) 
     }
 
     const slicedList = filtredList?.slice(indexOfFirst, indexOfLast)
@@ -79,6 +84,7 @@ const List = () => {
 
     //Renderizado de botones
     const pagination = pageNumbers.map((p) => {
+        console.log(p)
         return (             
             <button className={currentPage === p ? "ListPageButtonActive" : "ListPageButton"} key={p} id={p} onClick={handlePage}> {p} </button>             
         )}
@@ -86,7 +92,7 @@ const List = () => {
 
     //Numero de ranking
     function rankOf (customer) {
-        return completeList?.indexOf(customer)+1
+        return backUpList?.findIndex(cus => cus._id === customer._id)+1
     }
 
     //Par o impar para definir className del div (diferentes BG-color)
@@ -98,9 +104,11 @@ const List = () => {
     function handleSearch(e){
         e.preventDefault()
         let inputValue = document.getElementsByClassName("ListPageSearch")[0].value
-        console.log("value", inputValue)
         dispatch(searchCustomers(inputValue))
+        setFilter("all")
+        setCurrentPage(1)
     }
+
 
     return(
         <div className="ListContainer">
@@ -112,7 +120,7 @@ const List = () => {
                         {pagination}
                     </div>
                     <button className={currentPage < pageLimit-4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
-                    <button className={currentPage < pageLimit-3 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{pageLimit}</button>
+                    <button className={currentPage < pageLimit-3 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{isNaN(pageLimit) ? 10 : pageLimit}</button>
                 </div>
                 <div className="ListPageSearchFilter">
                     <form onSubmit={handleSearch} className="ListPageSearchForm">
@@ -159,7 +167,6 @@ const List = () => {
                     </div>
                     <div className="ListRankingCustomers">
                     {slicedList?.map((player, index) => {
-                        console.log(player)
                         return(
                             isEven(index) === 0 
                             ?
