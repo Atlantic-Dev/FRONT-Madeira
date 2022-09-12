@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export function getAllCustomers(){
     return async function (dispatch){
@@ -14,7 +16,6 @@ export function searchCustomers(string){
     return async function (dispatch){
         try{
             let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
-            console.log(response.data)
             return dispatch({type: 'SEARCH', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -33,12 +34,14 @@ export function registerCustomer(input){
     }
 }
 export function postLogin(user) {
-    return async function(dispatch) {
+    return async function() {
         try {
             let response = await axios.post("http://54.160.226.161:3000/auth/sign-in", user)
-            console.log(response.data)
+            localStorage.setItem("token", response.data.accessToken)
+            /* window.location.reload() */
+            return window.open("http://localhost:3001/", "_self")
         } catch(e) {
-            console.log("error login")
+            Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
         }
     }
 }

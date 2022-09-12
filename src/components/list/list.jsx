@@ -13,7 +13,6 @@ const List = () => {
     
     //Lista completa de users
     const allCustomers = useSelector((state) => state.customers)
-    console.log("all",allCustomers)
     const backUpList = useSelector((state) => state.backup)
     /*const completeList = allCustomers?.Ruby?.concat(allCustomers?.Diamond.concat(allCustomers?.Platinum.concat(allCustomers?.Gold.concat(allCustomers?.Silver.concat(allCustomers?.Bronze.concat(allCustomers?.Copper.concat())))))) */
 
@@ -84,7 +83,6 @@ const List = () => {
 
     //Renderizado de botones
     const pagination = pageNumbers.map((p) => {
-        console.log(p)
         return (             
             <button className={currentPage === p ? "ListPageButtonActive" : "ListPageButton"} key={p} id={p} onClick={handlePage}> {p} </button>             
         )}
