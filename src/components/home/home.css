@@ -13,13 +13,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: auto;
 }
 
-.HomeBannerContent {
-    color: #F8B406;
-    background-color: #0C0F11;
-    font-size: 50px;
-    padding: 50px 30px;
+.HomeBannerImg{
+    max-width: 1024px;
 }
 
 .HomeHallOfFame{

@@ -8,7 +8,7 @@ import { useState } from 'react';
 const Login = () => {
 
     const [input, setInput] = useState({
-        username: "",
+        email: "",
         password: "",
     })
     const dispatch = useDispatch()
@@ -16,7 +16,6 @@ const Login = () => {
     function handleLogin(e) {
         e.preventDefault(e);
         dispatch(postLogin(input))
-
     }
 
     function handleChange(e) {
@@ -36,7 +35,7 @@ const Login = () => {
             </div>
             <form className="LoginForm"
             onSubmit={handleLogin}>
-            <input type="text" placeholder='Username' name='username' className='LoginInputUsername' onChange={handleChange}/>
+            <input type="email" placeholder='Email' name='email' className='LoginInputEmail' onChange={handleChange}/>
             <input type="password" placeholder='Password' name='password' className='LoginInputPassword' onChange={handleChange}/>
             <input type="submit" value="LOG IN" className='LoginSubmit'/>
             </form>

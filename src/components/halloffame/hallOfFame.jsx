@@ -11,22 +11,19 @@ const HallOfFame = () => {
         dispatch(getAllCustomers())
     },[])
     
-    const allCustomers = useSelector((state) => state.customers.data)
-    const completeList = allCustomers?.Ruby.concat(allCustomers?.Diamond.concat(allCustomers?.Platinum.concat(allCustomers?.Gold.concat(allCustomers?.Silver.concat(allCustomers?.Bronze.concat(allCustomers?.Copper.concat()))))))
-    const topTen = completeList?.slice(0, 10)
+    const allCustomers = useSelector((state) => state.customers)
+
+    const topTen = allCustomers?.slice(0, 10)
 
     //Numero de ranking
     function rankOf (customer) {
-        return completeList?.indexOf(customer)+1
+        return allCustomers?.indexOf(customer)+1
     }
 
     //Par o impar para definir className del div (diferentes BG-color)
     function isEven(n) {
         return n % 2
     }
-
-
-    
           
     return (
         <div className="Hof">
@@ -45,13 +42,13 @@ const HallOfFame = () => {
                             User
                         </span>
                         <div className='HofTopUserData'>
-                            <span>
+                            <span className='HofTopUserDataId'>
                                 Id
                             </span>
-                            <span>
+                            <span className='HofTopUserDataSpan'>
                                 Status
                             </span>
-                            <span>
+                            <span className='HofTopUserDataSpan'>
                                 Points
                             </span>
                         </div>
@@ -79,7 +76,7 @@ const HallOfFame = () => {
                                 <div className='HofTopData'>
                                     <div className='HofTopIdDiv'>
                                         <span className='HofTopId'>
-                                            {player.id}
+                                            {player._id}
                                         </span>
                                     </div>
                                     <div className='HofTopStatusDiv'>
@@ -114,7 +111,7 @@ const HallOfFame = () => {
                                 <div className='HofTopData'>
                                     <div className='HofTopIdDiv'>
                                         <span className='HofTopId'>
-                                            {player.id}
+                                            {player._id}
                                         </span>
                                     </div>
                                     <div className='HofTopStatusDiv'>

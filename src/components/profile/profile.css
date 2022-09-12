@@ -72,7 +72,8 @@
 
 .ProfileDataContentTop{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     gap: 10px;
@@ -89,16 +90,22 @@
 
 .ProfileDataContentTop > h2 {
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: white;
     margin: 0;
+    background-color: #31313C;
+    border-radius: 15px;
+    padding: 5px 25px;
 }
 
 .ProfileDataContentID{
     text-align: center;
-    font-size: 25px;
+    font-size: 30px;
     color: white;
     margin: 0;
+    background-color: #31313C;
+    border-radius: 15px;
+    padding: 5px 25px;
 }
 .ProfileDataContentStatus{
     color: white;
