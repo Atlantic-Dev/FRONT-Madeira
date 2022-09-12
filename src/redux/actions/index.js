@@ -14,7 +14,7 @@ export function searchCustomers(string){
     return async function (dispatch){
         try{
             let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
-            console.log(response)
+            console.log(response.data)
             return dispatch({type: 'SEARCH', payload: response.data})
         } catch (e) {
             console.log(e)

@@ -1,4 +1,5 @@
 const initialState ={
+    backup: [],
     customers: [],
     hallOfFame: [],
     openModal: false,
@@ -8,6 +9,12 @@ const initialState ={
 const reducer = (state = initialState, action) => {
     switch (action.type){
         case 'GET_ALL':
+            return{
+                ...state,
+                customers: action.payload.data?.Ruby?.concat(action.payload.data?.Diamond.concat(action.payload.data?.Platinum.concat(action.payload.data?.Gold.concat(action.payload.data?.Silver.concat(action.payload.data?.Bronze.concat(action.payload.data?.Copper.concat())))))),
+                backup: action.payload.data?.Ruby?.concat(action.payload.data?.Diamond.concat(action.payload.data?.Platinum.concat(action.payload.data?.Gold.concat(action.payload.data?.Silver.concat(action.payload.data?.Bronze.concat(action.payload.data?.Copper.concat()))))))
+            }
+        case "SEARCH":
             return{
                 ...state,
                 customers: action.payload
