@@ -18,7 +18,7 @@ const Register = () => {
         email: "",
         password: "",
         passwordCheck: "",
-        avatar: "0",
+        avatar: "1",
     })
     
     const [errors, setErrors] = useState({})
@@ -67,9 +67,6 @@ const Register = () => {
         else if(input.password !== input.passwordCheck){
           errors.passwordCheck = 'The password must match' 
         }
-        else if(input.avatar === '0') {
-            errors.avatar = "Avatar is required"
-        }
         return errors
       }
 
@@ -117,7 +114,7 @@ const Register = () => {
                 email: "",
                 password: "",
                 passwordCheck: "",
-                avatar: "0",
+                avatar: "1",
             })
             Swal.fire("User created successfully","You can now login", "success")
             .then((result) => {

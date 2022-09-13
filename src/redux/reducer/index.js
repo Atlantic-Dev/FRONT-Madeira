@@ -3,7 +3,8 @@ const initialState ={
     customers: [],
     hallOfFame: [],
     openModal: false,
-    profile: {}
+    profile: {},
+    users: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -32,7 +33,12 @@ const reducer = (state = initialState, action) => {
         case "CUSTOMER_PROFILE":
             return {
                 ...state,
-                profile: action.payload[0]
+                profile: action.payload
+            }
+        case "GET_USERS":
+            return {
+                ...state,
+                users: action.payload
             }
         default: return state
     }

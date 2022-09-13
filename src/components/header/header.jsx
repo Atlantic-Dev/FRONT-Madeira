@@ -42,6 +42,9 @@ const Header = () => {
             if (response.isConfirmed){
                 navigate("/");
                 pathLoc = "/"
+            } else {
+                navigate("/");
+                pathLoc = "/"
             }
         })
     }
@@ -73,7 +76,7 @@ const Header = () => {
                     </a> 
                 </div>  
                 :
-                tokenDecode && tokenDecode?.type === "admin" 
+                tokenDecode && tokenDecode?.type === "user" 
                 ?
                 <div className='HeaderButtonDiv'>
                     <a href='/account' className={ pathLoc === '/account' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
@@ -83,28 +86,28 @@ const Header = () => {
                 :
                 token !== null
                 ?  
-                    <div className='HeaderButtonDiv'>
-                        <a href={`/profile/${tokenDecode.id}`} className={ pathLoc === '/profile' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
-                        PROFILE
-                        </a> 
-                    </div>
+                <div className='HeaderButtonDiv'>
+                    <a href={`/profile/${tokenDecode.id}`} className={ pathLoc === '/profile' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    PROFILE
+                    </a> 
+                </div>
                 :    
-                    <div className='HeaderButtonDiv'>
-                        <a href='/register' className={ pathLoc === '/register' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
-                        REGISTER
-                        </a> 
-                    </div>
+                <div className='HeaderButtonDiv'>
+                    <a href='/register' className={ pathLoc === '/register' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    REGISTER
+                    </a> 
+                </div>
                 }
                 {
                 token !== null
                 ?  
-                    <div className='HeaderButtonDiv'>
-                        <a className="HeaderButton" onClick={handleLogOut}>LOG OUT</a>
-                    </div>
+                <div className='HeaderButtonDiv'>
+                    <a className="HeaderButton" onClick={handleLogOut}>LOG OUT</a>
+                </div>
                 :
-                    <div className='HeaderButtonDiv'>
-                        <a onClick={modal === true ? handleCloseModal : handleOpenModal} className={modal === true ? "HeaderButtonSelected" : 'HeaderButton'}>LOG IN</a>
-                    </div>
+                <div className='HeaderButtonDiv'>
+                    <a onClick={modal === true ? handleCloseModal : handleOpenModal} className={modal === true ? "HeaderButtonSelected" : 'HeaderButton'}>LOG IN</a>
+                </div>
                 }
             </div>
             {modal === true ? 
