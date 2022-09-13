@@ -1,3 +1,4 @@
+import React from 'react'
 import './home.css'
 import HallOfFame from '../halloffame/hallOfFame'
 import { useDispatch, useSelector } from 'react-redux'
