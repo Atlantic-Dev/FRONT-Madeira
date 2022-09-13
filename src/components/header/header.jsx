@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
@@ -64,6 +65,22 @@ const Header = () => {
                     </a>
                 </div>
                 {
+                tokenDecode && tokenDecode?.type === "superAdmin" 
+                ?
+                <div className='HeaderButtonDiv'>
+                    <a href='/dashboard' className={ pathLoc === '/dashboard' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    DASHBOARD
+                    </a> 
+                </div>  
+                :
+                tokenDecode && tokenDecode?.type === "admin" 
+                ?
+                <div className='HeaderButtonDiv'>
+                    <a href='/account' className={ pathLoc === '/account' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    ACCOUNT
+                    </a> 
+                </div>  
+                :
                 token !== null
                 ?  
                     <div className='HeaderButtonDiv'>

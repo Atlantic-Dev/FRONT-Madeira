@@ -72,7 +72,9 @@ export function setCloseModal() {
 export function getProfile(id){
     return async function (dispatch){
         try{
+            console.log("llegue", id)
             let response = await axios.get(`http://54.160.226.161:3000/customers/search/${id}`)
+            console.log("pase", response.data)
             dispatch({type: "CUSTOMER_PROFILE", payload: response.data})
         }catch (e){
             console.log("This ID doesn't match any customer")

@@ -5,8 +5,28 @@
     align-items: center;
 }
 
+.RegisterLogin{
+    color: white;
+    font-size: 20px;
+    margin: 30px 0;
+}
+
+.RegisterLoginButton{
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    transition-delay: 0.2s;
+    transition: 0.5s;
+}
+
+.RegisterLoginButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #F8B406;
+}
+
 .RegisterForm{
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: 15px;

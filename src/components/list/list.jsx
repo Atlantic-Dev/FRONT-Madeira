@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllCustomers, searchCustomers } from "../../redux/actions"
@@ -32,8 +33,17 @@ const List = () => {
         setCurrentPage(1)
     }
 
+    //Pagina mostrada
+
+    let filtredList = allCustomers
+    if (filter !== 'all') {
+        filtredList = allCustomers.filter((p) => p.status === filter) 
+    }
+
+    const slicedList = filtredList?.slice(indexOfFirst, indexOfLast)
+
     //Cantidad de paginas
-    let pageLimit = Math.ceil(allCustomers?.length  / customersPerPage)
+    let pageLimit = Math.ceil(filtredList?.length  / customersPerPage)
     let pageNumbers = []
     if (currentPage < 5) {
         for (let i = 0; i < pageLimit && i < 7; i++){
@@ -45,15 +55,6 @@ const List = () => {
     for (let i = currentPage-3; i <= currentPage+3; i++) {
         pageNumbers.push(i)
     }}
-
-    //Pagina mostrada
-
-    let filtredList = allCustomers
-    if (filter !== 'all') {
-        filtredList = allCustomers.filter((p) => p.status === filter) 
-    }
-
-    const slicedList = filtredList?.slice(indexOfFirst, indexOfLast)
 
     //Cambio de pagina
     const handlePage = (e) =>{
@@ -209,9 +210,9 @@ const List = () => {
                                 </div>
                                 <div className='ListCustomerSecond'>
                                     <div className='ListCustomerNameDiv'>
-                                        <span className='ListCustomerNickname'>
+                                        <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
                                             {player.nickname}
-                                        </span>
+                                        </a>
                                     </div>
                                     <div className='ListCustomerData'>
                                         <div className='ListCustomerStatusDiv'>

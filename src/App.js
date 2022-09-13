@@ -6,6 +6,7 @@ import Header from './components/header/header';
 import About from './components/about/about';
 import Register from './components/register/register';
 import List from './components/list/list';
+import Dashboard from './components/dashboard/dashboard';
 
 const App = () => {
   const navigate = useNavigate()
@@ -26,13 +27,15 @@ const App = () => {
           <Route path='/about' element={<About/>}/>
           <Route path='/register' element={<Navigate  to="/"/>}/>
           <Route path='/list' element={<List/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
         </>
       :
         <>
           <Route path='/' element={<Home/>}/>
-          <Route path='/profile/:id' element={<Navigate to="/"/>}/>
+          <Route path='/profile/:id' element={<Navigate to="/register"/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/dashboard' element={<Navigate  to="/register"/>}/>
           <Route path='/list' element={<List/>}/>
         </>
       }

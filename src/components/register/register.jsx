@@ -1,6 +1,7 @@
 import './register.css'
+import React from 'react'
 import { useState } from 'react'
-import { registerCustomer } from '../../redux/actions'
+import { registerCustomer, setOpenModal } from '../../redux/actions'
 import Swal from 'sweetalert2'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -127,8 +128,16 @@ const Register = () => {
         }
     } 
 
+    //Open modal para el boton de already have an account
+    
+    function handleOpenModal(e) {
+        e.preventDefault(e)
+        dispatch(setOpenModal())
+    }
+
     return(
         <div className="Register">
+            <span className='RegisterLogin'>Do you already have an account? <button onClick={handleOpenModal} className='RegisterLoginButton'>Log in here!</button></span>
             <form className="RegisterForm">
                 <input type="text" 
                 className="inputUser"
