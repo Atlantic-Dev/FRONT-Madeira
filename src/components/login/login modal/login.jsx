@@ -3,6 +3,7 @@ import { IoCloseCircle } from 'react-icons/io5';
 import {useDispatch} from "react-redux";
 import { postLogin, setCloseModal } from '../../../redux/actions';
 import { useState } from 'react';
+import logo from "../../../images/Banner.png"
 
 
 const Login = () => {
@@ -30,17 +31,16 @@ const Login = () => {
 
     return (
         <div className="Login">
-            <div className='LoginDivClose'>
             <IoCloseCircle className='LoginClose' onClick={handleCloseModal}/>
+            <div className='LoginDivClose'>
+            <img src={logo} alt="logo" className='LoginModalLogo'></img>
             </div>
             <form className="LoginForm"
             onSubmit={handleLogin}>
             <input type="email" placeholder='Email' name='email' className='LoginInputEmail' onChange={handleChange}/>
             <input type="password" placeholder='Password' name='password' className='LoginInputPassword' onChange={handleChange}/>
-            <input type="submit" value="LOG IN" className='LoginSubmit'/>
+            <input type="submit" value="Log in" className='LoginSubmit'/>
             </form>
-            <span className='LoginOr'>or</span>
-            <span className='LoginGoogle'>Login with Google</span>
         </div>
     )
 }
