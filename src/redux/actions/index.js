@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 export function getAllCustomers(){
@@ -38,7 +37,6 @@ export function postLogin(user) {
         try {
             let response = await axios.post("http://54.160.226.161:3000/auth/sign-in", user)
             localStorage.setItem("token", response.data.accessToken)
-            /* window.location.reload() */
             return window.open("http://localhost:3001/", "_self")
         } catch(e) {
             Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
@@ -69,16 +67,42 @@ export function setCloseModal() {
     }
 }
 
-export function getProfile(id){
+export function getProfile(id, token){
     return async function (dispatch){
         try{
-            console.log("llegue", id)
-            let response = await axios.get(`http://54.160.226.161:3000/customers/search/${id}`)
-            console.log("pase", response.data)
-            dispatch({type: "CUSTOMER_PROFILE", payload: response.data})
+            let response = await axios.get(
+                `http://54.160.226.161:3000/customers/${id}`, 
+                {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+            dispatch({type: "CUSTOMER_PROFILE", payload: response.data}) 
         }catch (e){
             console.log("This ID doesn't match any customer")
         }
     }
+}
 
+export function getAllUsers(){
+    return async function (dispatch){
+        try{
+            console.log("entre")
+            let response = await axios.get("http://54.160.226.161:3000/users/")
+            console.log("pase", response.data)
+            dispatch({type: "GET_USERS", payload: response.data})
+        } catch (e){
+            console.log(e)
+        }
+    }
+}
+
+export function deleteUser(id, token){
+    return async function (dispatch){
+        try{
+            console.log("a")
+        } catch (e){
+            console.log(e)
+        }
+    }
 }

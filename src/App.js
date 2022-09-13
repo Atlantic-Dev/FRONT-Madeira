@@ -7,6 +7,7 @@ import About from './components/about/about';
 import Register from './components/register/register';
 import List from './components/list/list';
 import Dashboard from './components/dashboard/dashboard';
+import Account from './components/account/account';
 
 const App = () => {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ const App = () => {
           <Route path='/register' element={<Navigate  to="/"/>}/>
           <Route path='/list' element={<List/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/account' element={<Account/>}/>
         </>
       :
         <>
@@ -37,6 +39,7 @@ const App = () => {
           <Route path='/register' element={<Register/>}/>
           <Route path='/dashboard' element={<Navigate  to="/register"/>}/>
           <Route path='/list' element={<List/>}/>
+          <Route path='/account' element={<Account/>}/>
         </>
       }
       </Routes>

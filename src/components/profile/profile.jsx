@@ -22,21 +22,20 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        dispatch(getProfile(idCustomer))
+        dispatch(getProfile(idCustomer, token))
         dispatch(getAllCustomers())
-    },[]) 
+    },[token]) 
     
     const allCustomers = useSelector((state) => state.customers)
     const customer = useSelector((state) => state.profile)
     
     //Numero de ranking
     function rankOf (data) {
-        return allCustomers?.findIndex((p) => p._id === data._id)+1
+        return allCustomers?.findIndex((p) => p._id === data?._id)+1
     }
     
-    
     console.log(customer)
-    
+
     return (
         <div className='Profile'>
             <div className='ProfileContainer'>
@@ -62,7 +61,7 @@ const Profile = () => {
                     </div>
                 </div>
                 {
-                        tokenDecode?.type === "admin" || tokenDecode?.type === "superAdmin" ?
+                        tokenDecode?.type === "user" || tokenDecode?.type === "superAdmin" ?
                         <div className='ProfileDataBtnCont'>
                             <div className='ProfileDataButtons'>
                                 <button className='ProfileDataEditBtn'>EDIT PROFILE</button>
