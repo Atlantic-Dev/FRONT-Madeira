@@ -30,7 +30,7 @@ const Dashboard = () => {
     } 
 
     if (tokenDecode !== null && tokenDecode !== undefined && tokenDecode?.type !== "superAdmin"){
-        window.open("http://localhost:3001/", "_self")
+        window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/", "_self")
     }
 
     const usersList = useSelector((state) => state.users)

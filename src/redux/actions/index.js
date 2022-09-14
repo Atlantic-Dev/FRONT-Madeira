@@ -38,7 +38,8 @@ export function postLogin(user) {
         try {
             let response = await axios.post("SERVER_URL/auth/sign-in", user)
             localStorage.setItem("token", response.data.accessToken)
-            return window.open("CLIENT_URL", "_self")
+            return window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/", "_self")
+            //return window.open("CLIENT_URL", "_self")
         } catch(e) {
             Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
         }
@@ -111,9 +112,9 @@ export function deleteUser(id, token){
             Swal.fire("User deleted successfully","","success")
             .then((response) => {
                 if (response.isConfirmed){
-                    window.open("http://localhost:3001/dashboard", "_self")
+                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
                 } else {
-                    window.open("http://localhost:3001/dashboard", "_self")
+                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
                 }
             })
             :
