@@ -2,6 +2,8 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
+import Swal from 'sweetalert2';
+import { resetCustomerPassword, resetUserPassword } from '../../../redux/actions';
 
 const ChangePassword = () => {
     
@@ -121,7 +123,6 @@ const ChangePassword = () => {
                         onChange={handleInputChange}
                         placeholder='Repeat new password'
                     />
-                <button>Submit
                     <input 
                         className='DashboardFormSubmitPassword' 
                         type='submit'
@@ -129,7 +130,6 @@ const ChangePassword = () => {
                         onClick={handleChange}
                         value='Change'
                     />
-                </button>
             </form>
         </div>
     )
