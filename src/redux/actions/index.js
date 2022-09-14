@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+const { SERVER_URL, CLIENT_URL } = process.env
 
 export function getAllCustomers(){
     return async function (dispatch){
@@ -35,9 +36,9 @@ export function registerCustomer(input){
 export function postLogin(user) {
     return async function() {
         try {
-            let response = await axios.post("http://54.160.226.161:3000/auth/sign-in", user)
+            let response = await axios.post("SERVER_URL/auth/sign-in", user)
             localStorage.setItem("token", response.data.accessToken)
-            return window.open("http://localhost:3001/", "_self")
+            return window.open("CLIENT_URL", "_self")
         } catch(e) {
             Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
         }
@@ -148,7 +149,7 @@ export function uploadAvatar(data){
 export function resetCustomerPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`http://54.160.226.161:3000/customers/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`SERVER_URL/customers/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
@@ -166,7 +167,7 @@ export function resetCustomerPassword(id, currentPassword, newPassword){
 export function resetUserPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`http://54.160.226.161:3000/users/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`SERVER_URL/users/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
