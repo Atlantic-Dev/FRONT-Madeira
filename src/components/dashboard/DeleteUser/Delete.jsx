@@ -14,13 +14,13 @@ const Delete = (props) => {
     }
 
     function handleDelete(id, token){
+        console.log("entra??")
         dispatch(deleteUser(id, token))
     }
-
+    
     return (
         <div className='DashboardDelete'>
             {usersList.map((user, index) => {
-                console.log(user)
                 return (
                     isEven(index) === 0 ?
                     <div className='DashboardUserEven'>
@@ -33,7 +33,7 @@ const Delete = (props) => {
                         <span className='DashboardUserData' >
                             {user.email}
                         </span>
-                        <button onClick={handleDelete(user._id)} className='DashboardFormSubmitDelete'>
+                        <button onClick={() => handleDelete(user._id, token)} className='DashboardFormSubmitDelete'>
                             Delete
                         </button>
                     </div>

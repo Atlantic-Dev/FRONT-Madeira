@@ -33,6 +33,44 @@ const List = () => {
         setCurrentPage(1)
     }
 
+    //Ordenamiento rank ascendente o descendente
+    const [sort, setSort] = useState("asc")
+
+    const handleAsc = (e) => {
+        e.preventDefault()
+        setSort("asc")
+        setCurrentPage(1)
+        sortAsc ()
+    }
+    const handleDes = (e) => {
+        e.preventDefault()
+        setSort("des")
+        setCurrentPage(1)
+        sortDes()
+    }
+
+    function sortAsc (){
+        allCustomers.sort((pa, pb) => {
+            if (pa.totalPoints > pb.totalPoints) {
+              return -1;
+            }
+            if (pa.totalPoints < pb.totalPoints) {
+              return 1;
+            }
+          })
+    }
+
+    function sortDes(){
+        allCustomers.sort((pa, pb) => {
+            if (pa.totalPoints > pb.totalPoints) {
+              return 1;
+            }
+            if (pa.totalPoints < pb.totalPoints) {
+              return -1;
+            }
+          })
+    }
+
     //Pagina mostrada
 
     let filtredList = allCustomers
@@ -49,7 +87,7 @@ const List = () => {
         for (let i = 0; i < pageLimit && i < 7; i++){
         pageNumbers.push(i+1)
     }
-    } else if (currentPage > (pageLimit - 4)){
+    } else if (currentPage > (pageLimit - 5)){
         pageNumbers = [pageLimit-6, pageLimit-5, pageLimit-4, pageLimit-3, pageLimit-2, pageLimit-1, pageLimit]
     } else {
     for (let i = currentPage-3; i <= currentPage+3; i++) {
@@ -144,7 +182,9 @@ const List = () => {
                     <div className='ListRankingTitle'>
                         <div className='ListRankingTitleFirst'>
                             <span className="ListRankingTitleText">
+                                <a onClick={handleAsc} className={sort === "asc" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▲</a>
                                 Rank
+                                <a onClick={handleDes} className={sort === "des" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▼</a>
                             </span>
                             <span className="ListRankingTitleText">
                                 Avatar

@@ -87,9 +87,7 @@ export function getProfile(id, token){
 export function getAllUsers(){
     return async function (dispatch){
         try{
-            console.log("entre")
             let response = await axios.get("http://54.160.226.161:3000/users/")
-            console.log("pase", response.data)
             dispatch({type: "GET_USERS", payload: response.data})
         } catch (e){
             console.log(e)
@@ -98,10 +96,50 @@ export function getAllUsers(){
 }
 
 export function deleteUser(id, token){
+    return async function (){
+        try{
+            let response = await axios.delete(
+                `http://54.160.226.161:3000/users/${id}`, 
+                {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+            response.data.isActive === false 
+            ?
+            Swal.fire("User deleted successfully","","success")
+            .then((response) => {
+                if (response.isConfirmed){
+                    window.open("http://localhost:3001/dashboard", "_self")
+                } else {
+                    window.open("http://localhost:3001/dashboard", "_self")
+                }
+            })
+            :
+            Swal.fire("Something went wrong", "Please try again or contact support", "error")
+        } catch (e){
+            console.log("entro al catch?",e)
+        }
+    }
+}
+
+export function getAvatars(){
     return async function (dispatch){
         try{
-            console.log("a")
+            let response = await axios.get('http://54.160.226.161:3000/avatar-image')
+            return dispatch({type: "GET_AVATARS", payload: response.data})
         } catch (e){
+            console.log(e)
+        }
+    }
+}
+
+export function uploadAvatar(data){
+    return async function(){
+        try{
+            let response = await axios.post('http://54.160.226.161:3000/avatar-image', data)
+            console.log("la respuesta",response.data)
+        }catch(e){
             console.log(e)
         }
     }
