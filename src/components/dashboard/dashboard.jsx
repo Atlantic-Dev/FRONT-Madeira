@@ -39,6 +39,7 @@ const Dashboard = () => {
                 <button onClick={openPassword} className='DashboardButtonPassword'>Change password</button>
                 <button onClick={openCreate} className='DashboardButtonCreate'>Create a User admin</button>
                 <button onClick={openDelete} className='DashboardButtonDelete'>Delete a User admin</button>
+                <button onClick={openDelete} className='DashboardButtonAvatars'>Manage avatar images</button>
             </div>
             { tab === "none" 
             ?

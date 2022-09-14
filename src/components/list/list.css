@@ -142,7 +142,7 @@
     color: white;
     border: none;
     border-radius: 10px;
-    padding: 3px 10px;
+    padding: 3px 5px;
     width: 100px;
     outline: none;
 }
@@ -163,13 +163,12 @@
 .ListRankingTitle{
     display: flex;
     flex-direction: row;
-    padding: 0px 25px 10px 25px;
+    padding: 0px 0px 10px 0px;
     width: 91%;
     gap: 30px;
 }
 
 .ListRankingTitleFirst{
-    max-width: 125px;
     min-width: 125px;
     display: flex;
     flex-direction: row;
@@ -184,7 +183,7 @@
 }
 
 .ListRankingTitleSecond{
-    width: 100%;
+    width: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -192,7 +191,25 @@
 
 .ListRankingTitleText {
     color: white;
-    font-size: 20px
+    font-size: 20px;
+    cursor: default;
+}
+
+.ListRankingSortButtonSelected{
+    color: #FCA311;
+    font-size: 17px;
+    padding: 0 3px;
+}
+.ListRankingSortButton{
+    font-size: 17px;
+    padding: 0 3px;
+}
+
+.ListRankingSortButton:hover, .ListRankingSortButtonSelected:hover{
+    cursor: pointer;
+    color: #CD7F32;
+    transition-delay: 0.2s;
+    transition: 0.5s;
 }
 
 .ListCustomerEven{
@@ -236,6 +253,7 @@
 .ListCustomerRank > span {
     color: white;
     font-size: 18px;
+    cursor: default;
     text-shadow: 1px black;
 }
 
@@ -260,40 +278,55 @@
 
 .ListCustomerPoints{
     color: white;
+    cursor: default;
     font-size: 18px
 }
 
 .ListCustomerNickname{
     color: white;
     font-size: 18px;
+    cursor: default;
     text-decoration: none;
+}
+.ListCustomerNickname:hover{
+    color: #FCA311;
+    transform: scale(1.1);
+    transition: 0.5s ease;
+    cursor: pointer;
 }
 
 .ListCustomerStatusRuby{
     color: #a70505;
+    cursor: default;
     font-size: 18px
 }
 .ListCustomerStatusDiamond{
     color: #3B729E;
+    cursor: default;
     font-size: 18px 
 }
 .ListCustomerStatusPlatinum{
+    cursor: default;
     color: #8FBABA;
     font-size: 18px   
 }
 .ListCustomerStatusGold{
     color: #FCA311;
+    cursor: default;
     font-size: 18px   
 }
 .ListCustomerStatusSilver{
+    cursor: default;
     color:#D9D9D9;
     font-size: 18px  
 }
 .ListCustomerStatusBronze{
+    cursor: default;
     color: #CD7F32;
     font-size: 18px   
 }
 .ListCustomerStatusCopper{
     color: #CB6D51;
+    cursor: default;
     font-size: 18px   
 }
