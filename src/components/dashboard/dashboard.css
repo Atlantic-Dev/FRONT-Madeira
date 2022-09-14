@@ -69,8 +69,24 @@
     font-family: 'Kanit';
     transition: all 0.4s ease;
 }
-
 .DashboardButtonPassword:hover{
+    background-color: #F98702;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.DashboardButtonAvatars{
+    background-color: #B76935;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    width: fit-content;
+    font-family: 'Kanit';
+    transition: all 0.4s ease;
+}
+.DashboardButtonAvatars:hover{
     background-color: #F98702;
     transform: scale(1.1);
     cursor: pointer;
