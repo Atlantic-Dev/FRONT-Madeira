@@ -6,7 +6,7 @@ import AvatarUpload from './AvatarUpload/AvatarUpload'
 import Create from './CreateUser/Create'
 import './dashboard.css'
 import Delete from './DeleteUser/Delete'
-import Password from './PasswordChange/Password'
+import Password from './ChangePassword/ChangePassword'
 const {JWT_SECRET} = process.env
 
 const Dashboard = () => {

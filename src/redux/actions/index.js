@@ -144,3 +144,39 @@ export function uploadAvatar(data){
         }
     }
 }
+
+export function resetCustomerPassword(id, currentPassword, newPassword){
+    return async function (dispatch){
+        try {
+            const response = await axios.post(`http://54.160.226.161:3000/customers/${id}`, currentPassword, newPassword)
+            if(response.data === "Wrong current password"){
+                Swal.fire("Wrong current password. Please try again.","warning")
+            } else {
+                return {
+                    type: "RESET_CUSTOMER_PASSWORD",
+                    payload: response.data
+                }
+            }
+        } catch (error){
+            console.log(error)
+        }
+    }
+}
+
+export function resetUserPassword(id, currentPassword, newPassword){
+    return async function (dispatch){
+        try {
+            const response = await axios.post(`http://54.160.226.161:3000/users/${id}`, currentPassword, newPassword)
+            if(response.data === "Wrong current password"){
+                Swal.fire("Wrong current password. Please try again.","warning")
+            } else {
+                return {
+                    type: "RESET_USER_PASSWORD",
+                    payload: response.data
+                }
+            }
+        } catch (error){
+            console.log(error)
+        }
+    }
+}

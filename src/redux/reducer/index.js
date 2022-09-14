@@ -40,6 +40,16 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 users: action.payload
             }
+        case "RESET_CUSTOMER_PASSWORD":
+            return {
+                ...state,
+                profile: action.payload
+            }
+        case "RESET_USER_PASSWORD":
+            return {
+                ...state,
+                profile: action.payload
+            }
         default: return state
     }
 }
