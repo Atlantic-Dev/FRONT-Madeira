@@ -76,7 +76,7 @@
 }
 
 .DashboardButtonAvatars{
-    background-color: #B76935;
+    background-color: #173468;
     padding: 5px 15px;
     border: none;
     border-radius: 15px;
@@ -87,7 +87,7 @@
     transition: all 0.4s ease;
 }
 .DashboardButtonAvatars:hover{
-    background-color: #F98702;
+    background-color: #0545b3;
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -131,7 +131,6 @@
 .DashboardFormSubmitPassword:hover{
     border: none;
     background-color: #F98702;
-    color: #0C0F11;
     transition-delay: 0.2s;
     transition: 0.5s;
     transform: scale(1.1);
@@ -211,4 +210,78 @@
 .DashboardUserData{
     font-size: 20px;
     color: white;
+}
+
+.DashboardAvatar{
+    margin: 30px 0;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DashboardFormInputFileDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.DashboardFormInputFileLabel{
+    color:white;
+    cursor:default;
+    font-family: 'Kanit';
+    width: auto;
+    font-size: 18px;
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    background-color: #31313C;   
+    transition-delay: 0.2s;
+    transition: 0.5s; 
+}
+.DashboardFormInputFileLabel:hover, .DashboardFormInputFileLabelUploaded:hover{
+    transition-delay: 0.2s;
+    transition: 0.5s;
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #ffffff; 
+    color: #0C0F11;   
+}
+
+.DashboardFormInputFile{
+    visibility: hidden;
+}
+
+.DashboardFormAvatarSubmit{
+    color:white;
+    font-family: 'Kanit';
+    font-size: 18px;
+    border-radius: 15px;
+    border: none;
+    padding: 7px 15px;
+    background-color: #0C0F11;
+    transition-delay: 0.2s;
+    transition: 0.5s;
+}
+
+.DashboardFormAvatarSubmit:hover{
+    background-color: #0545b3;
+    transition-delay: 0.2s;
+    transition: 0.5s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.DashboardFormInputFileLabelUploaded{
+    color:white;
+    cursor:default;
+    font-family: 'Kanit';
+    width: auto;
+    font-size: 18px;
+    border-radius: 15px;
+    border: none;
+    padding: 10px 20px;
+    background-color: #087125;   
+    transition-delay: 0.2s;
+    transition: 0.5s; 
 }

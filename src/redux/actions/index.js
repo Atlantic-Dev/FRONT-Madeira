@@ -180,3 +180,16 @@ export function resetUserPassword(id, currentPassword, newPassword){
         }
     }
 }
+
+export function registerUser(value, token){
+    return async function(dispatch){
+        try{
+        console.log("value", value)
+        console.log("token", token)
+        let response = await axios.post('http://54.160.226.161:3000/users/sign-up', value, token)
+        Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
