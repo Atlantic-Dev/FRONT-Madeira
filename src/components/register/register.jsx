@@ -55,7 +55,7 @@ const Register = () => {
         else if(!input.email){
             errors.email = 'The email field is required'
         }
-        else if(!input.email.includes("@")){
+        else if(!input.email.includes("@") || !input.email.includes(".")){
             errors.email= 'Enter a valid email'
           }
         else if(!input.password){
