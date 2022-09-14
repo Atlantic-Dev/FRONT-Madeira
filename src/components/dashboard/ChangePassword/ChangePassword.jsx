@@ -97,39 +97,35 @@ const ChangePassword = () => {
 
     return (
         <div className='DashboardTab'>
-            <h3>Change password</h3>
             <form className="DashboardForm">
-                <h4>Insert current password</h4>
-                    <input 
-                        className='DashboardFormInput' 
-                        type='password'
-                        name='currentPassword'
-                        onChange={handleInputChange}
-                        placeholder='Current password'
-                    />
-                <h4>Insert new password</h4>
-                    <input 
-                        className='DashboardFormInput' 
-                        type='password' 
-                        name='newPassword'
-                        onChange={handleInputChange}
-                        placeholder='New password'
-                    />
-                <h4>Repeat new password</h4>
-                    <input 
-                        className='DashboardFormInput' 
-                        type='password' 
-                        name='repeatPassword'
-                        onChange={handleInputChange}
-                        placeholder='Repeat new password'
-                    />
-                    <input 
-                        className='DashboardFormSubmitPassword' 
-                        type='submit'
-                        name='submit change password'
-                        onClick={handleChange}
-                        value='Change'
-                    />
+                <input 
+                    className='DashboardFormInput' 
+                    type='password'
+                    name='currentPassword'
+                    onChange={handleInputChange}
+                    placeholder='Current password'
+                />
+                <input 
+                    className='DashboardFormInput' 
+                    type='password' 
+                    name='newPassword'
+                    onChange={handleInputChange}
+                    placeholder='New password'
+                />
+                <input 
+                    className='DashboardFormInput' 
+                    type='password' 
+                    name='repeatPassword'
+                    onChange={handleInputChange}
+                    placeholder='Repeat new password'
+                />
+                <input 
+                    className='DashboardFormSubmitPassword' 
+                    type='submit'
+                    name='submit change password'
+                    onClick={handleChange}
+                    value='Change'
+                />
             </form>
         </div>
     )

@@ -14,9 +14,7 @@ const AvatarUpload = () => {
     function handleUpload (e){
         setImage(e.target.value)
     }
-
-    console.log(image)
-
+    
     return(
         <div className='DashboardAvatar'>
             <form onSubmit={handleAvatar} className='DashboardForm'>
