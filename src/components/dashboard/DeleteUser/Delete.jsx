@@ -48,7 +48,7 @@ const Delete = (props) => {
                         <span className='DashboardUserData' >
                             {user.email}
                         </span>
-                        <button onClick={handleDelete(user._id, token)} className='DashboardFormSubmitDelete'>
+                        <button onClick={() => handleDelete(user._id, token)} className='DashboardFormSubmitDelete'>
                             Delete
                         </button>
                     </div>
