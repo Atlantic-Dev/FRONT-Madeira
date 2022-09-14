@@ -12,6 +12,7 @@ const AvatarUpload = () => {
     }
 
     function handleUpload (e){
+        const data = new FormData();
         setImage(e.target.value)
     }
     
@@ -25,7 +26,53 @@ const AvatarUpload = () => {
                 <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
             </form>
         </div>
-    )
+    ) 
+    /* const [state, setState] = useState();
+    const dispatch = useDispatch()
+
+    const hiddenFileInput = React.useRef(null);
+
+    const handleClick = (event) => {
+        hiddenFileInput.current.click();
+    };
+
+    async function handleChange(file) {
+        console.log("change", file[0])
+            const data = new FormData();
+            data.append("image", file[0]);
+            try {
+                dispatch(uploadAvatar(data))
+            }catch (e) {
+              console.log(e)
+            }
+       
+    }
+
+    return (
+        <div className="App">
+            <div className="flex">
+                <button
+                    style={{margin: '20px', width: '80%'}}
+                    variant="contained"
+                    color="default"
+                    onClick={handleClick}
+                >
+                    Upload
+                </button>
+                <input
+                    style={{ display: "none" }}
+                    ref={hiddenFileInput}
+                    type="file"
+                    id="file"
+                    accept=".jpg"
+                    multiple
+                    onChange={(event) => {
+                        handleChange(event.target.files);
+                    }}
+                />
+            </div>
+        </div>
+    ); */
 }
 
 export default AvatarUpload

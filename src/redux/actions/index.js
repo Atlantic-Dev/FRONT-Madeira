@@ -137,6 +137,7 @@ export function getAvatars(){
 export function uploadAvatar(data){
     return async function(){
         try{
+            console.log("dispatch", data)
             let response = await axios.post('http://54.160.226.161:3000/avatar-image', data)
             console.log("la respuesta",response.data)
         }catch(e){
