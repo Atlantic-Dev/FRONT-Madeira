@@ -5,7 +5,7 @@ const { SERVER_URL, CLIENT_URL } = process.env
 export function getAllCustomers(){
     return async function (dispatch){
         try{
-            let response = await axios.get('http://54.160.226.161:3000/customers')
+            let response = await axios.get('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers')
             return dispatch({type: 'GET_ALL', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -15,7 +15,7 @@ export function getAllCustomers(){
 export function searchCustomers(string){
     return async function (dispatch){
         try{
-            let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
+            let response = await axios.get(`http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/search/${string}`)
             return dispatch({type: 'SEARCH', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -26,7 +26,7 @@ export function searchCustomers(string){
 export function registerCustomer(input){
     return async function(dispatch){
         try{
-        let response = await axios.post('http://54.160.226.161:3000/customers/sign-up', input)
+        let response = await axios.post('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/sign-up', input)
         return dispatch({type: 'CREATE', payload: response.data})
         } catch (e) {
             console.log(e)
