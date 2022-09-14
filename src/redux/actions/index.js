@@ -1,10 +1,11 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
+const { SERVER_URL, CLIENT_URL } = process.env
 
 export function getAllCustomers(){
     return async function (dispatch){
         try{
-            let response = await axios.get('http://54.160.226.161:3000/customers')
+            let response = await axios.get('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers')
             return dispatch({type: 'GET_ALL', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -14,7 +15,7 @@ export function getAllCustomers(){
 export function searchCustomers(string){
     return async function (dispatch){
         try{
-            let response = await axios.get(`http://54.160.226.161:3000/customers/search/${string}`)
+            let response = await axios.get(`http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/search/${string}`)
             return dispatch({type: 'SEARCH', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -25,7 +26,7 @@ export function searchCustomers(string){
 export function registerCustomer(input){
     return async function(dispatch){
         try{
-        let response = await axios.post('http://54.160.226.161:3000/customers/sign-up', input)
+        let response = await axios.post('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/sign-up', input)
         return dispatch({type: 'CREATE', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -35,9 +36,10 @@ export function registerCustomer(input){
 export function postLogin(user) {
     return async function() {
         try {
-            let response = await axios.post("http://54.160.226.161:3000/auth/sign-in", user)
+            let response = await axios.post("SERVER_URL/auth/sign-in", user)
             localStorage.setItem("token", response.data.accessToken)
-            return window.open("http://localhost:3001/", "_self")
+            return window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/", "_self")
+            //return window.open("CLIENT_URL", "_self")
         } catch(e) {
             Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
         }
@@ -110,9 +112,9 @@ export function deleteUser(id, token){
             Swal.fire("User deleted successfully","","success")
             .then((response) => {
                 if (response.isConfirmed){
-                    window.open("http://localhost:3001/dashboard", "_self")
+                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
                 } else {
-                    window.open("http://localhost:3001/dashboard", "_self")
+                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
                 }
             })
             :
@@ -149,7 +151,7 @@ export function uploadAvatar(data){
 export function resetCustomerPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`http://54.160.226.161:3000/customers/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`SERVER_URL/customers/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
@@ -167,7 +169,7 @@ export function resetCustomerPassword(id, currentPassword, newPassword){
 export function resetUserPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`http://54.160.226.161:3000/users/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`SERVER_URL/users/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {

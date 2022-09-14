@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### DEPLOY ###
+En el directorio raiz ejecutar bash delpoy.sh
+Automaticamente se hara el deploy en http://react-alb-1195746012.us-east-1.elb.amazonaws.com/
