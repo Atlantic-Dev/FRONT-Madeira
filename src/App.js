@@ -8,6 +8,7 @@ import Register from './components/register/register';
 import List from './components/list/list';
 import Dashboard from './components/dashboard/dashboard';
 import Account from './components/account/account';
+import ChangePassword from './components/dashboard/ChangePassword/ChangePassword';
 
 const App = () => {
   const navigate = useNavigate()
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/list' element={<List/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/account' element={<Account/>}/>
+          <Route path='/changePassword' element={<ChangePassword/>}/>
         </>
       :
         <>
