@@ -1,11 +1,14 @@
 import axios from 'axios';
 import Swal from 'sweetalert2';
-const { SERVER_URL, CLIENT_URL } = process.env
+const config = process.env/* 
+const { SERVER_URL, CLIENT_URL } = process.env */
 
 export function getAllCustomers(){
+    console.log(config.SERVER_URL)
+    console.log(config.CLIENT_URL)
     return async function (dispatch){
         try{
-            let response = await axios.get('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers')
+            let response = await axios.get(`customers`)
             return dispatch({type: 'GET_ALL', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -15,7 +18,7 @@ export function getAllCustomers(){
 export function searchCustomers(string){
     return async function (dispatch){
         try{
-            let response = await axios.get(`http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/search/${string}`)
+            let response = await axios.get(`${config.SERVER_URL}customers/search/${string}`)
             return dispatch({type: 'SEARCH', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -26,7 +29,7 @@ export function searchCustomers(string){
 export function registerCustomer(input){
     return async function(dispatch){
         try{
-        let response = await axios.post('http://madeiraserverapi-env.eba-cjbtjpjz.us-east-1.elasticbeanstalk.com/customers/sign-up', input)
+        let response = await axios.post(`${config.SERVER_URL}customers/sign-up`, input)
         return dispatch({type: 'CREATE', payload: response.data})
         } catch (e) {
             console.log(e)
@@ -36,10 +39,9 @@ export function registerCustomer(input){
 export function postLogin(user) {
     return async function() {
         try {
-            let response = await axios.post("SERVER_URL/auth/sign-in", user)
+            let response = await axios.post(`${config.SERVER_URL}auth/sign-in`, user)
             localStorage.setItem("token", response.data.accessToken)
-            return window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/", "_self")
-            //return window.open("CLIENT_URL", "_self")
+            return window.open(`${config.CLIENT_URL}/`, "_self")
         } catch(e) {
             Swal.fire("Invalid data", "Email or password was incorrect. Please try again", "error")
         }
@@ -73,7 +75,7 @@ export function getProfile(id, token){
     return async function (dispatch){
         try{
             let response = await axios.get(
-                `http://54.160.226.161:3000/customers/${id}`, 
+                `${config.SERVER_URL}customers/${id}`, 
                 {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -89,7 +91,7 @@ export function getProfile(id, token){
 export function getAllUsers(){
     return async function (dispatch){
         try{
-            let response = await axios.get("http://54.160.226.161:3000/users/")
+            let response = await axios.get(`${config.SERVER_URL}users/`)
             dispatch({type: "GET_USERS", payload: response.data})
         } catch (e){
             console.log(e)
@@ -101,7 +103,7 @@ export function deleteUser(id, token){
     return async function (){
         try{
             let response = await axios.delete(
-                `http://54.160.226.161:3000/users/${id}`, 
+                `${config.SERVER_URL}users/${id}`, 
                 {
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -112,9 +114,9 @@ export function deleteUser(id, token){
             Swal.fire("User deleted successfully","","success")
             .then((response) => {
                 if (response.isConfirmed){
-                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
+                    window.open(`${config.CLIENT_URL}/dashboard`, "_self")
                 } else {
-                    window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/dashboard", "_self")
+                    window.open(`${config.CLIENT_URL}/dashboard`, "_self")
                 }
             })
             :
@@ -128,7 +130,7 @@ export function deleteUser(id, token){
 export function getAvatars(){
     return async function (dispatch){
         try{
-            let response = await axios.get('http://54.160.226.161:3000/avatar-image')
+            let response = await axios.get(`${config.SERVER_URL}avatar-image`)
             return dispatch({type: "GET_AVATARS", payload: response.data})
         } catch (e){
             console.log(e)
@@ -140,7 +142,7 @@ export function uploadAvatar(data){
     return async function(){
         try{
             console.log("dispatch", data)
-            let response = await axios.post('http://54.160.226.161:3000/avatar-image', data)
+            let response = await axios.post(`${config.SERVER_URL}avatar-image`, data)
             console.log("la respuesta",response.data)
         }catch(e){
             console.log(e)
@@ -151,7 +153,7 @@ export function uploadAvatar(data){
 export function resetCustomerPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`SERVER_URL/customers/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`${config.SERVER_URL}customers/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
@@ -169,7 +171,7 @@ export function resetCustomerPassword(id, currentPassword, newPassword){
 export function resetUserPassword(id, currentPassword, newPassword){
     return async function (dispatch){
         try {
-            const response = await axios.post(`SERVER_URL/users/${id}`, currentPassword, newPassword)
+            const response = await axios.post(`${config.SERVER_URL}users/${id}`, currentPassword, newPassword)
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
@@ -189,7 +191,7 @@ export function registerUser(value, token){
         try{
         console.log("value", value)
         console.log("token", token)
-        let response = await axios.post('http://54.160.226.161:3000/users/sign-up', value, token)
+        let response = await axios.post(`${config.SERVER_URL}users/sign-up`, value, token)
         Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
         } catch (e) {
             console.log(e)

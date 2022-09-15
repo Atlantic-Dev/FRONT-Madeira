@@ -7,7 +7,7 @@ import Create from './CreateUser/Create'
 import './dashboard.css'
 import Delete from './DeleteUser/Delete'
 import Password from './ChangePassword/ChangePassword'
-const {JWT_SECRET} = process.env
+const {JWT_SECRET, CLIENT_URL} = process.env
 
 const Dashboard = () => {
     const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const Dashboard = () => {
     useEffect(() => {
         dispatch(getAllUsers())
     }, [])
-
+    
     let token = ''
     token = localStorage.getItem("token")
     let tokenDecode = {}
@@ -30,7 +30,7 @@ const Dashboard = () => {
     } 
 
     if (tokenDecode !== null && tokenDecode !== undefined && tokenDecode?.type !== "superAdmin"){
-        window.open("http://react-alb-1195746012.us-east-1.elb.amazonaws.com/", "_self")
+        window.open(`${CLIENT_URL}`, "_self")
     }
 
     const usersList = useSelector((state) => state.users)
