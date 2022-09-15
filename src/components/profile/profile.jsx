@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCustomers, getProfile } from '../../redux/actions'
 import './profile.css'
-const {JWT_SECRET} = process.env
 
 
 const Profile = () => {
@@ -18,7 +17,7 @@ const Profile = () => {
     token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
-        tokenDecode = decode(token, JWT_SECRET)
+        tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
 
     useEffect(() => {

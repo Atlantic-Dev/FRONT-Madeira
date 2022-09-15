@@ -7,7 +7,6 @@ import Create from './CreateUser/Create'
 import './dashboard.css'
 import Delete from './DeleteUser/Delete'
 import Password from './ChangePassword/ChangePassword'
-const {JWT_SECRET, CLIENT_URL} = process.env
 
 const Dashboard = () => {
     const dispatch = useDispatch()
@@ -26,11 +25,11 @@ const Dashboard = () => {
     token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
-        tokenDecode = decode(token, JWT_SECRET)
+        tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     } 
 
     if (tokenDecode !== null && tokenDecode !== undefined && tokenDecode?.type !== "superAdmin"){
-        window.open(`${CLIENT_URL}`, "_self")
+        window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
     }
 
     const usersList = useSelector((state) => state.users)

@@ -6,7 +6,6 @@ import { setCloseModal, setOpenModal } from '../../redux/actions';
 import Login from '../login/login modal/login';
 import './header.css';
 import decode from 'jwt-decode';
-const {JWT_SECRET} = process.env
 
 let pathLoc = window.location.pathname 
 
@@ -21,8 +20,11 @@ const Header = () => {
     token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
-        tokenDecode = decode(token, JWT_SECRET)
+        tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
+    console.log()
+    console.log(process.env.REACT_APP_CLIENT_URL)
+    console.log(process.env.REACT_APP_SERVER_URL)
 
     function handleOpenModal(e) {
         e.preventDefault(e)
