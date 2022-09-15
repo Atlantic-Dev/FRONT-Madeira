@@ -6,30 +6,6 @@ const AvatarUpload = () => {
     const dispatch = useDispatch()
     const [image, setImage] = useState("")
 
-    function handleAvatar(e){
-        e.preventDefault()
-        dispatch(uploadAvatar(image))
-    }
-
-    function handleUpload (e){
-        const data = new FormData();
-        setImage(e.target.value)
-    }
-    
-    return(
-        <div className='DashboardAvatar'>
-            <form onSubmit={handleAvatar} className='DashboardForm'>
-                <div className='DashboardFormInputFileDiv'>
-                    <label className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} for="UploadImage">{image !== '' ? "Image uploaded. Click to change" :"Select image"}</label>
-                    <input onChange={handleUpload} id="UploadImage" className='DashboardFormInputFile' type="file" accept="image/*"/>
-                </div>
-                <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
-            </form>
-        </div>
-    ) 
-    /* const [state, setState] = useState();
-    const dispatch = useDispatch()
-
     const hiddenFileInput = React.useRef(null);
 
     const handleClick = (event) => {
@@ -37,7 +13,8 @@ const AvatarUpload = () => {
     };
 
     async function handleChange(file) {
-        console.log("change", file[0])
+            console.log("change", file[0])
+            setImage("upload")
             const data = new FormData();
             data.append("image", file[0]);
             try {
@@ -49,18 +26,18 @@ const AvatarUpload = () => {
     }
 
     return (
-        <div className="App">
-            <div className="flex">
+        <div className='DashboardAvatar'>
+            <div className='DashboardForm'>
                 <button
-                    style={{margin: '20px', width: '80%'}}
+                    className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} 
+                    for="UploadImage"
                     variant="contained"
-                    color="default"
                     onClick={handleClick}
                 >
-                    Upload
+                    {image !== '' ? "Image uploaded. Click to change" :"Select image"}
                 </button>
                 <input
-                    style={{ display: "none" }}
+                    className='DashboardFormAvatarSubmit'
                     ref={hiddenFileInput}
                     type="file"
                     id="file"
@@ -72,7 +49,18 @@ const AvatarUpload = () => {
                 />
             </div>
         </div>
-    ); */
+    ); /* 
+    return(
+        <div className='DashboardAvatar'>
+            <form onSubmit={handleAvatar} className='DashboardForm'>
+                <div className='DashboardFormInputFileDiv'>
+                    <label className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} for="UploadImage">{image !== '' ? "Image uploaded. Click to change" :"Select image"}</label>
+                    <input onChange={handleUpload} id="UploadImage" className='DashboardFormInputFile' type="file" accept="image/*"/>
+                </div>
+                <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
+            </form>
+        </div>
+    )  */
 }
 
 export default AvatarUpload
