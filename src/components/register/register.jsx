@@ -1,4 +1,4 @@
-import './register.css'
+import './Register.css'
 import React from 'react'
 import { useState } from 'react'
 import { registerCustomer, setOpenModal } from '../../redux/actions'

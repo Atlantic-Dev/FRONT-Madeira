@@ -1,5 +1,5 @@
 import React from 'react'
-import './hallOfFame.css'
+import './HallOfFame.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCustomers } from '../../redux/actions'
 import { useEffect } from 'react'

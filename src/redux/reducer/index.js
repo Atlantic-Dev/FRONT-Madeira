@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 openModal: false,
             }
-        case "CUSTOMER_PROFILE":
+        case "PROFILE":
             return {
                 ...state,
                 profile: action.payload

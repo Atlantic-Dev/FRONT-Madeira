@@ -1,13 +1,13 @@
 import './App.css';
 import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
-import Profile from './components/profile/profile';
-import Home from './components/home/home';
-import Header from './components/header/header';
-import About from './components/about/about';
-import Register from './components/register/register';
-import List from './components/list/list';
-import Dashboard from './components/dashboard/dashboard';
-import Account from './components/account/account';
+import Profile from './components/Profile/Profile';
+import Home from './components/Home/Home';
+import Header from './components/Header/Header';
+import About from './components/About/About';
+import Register from './components/Register/Register';
+import List from './components/List/List';
+import Dashboard from './components/dashboard/Dashboard';
+import Account from './components/Account/Account';
 import ChangePassword from './components/dashboard/ChangePassword/ChangePassword';
 
 const App = () => {

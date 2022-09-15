@@ -3,7 +3,7 @@ import decode from 'jwt-decode'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCustomers, getProfile } from '../../redux/actions'
-import './profile.css'
+import './Profile.css'
 
 
 const Profile = () => {

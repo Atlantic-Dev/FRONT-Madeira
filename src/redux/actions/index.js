@@ -77,7 +77,7 @@ export function getProfile(id, token){
                   Authorization: `Bearer ${token}`,
                 },
               })
-            dispatch({type: "CUSTOMER_PROFILE", payload: response.data}) 
+            dispatch({type: "PROFILE", payload: response.data}) 
         }catch (e){
             console.log("This ID doesn't match any customer")
         }
@@ -90,6 +90,33 @@ export function getAllUsers(){
             let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/`)
             dispatch({type: "GET_USERS", payload: response.data})
         } catch (e){
+            console.log(e)
+        }
+    }
+}
+
+export function getUser(id, token){
+    return async function(dispatch){
+        try{
+            let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/${id}`, 
+                {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
+            dispatch({type: "PROFILE", payload: response.data}) 
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export function registerUser(value, token){
+    return async function(){
+        try{
+        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, value, token)
+        Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
+        } catch (e) {
             console.log(e)
         }
     }
@@ -178,19 +205,6 @@ export function resetUserPassword(id, currentPassword, newPassword){
             }
         } catch (error){
             console.log(error)
-        }
-    }
-}
-
-export function registerUser(value, token){
-    return async function(dispatch){
-        try{
-        console.log("value", value)
-        console.log("token", token)
-        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, value, token)
-        Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
-        } catch (e) {
-            console.log(e)
         }
     }
 }

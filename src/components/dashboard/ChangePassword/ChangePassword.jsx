@@ -8,8 +8,10 @@ import { resetCustomerPassword, resetUserPassword } from '../../../redux/actions
 const ChangePassword = () => {
     
     const token = localStorage.getItem('token')
-    const tokenDecoded = decode(token)
-    console.log("token.type", tokenDecoded.type)
+    let tokenDecoded = {}
+    if (token) {
+        tokenDecoded = decode(token)
+    }
 
     const dispatch = useDispatch()
 

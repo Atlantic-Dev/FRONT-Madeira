@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllCustomers, searchCustomers } from "../../redux/actions"
-import './list.css'
+import './List.css'
 import {BsSearch} from 'react-icons/bs'
 
 const List = () => {    
