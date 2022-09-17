@@ -255,12 +255,12 @@ export function editCustomer(data, id, token){
                     Authorization: `Bearer ${token}`,
                 },
             })
+
             if (response.data.email === data.email){
-            Swal.fire("Profile edited successfully","Login again to see changes", "success")
+            Swal.fire("Profile edited successfully","", "success")
             .then((result) => {
                 if(result.isConfirmed){
-                    localStorage.removeItem("token")
-                    window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
+                    window.open(`${process.env.REACT_APP_CLIENT_URL}profile/${id}`, "_self")
                 }
             })
             } else {
