@@ -32,7 +32,13 @@ const EditProfile = (props) => {
         })
     }
 
-    const [errors, setErrors] = useState({})
+    const [errors, setErrors] = useState({
+        nickname: "",
+        name: "",
+        surname: "",
+        email: "",
+        avatar: ""
+    })
 
     function validate (input){
         let errors = {};
@@ -64,7 +70,7 @@ const EditProfile = (props) => {
            [e.target.name]: e.target.value
        })
         setErrors(validate({
-            ...input,
+            ...errors,
             [e.target.name]: e.target.value
         }))
     }
