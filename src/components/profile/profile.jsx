@@ -2,7 +2,7 @@ import React from 'react'
 import decode from 'jwt-decode'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteCustomer, getAllCustomers, getProfile } from '../../redux/actions'
+import { deleteCustomer, getAllAvatars, getAllCustomers, getProfile } from '../../redux/actions'
 import './Profile.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
@@ -23,13 +23,18 @@ const Profile = () => {
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
 
+    useEffect(()=>{
+        dispatch(getAllCustomers())
+        dispatch(getAllAvatars())
+    },[])
+
     useEffect(() => {
         dispatch(getProfile(idCustomer, token))
-        dispatch(getAllCustomers())
     },[token]) 
     
     const allCustomers = useSelector((state) => state.customers)
     const customer = useSelector((state) => state.profile)
+    const allAvatars = useSelector((state) => state.avatars)
 
     function openEdit(e){
         e.preventDefault()
@@ -73,7 +78,7 @@ const Profile = () => {
             <div className='ProfileContainer'>
                 <div className='ProfileInfoTop'>
                     <div className='ProfileAvatar'>
-                        <img className='ProfileAvatarImg' src={`./images/avatar${customer?.avatar}.png`}/>
+                        <img className='ProfileAvatarImg' src={allAvatars[customer.avatar - 1]?.imageUrl}/>
                     </div>
                     <div className='ProfileData'>
                         <div className='ProfileDataTitle'>
