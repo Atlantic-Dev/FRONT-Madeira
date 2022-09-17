@@ -15,7 +15,13 @@ export function searchCustomers(string){
     return async function (dispatch){
         try{
             let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}customers/search/${string}`)
-            return dispatch({type: 'SEARCH', payload: response.data})
+            if (response.data.length === 0){
+                Swal.fire("No customers found", "We didn't find any customers with that ID or nickname", "error")
+                let respuesta = await axios.get(`${process.env.REACT_APP_SERVER_URL}customers`)
+                return dispatch({type: 'GET_ALL', payload: respuesta.data})
+            }else {
+                return dispatch({type: 'SEARCH', payload: response.data})
+            }
         } catch (e) {
             console.log(e)
         }

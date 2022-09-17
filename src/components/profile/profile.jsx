@@ -18,7 +18,9 @@ const Profile = () => {
     const idCustomer = pathLoc.substring(pathLoc.lastIndexOf('/') + 1)
     
     const token = localStorage.getItem("token")
+    
     let tokenDecode = {}
+
     if (token !== null){
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
