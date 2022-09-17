@@ -36,31 +36,22 @@ const EditProfile = (props) => {
 
     function validate (input){
         let errors = {};
-        if(!input.nickname){
-            errors.nickname = 'The nickname field is required'
-        }
-        else if(input.nickname.length < 4){
+        if(input.nickname && input.nickname.length < 4){
             errors.nickname = 'Minimum 4 characters'
         }
-        else if(input.nickname.length > 15 ){
+        else if(input.nickname && input.nickname.length > 15 ){
             errors.nickname = 'Maximum 15 characters'
         }
-        else if(input.name === ""){
-            errors.name = 'The name field is required'
-        }
-        else if(input.name.length < 4){
+        else if(input.name && input.name.length < 4){
             errors.name = 'Minimum 4 letters'
         }
-        else if(input.name.length > 15 ){
+        else if(input.name && input.name.length > 15 ){
             errors.name = 'Maximum 15 letters'
         }
-        else if(input.surname === ""){
-            errors.surname = 'The surname field is required'
-        }
-        else if(input.surname.length < 4){
+        else if(input.surname && input.surname.length < 4){
             errors.surname = 'Minimum 4 letters'
         }
-        else if(input.surname.length > 15 ){
+        else if(input.surname && input.surname.length > 15 ){
             errors.surname = 'Maximum 15 letters'
         }  
         return errors
@@ -82,11 +73,18 @@ const EditProfile = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(input.nickname === customer.nickname && input.surname === customer.surname && input.name === customer.name && input.avatar === customer.avatar) Swal.fire("Please edit your data","You must complete at least 1 option or change your avatar", "info")
-        else if (errors.nickname) alert(errors.nickname)
-        else if (errors.name) alert(errors.name)
-        else if (errors.surname) alert(errors.surname)
+        else if (errors.nickname) Swal.fire(errors.nickname,"","info")
+        else if (errors.name) Swal.fire(errors.name,"","info")
+        else if (errors.surname) Swal.fire(errors.surname,"","info")
         else {
-            dispatch(editCustomer(input, id, token))
+            let userData = {
+                nickname: input.nickname === '' ? customer.nickname : input.nickname,
+                name: input.name === '' ? customer.name : input.name,
+                surname: input.surname === '' ? customer.surname : input.surname,
+                avatar: input.avatar,
+                email: customer.email
+            }
+            return dispatch(editCustomer(userData, id, token))
         }
     } 
 
