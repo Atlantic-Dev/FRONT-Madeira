@@ -83,11 +83,15 @@ const List = () => {
     //Cantidad de paginas
     let pageLimit = Math.ceil(filtredList?.length  / customersPerPage)
     let pageNumbers = []
-    if (currentPage < 5) {
+    if (pageLimit < 8){
+        for (let i = 0; i < pageLimit; i++){
+            pageNumbers.push(i+1)
+        }
+    }else if (currentPage < 5) {
         for (let i = 0; i < pageLimit && i < 7; i++){
         pageNumbers.push(i+1)
-    }
-    } else if (currentPage > (pageLimit - 5)){
+        }
+    } else if (currentPage > (pageLimit - 5) && pageLimit > 6){
         pageNumbers = [pageLimit-6, pageLimit-5, pageLimit-4, pageLimit-3, pageLimit-2, pageLimit-1, pageLimit]
     } else {
     for (let i = currentPage-3; i <= currentPage+3; i++) {
@@ -151,13 +155,13 @@ const List = () => {
         <div className="ListContainer">
             <div className="List">
                 <div className="ListPageButtons">
-                    <button className={currentPage > 4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageStart}>1</button>
-                    <button className={currentPage > 5 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPagePrevFive}>{currentPage-5 < 1 ? 1 : currentPage-5}</button>
+                    <button className={currentPage > 4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageStart}>1</button>
+                    <button className={currentPage > 5 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPagePrevFive}>{currentPage-5 < 1 ? 1 : currentPage-5}</button>
                     <div className="ListPageButtonsNumbers">
                         {pagination}
                     </div>
-                    <button className={currentPage < pageLimit-4 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
-                    <button className={currentPage < pageLimit-3 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{isNaN(pageLimit) ? 10 : pageLimit}</button>
+                    <button className={currentPage < pageLimit-4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
+                    <button className={currentPage < pageLimit-3 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{isNaN(pageLimit) ? 10 : pageLimit}</button>
                 </div>
                 <div className="ListPageSearchFilter">
                     <form onSubmit={handleSearch} className="ListPageSearchForm">

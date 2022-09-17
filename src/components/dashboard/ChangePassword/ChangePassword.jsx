@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import Swal from 'sweetalert2';
-import { resetCustomerPassword, resetUserPassword } from '../../../redux/actions';
+import { changeCurrentPassword } from '../../../redux/actions';
 
 const ChangePassword = () => {
     
@@ -16,15 +16,15 @@ const ChangePassword = () => {
     const dispatch = useDispatch()
 
     const [ customer, setCustomer ] = useState({
-        id: '', 
-        currentPassword: '',
-        newPassword:''
+        oldPassword: '',
+        newPassword:'',
+        newPasswordRepeat:''
     })
 
     const [ user, setUser ] = useState({
-        id: '', 
-        currentPassword: '',
-        newPassword: ''
+        oldPassword: '',
+        newPassword: '',
+        newPasswordRepeat:''
     })
 
     const [ error, setError ] = useState({
@@ -34,19 +34,16 @@ const ChangePassword = () => {
     })
 
     const sendChange = () => {
-        if(tokenDecoded.type === 'customer'){
-            dispatch(resetCustomerPassword(customer.currentPassword ,customer.newPassword))
-        } else if(tokenDecoded.type === 'user'){
-            dispatch(resetUserPassword(user.currentPassword, user.newPassword))
-        }
+            dispatch(changeCurrentPassword(customer, token))
     }
 
-    const handleChange = () => {
+    const handleChange = (e) => {
+        e.preventDefault()
     if (error.newPassword !== "" || error.confirmPassword !== ""){
         Swal.fire({
             icon: 'error',
             title: 'An error has occurred',
-            text:'Please try again'
+            text:'The password must be between 8 and 16 characters long, and must contain at least 1 uppercase, 1 lowercase and 1 number'
         })}else{
             sendChange()
         }
@@ -56,6 +53,8 @@ const ChangePassword = () => {
 
     const validateForm = (errors) => {
         console.log("errors pw", errors)
+        console.log("user", user)
+        console.log("custom", customer)
     }
 
     const handleInputChange = (e) => {
@@ -103,7 +102,7 @@ const ChangePassword = () => {
                 <input 
                     className='DashboardFormInput' 
                     type='password'
-                    name='currentPassword'
+                    name='oldPassword'
                     onChange={handleInputChange}
                     placeholder='Current password'
                 />
@@ -117,7 +116,7 @@ const ChangePassword = () => {
                 <input 
                     className='DashboardFormInput' 
                     type='password' 
-                    name='repeatPassword'
+                    name='newPasswordRepeat'
                     onChange={handleInputChange}
                     placeholder='Repeat new password'
                 />

@@ -3,6 +3,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: auto;
+    background-color: #202224;
+}
+
+.RegisterContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
 }
 
 .RegisterLogin{
@@ -68,25 +78,25 @@
     cursor: pointer;
 }
 
-/* .RegisterSelect option{
-    background-image: url('../../images/avatar1.png');
-    padding: 100px 0;
-    -webkit-appearance: none; 
-    font-weight: 400;
-    display: flex;
-    white-space: nowrap;
-    min-height: 30px; */
-    /* background-position: initial;
-    appearance: none;
-    -moz-appearance: none;
-    */
-    /* background-color: black;
-    background-size: 48px 48px;
-    background-repeat:no-repeat; 
+.RegisterAvatarButton{
+    background-color: #173468;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    width: fit-content;
+    font-family: 'Kanit';
+    transition: all 0.4s ease;
+    margin-top: 10px;    
 }
-*/
+.RegisterAvatarButton:hover{
+    background-color: #0545b3;
+    transform: scale(1.1);
+    cursor: pointer;    
+}
 
-.ButtonSubmit{
+.RegisterButtonSubmit{
     width: 10rem;
     height: auto;
     text-decoration: none;
@@ -99,10 +109,10 @@
     border: none;
     border-radius: 25px;
     transition: all 0.3s ease;
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 50px;
 }
-.ButtonSubmit:hover{
+.RegisterButtonSubmit:hover{
     border: none;
     background-color: #F8B406;
     color: #0C0F11;
@@ -117,4 +127,73 @@
     margin: 0px;
     text-shadow: 1px 1px black;
     min-height: 2rem;
+}
+
+.AvatarModalBackground{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0f11e8;    
+}
+
+.AvatarModalContainer{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #19191d;
+    border-radius: 15px;
+    width: 35%;
+    height: auto;
+    padding: 10px 45px;
+    gap:25px;
+    display: flex;
+    flex: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.AvatarModalImage{
+    width: 70px;
+    height: 70px;
+}
+
+.AvatarModalButton{
+    background-color: transparent;
+    border: none;
+}
+.AvatarModalButton:hover{
+    cursor: pointer;
+}
+.AvatarModalButtonSelected{
+    background-color: #c9c4c4a4;
+    border-radius: 15px;
+    border: none;
+}
+.AvatarModalButtonSelected:hover{
+    cursor: pointer;
+}
+
+.AvatarModalCloseButton{
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background-color: #9d0208;
+    border-radius: 10px;
+    font-family: "kanit";
+    padding-bottom: 3px;
+    color: white;
+    border: none;
+    transition: all 0.4s ease;
+}
+.AvatarModalCloseButton:hover{
+    background-color: #bd0808;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.RegisterAvatarSelected{
+    width: 100px;
+    height: 100px;
 }

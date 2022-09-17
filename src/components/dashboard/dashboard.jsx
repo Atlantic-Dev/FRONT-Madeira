@@ -48,7 +48,7 @@ const Dashboard = () => {
             :
             tab === "password"
             ?
-            <Password/>
+            <Password id={token.id}/>
             :
             tab === "create"
             ?

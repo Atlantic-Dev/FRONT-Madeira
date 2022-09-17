@@ -4,7 +4,8 @@ const initialState ={
     hallOfFame: [],
     openModal: false,
     profile: {},
-    users: []
+    users: [],
+    avatars: {}
 }
 
 const reducer = (state = initialState, action) => {
@@ -49,6 +50,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.payload
+            }
+        case "GET_AVATARS":
+            return{
+                ...state,
+                avatars: action.payload
             }
         default: return state
     }

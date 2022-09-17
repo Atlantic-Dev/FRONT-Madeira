@@ -32,10 +32,11 @@ export function registerCustomer(input){
         }
     }
 }
-export function postLogin(user) {
+
+export function postLogin(input) {
     return async function() {
         try {
-            let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}auth/sign-in`, user)
+            let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}auth/sign-in`, input)
             localStorage.setItem("token", response.data.accessToken)
             return window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
         } catch(e) {
@@ -43,6 +44,24 @@ export function postLogin(user) {
         }
     }
 }
+
+export function deleteCustomer(id, token){
+    return async function(){
+        try{
+            await axios.delete(
+                `${process.env.REACT_APP_SERVER_URL}customers/${id}`, 
+                {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                }
+            })
+            Swal.fire("Customer account disabled successfully", "", "success")
+        }catch (e){
+            return e
+        }
+    }
+}
+
 export function setOpenModal() {
     return async function(dispatch) {
         try{
@@ -78,6 +97,8 @@ export function getProfile(id, token){
                 },
               })
             dispatch({type: "PROFILE", payload: response.data}) 
+            console.log(`${process.env.REACT_APP_SERVER_URL}customers/${id}`)
+            console.log("action executed", response.data)
         }catch (e){
             console.log("This ID doesn't match any customer")
         }
@@ -173,17 +194,24 @@ export function uploadAvatar(data){
     }
 }
 
-export function resetCustomerPassword(id, currentPassword, newPassword){
-    return async function (dispatch){
+export function changeCurrentPassword(data, token){
+    return async function (){
         try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}customers/${id}`, currentPassword, newPassword)
+            const response = await axios.put(`${process.env.REACT_APP_SERVER_URL}auth/change-password`, 
+            data, 
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             if(response.data === "Wrong current password"){
                 Swal.fire("Wrong current password. Please try again.","warning")
             } else {
-                return {
-                    type: "RESET_CUSTOMER_PASSWORD",
-                    payload: response.data
-                }
+                Swal.fire("Password changed successfully!", "Please, log in again with the new password", "success")
+                .then(()=> {
+                    localStorage.removeItem("token")
+                    window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
+                })       
             }
         } catch (error){
             console.log(error)
@@ -191,20 +219,13 @@ export function resetCustomerPassword(id, currentPassword, newPassword){
     }
 }
 
-export function resetUserPassword(id, currentPassword, newPassword){
-    return async function (dispatch){
-        try {
-            const response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/${id}`, currentPassword, newPassword)
-            if(response.data === "Wrong current password"){
-                Swal.fire("Wrong current password. Please try again.","warning")
-            } else {
-                return {
-                    type: "RESET_USER_PASSWORD",
-                    payload: response.data
-                }
-            }
-        } catch (error){
-            console.log(error)
+export function getAllAvatars(){
+    return async function(dispatch){
+        try{
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}avatar-image`)
+            dispatch({type: "GET_AVATARS", payload: response.data})
+        }catch(e){
+            console.log(e)
         }
     }
 }

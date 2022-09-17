@@ -186,6 +186,24 @@
     cursor: pointer;
 }
 
+.ProfileDataPasswordBtn{
+    background-color: #173468;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px;
+    width: fit-content;
+    font-family: 'Kanit';
+    transition: all 0.4s ease;
+}
+
+.ProfileDataPasswordBtn:hover{
+    background-color: #0545b3;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .ProfileInfoBottom{
     display: flex;
     flex-direction: column;
@@ -224,4 +242,24 @@
     color: white;
     width: 200px;
     margin: 0;
+}
+
+.ProfileModalBackground{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0c0f11e8;
+}
+
+.ProfileModalPassword{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #19191d;
+    border-radius: 15px;
+    width: auto;
+    height: auto;
+    padding: 10px 45px;
 }

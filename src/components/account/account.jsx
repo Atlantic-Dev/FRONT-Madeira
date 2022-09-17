@@ -24,20 +24,22 @@ const Account = () => {
         <div className='Account'>
             <div className='AccountContainer'>
                 <div className='AccountData'>
-                    <span>
-                        MY ACCOUNT
+                    <span className='AccountDataTitle'>
+                        Account data
                     </span>
-                    <span>
-                        {user.name}
-                    </span>
-                    <span>
-                        {user.surname}
-                    </span>
-                    <span>
-                        {user.email}
-                    </span>
+                    <div className='AccountDataTextContent'>
+                        <span className='AccountDataText'>
+                            {user.name} {user.surname} 
+                        </span>
+                        <span className='AccountDataText'>
+                            {user.email}
+                        </span>
+                    </div>
                 </div>
-                <ChangePassword/>
+                    <span className='AccountPasswordTitle'>
+                        Want to change your password?
+                    </span>
+                <ChangePassword />
             </div>
         </div>
     )
