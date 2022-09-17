@@ -5,29 +5,38 @@ import { uploadAvatar } from '../../../redux/actions'
 const AvatarUpload = () => {
     const dispatch = useDispatch()
     const [image, setImage] = useState("")
+    const [files, setFiles] = useState({})
 
     const hiddenFileInput = React.useRef(null);
 
-    const handleClick = (event) => {
+    const handleClick = (e) => {
         hiddenFileInput.current.click();
     };
 
     async function handleChange(file) {
-            console.log("change", file[0])
             setImage("upload")
-            const data = new FormData();
-            data.append("image", file[0]);
-            try {
-                dispatch(uploadAvatar(data))
-            }catch (e) {
-              console.log(e)
-            }
-       
+            setFiles(file[0]);  
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        const data = new FormData();
+        data.append("image", files)
+        console.log("data", data)
+        try {
+            dispatch(uploadAvatar(data))
+        }catch (e) {
+          console.log(e)
+        }
+    }
+
+    function handleNull(e){
+        e.preventDefault()
     }
 
     return (
         <div className='DashboardAvatar'>
-            <form /* onSubmit={handleAvatar} */ className='DashboardForm'>
+            <form onSubmit={image === "upload" ? handleSubmit : handleNull} className='DashboardForm'>
                 <button
                     className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} 
                     for="UploadImage"
@@ -47,7 +56,7 @@ const AvatarUpload = () => {
                         handleChange(event.target.files);
                     }}
                 />
-                <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
+                <input className={image === "upload" ? 'DashboardFormAvatarSubmit' : 'DashboardFormAvatarSubmitDisabled'} type="submit" value="Upload" />
             </form>
         </div>
     ); /* 

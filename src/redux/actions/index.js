@@ -191,9 +191,18 @@ export function getAvatars(){
 export function uploadAvatar(data){
     return async function(){
         try{
-            console.log("dispatch", data)
             let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}avatar-image`, data)
-            console.log("la respuesta",response.data)
+            if (response.data === "Success") {
+                Swal.fire("Avatar upload success", "The image will appears in register form", "success")
+                .then(() => {
+                    window.open(`${process.env.REACT_APP_CLIENT_URL}dashboard`, "_self")
+                })
+            } else {
+                Swal.fire("Avatar upload issue", "the image could not be loaded", "error")
+                .then(() => {
+                    window.open(`${process.env.REACT_APP_CLIENT_URL}dashboard`, "_self")
+                })
+            }
         }catch(e){
             console.log(e)
         }
