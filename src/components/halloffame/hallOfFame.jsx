@@ -82,15 +82,17 @@ const HallOfFame = () => {
                                             {player._id}
                                         </span>
                                     </div>
-                                    <div className='HofTopStatusDiv'>
-                                        <span className={`HofTopStatus${player.status}`}>
-                                            {player.status}
-                                        </span>
-                                    </div>
-                                    <div className='HofTopPointsDiv'>
-                                        <span className='HofTopPoints'>
-                                            {player.totalPoints}
-                                        </span>
+                                    <div className='HofTopStatusPoints'>
+                                        <div className='HofTopStatusDiv'>
+                                            <span className={`HofTopStatus${player.status}`}>
+                                                {player.status}
+                                            </span>
+                                        </div>
+                                        <div className='HofTopPointsDiv'>
+                                            <span className='HofTopPoints'>
+                                                {player.totalPoints}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -117,15 +119,17 @@ const HallOfFame = () => {
                                             {player._id}
                                         </span>
                                     </div>
-                                    <div className='HofTopStatusDiv'>
-                                        <span className={`HofTopStatus${player.status}`}>
-                                            {player.status}
-                                        </span>
-                                    </div>
-                                    <div className='HofTopPointsDiv'>
-                                        <span className='HofTopPoints'>
-                                            {player.totalPoints}
-                                        </span>
+                                    <div className='HofTopStatusPoints'>
+                                        <div className='HofTopStatusDiv'>
+                                            <span className={`HofTopStatus${player.status}`}>
+                                                {player.status}
+                                            </span>
+                                        </div>
+                                        <div className='HofTopPointsDiv'>
+                                            <span className='HofTopPoints'>
+                                                {player.totalPoints}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
