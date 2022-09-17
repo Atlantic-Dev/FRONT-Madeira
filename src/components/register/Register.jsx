@@ -110,19 +110,6 @@ const Register = () => {
         }))
     }
 
-    //Cambios de estado y verificacion de errores de select avatar
-    const handleSelect = (e) => {
-        e.preventDefault()
-        setInput({
-            ...input,
-            avatar: e.target.value
-        })
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }))
-    }
-
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {
         e.preventDefault();
