@@ -48,12 +48,14 @@ const HallOfFame = () => {
                             <span className='HofTopUserDataId'>
                                 Id
                             </span>
-                            <span className='HofTopUserDataSpan'>
-                                Status
-                            </span>
-                            <span className='HofTopUserDataSpan'>
-                                Points
-                            </span>
+                            <div className='HofTopUserStatusPoints'>
+                                <span className='HofTopUserDataSpan'>
+                                    Status
+                                </span>
+                                <span className='HofTopUserDataSpan'>
+                                    Points
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

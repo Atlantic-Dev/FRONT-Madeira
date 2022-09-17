@@ -40,28 +40,38 @@
 .HofTopTitles{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding: 0px 0px 10px 25px;
-    width: 92%;
+    padding: 0px 0px 10px 0px;
+    width: 91%;
     gap: 35px;
+    margin-left: 1%;
 }
 
 .HofTopUserData{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    min-width: 60%;
-    max-width: 60%;
+    min-width: 62%;
+    max-width: 62%;
 }
 
-.HofTopTitles > div > span, .HofTopSecondDiv > div > span  {
+.HofTopUserStatusPoints{
+    display: flex;
+    flex-direction: row;
+    width: 32%;
+    justify-content: space-between;
+    gap: 5%;
+}
+
+.HofTopTitles > div > span, .HofTopSecondDiv > div > span, .HofTopUserStatusPoints > span  {
     color: white;
     font-size: 20px
 }
 
 .HofTopUserDataId{
-    min-width: 63%;
+    display: flex;
+    min-width: 230px;
     text-align: start;
+    align-items: center;
 }
 
 .HofTopFirstDiv{
@@ -73,8 +83,8 @@
 }
 
 .HofTopUserTitle{
-    min-width: 39%;
-    max-width: 39%;
+    min-width: 37%;
+    max-width: 37%;
     text-align: start;
 }
 
