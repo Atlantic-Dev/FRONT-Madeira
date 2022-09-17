@@ -95,7 +95,7 @@
 .HofTopTextCont{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 90%;
 }
 
@@ -111,8 +111,8 @@
 }
 
 .HofTopNicknameDiv{
-    min-width: 40%;
-    max-width: 40%;
+    min-width: 37%;
+    max-width: 37%;
     text-align: start;
 }
 
@@ -125,20 +125,32 @@
 .HofTopData{
     display: flex;
     flex-direction: row;
-    min-width: 60%;
-    max-width: 60%;
+    min-width: 62%;
+    max-width: 62%;
+    justify-content: space-between;
+}
+
+.HofTopStatusPoints{
+    display: flex;
+    flex-direction: row;
+    width: 30%;
     justify-content: space-between;
 }
 
 .HofTopIdDiv{
     display: flex;
-    min-width: 25px;
+    min-width: 230px;
     text-align: start;
     align-items: center;
 }
 
+.HofTopPointsDiv{
+    width: 45px;
+}
+
 .HofTopPoints{
     color: white;
+    width: 45px;
     font-size: 20px;
 }
 
