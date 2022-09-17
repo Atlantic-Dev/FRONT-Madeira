@@ -1,7 +1,7 @@
 import React from 'react'
 import './Home.css'
-import HallOfFame from '../hallOfFame/HallOfFame'
-import banner from '../../Images/Banner.png'
+import HallOfFame from '../halloffame/HallOfFame'
+import banner from '../../images/Banner.png'
 
 const Home = () => {
 

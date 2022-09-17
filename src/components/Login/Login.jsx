@@ -3,7 +3,7 @@ import { IoCloseCircle } from 'react-icons/io5';
 import {useDispatch} from "react-redux";
 import { postLogin, setCloseModal } from '../../redux/actions';
 import { useState } from 'react';
-import logo from "../../Images/Banner.png"
+import logo from "../../images/Banner.png"
 
 
 const Login = () => {
