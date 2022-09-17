@@ -27,7 +27,7 @@ const AvatarUpload = () => {
 
     return (
         <div className='DashboardAvatar'>
-            <div className='DashboardForm'>
+            <form onSubmit={handleAvatar} className='DashboardForm'>
                 <button
                     className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} 
                     for="UploadImage"
@@ -37,7 +37,7 @@ const AvatarUpload = () => {
                     {image !== '' ? "Image uploaded. Click to change" :"Select image"}
                 </button>
                 <input
-                    className='DashboardFormAvatarSubmit'
+                    className='DashboardFormInputFile'
                     ref={hiddenFileInput}
                     type="file"
                     id="file"
@@ -47,17 +47,18 @@ const AvatarUpload = () => {
                         handleChange(event.target.files);
                     }}
                 />
-            </div>
+                <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
+            </form>
         </div>
     ); /* 
     return(
         <div className='DashboardAvatar'>
-            <form onSubmit={handleAvatar} className='DashboardForm'>
+            <form  className='DashboardForm'>
                 <div className='DashboardFormInputFileDiv'>
                     <label className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} for="UploadImage">{image !== '' ? "Image uploaded. Click to change" :"Select image"}</label>
                     <input onChange={handleUpload} id="UploadImage" className='DashboardFormInputFile' type="file" accept="image/*"/>
                 </div>
-                <input className='DashboardFormAvatarSubmit' type="submit" value="Upload" />
+                
             </form>
         </div>
     )  */

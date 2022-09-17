@@ -1,15 +1,22 @@
-import './register.css'
+import './Register.css'
 import React from 'react'
 import { useState } from 'react'
-import { registerCustomer, setOpenModal } from '../../redux/actions'
+import { getAllAvatars, registerCustomer, setOpenModal } from '../../redux/actions'
 import Swal from 'sweetalert2'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 const Register = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    useEffect(() => {
+        dispatch(getAllAvatars())
+    },[])
+
+    const allAvatars = useSelector((state) => state.avatars)
 
     const [input, setInput] = useState({
         nickname: "",
@@ -18,9 +25,30 @@ const Register = () => {
         email: "",
         password: "",
         passwordCheck: "",
-        avatar: "1",
+        avatar: 1,
     })
+    console.log(input)
+
+    const [modalAvatar, setModalAvatar] = useState(false)
     
+    function setAvatar(id){
+        setInput({
+            ...input,
+            avatar: id
+        })
+        setModalAvatar(false)
+    }
+
+    function openAvatar(e){
+        e.preventDefault()
+        setModalAvatar(true)
+    }
+
+    function closeAvatar(e){
+        e.preventDefault()
+        setModalAvatar(false)
+    }
+
     const [errors, setErrors] = useState({})
 
     function validate (input){
@@ -29,10 +57,10 @@ const Register = () => {
             errors.nickname = 'The nickname field is required'
         }
         else if(input.nickname.length < 4){
-            errors.nickname = 'Minimum 4 letters'
+            errors.nickname = 'Minimum 4 characters'
         }
         else if(input.nickname.length > 15 ){
-            errors.nickname = 'Maximum 15 letters'
+            errors.nickname = 'Maximum 15 characters'
         }
         else if(input.name === ""){
             errors.name = 'The name field is required'
@@ -80,7 +108,6 @@ const Register = () => {
             ...input,
             [e.target.name]: e.target.value
         }))
-        console.log(input)
     }
 
     //Cambios de estado y verificacion de errores de select avatar
@@ -134,85 +161,101 @@ const Register = () => {
 
     return(
         <div className="Register">
-            <span className='RegisterLogin'>Do you already have an account? <button onClick={handleOpenModal} className='RegisterLoginButton'>Log in here!</button></span>
-            <form className="RegisterForm">
-                <input type="text" 
-                className="inputUser"
-                name='nickname' 
-                placeholder='Nickname'
-                value={input.nickname}
-                onChange={(e) => handleChange(e) }/>
-                                    {
-                        errors.nickname && (
-                            <p className='ErrorText'>{errors.nickname}</p>
-                        )
+                <span className='RegisterLogin'>Do you already have an account? <button onClick={handleOpenModal} className='RegisterLoginButton'>Log in here!</button></span>
+                <form className="RegisterForm">
+                    <input type="text" 
+                    className="inputUser"
+                    name='nickname' 
+                    placeholder='Nickname'
+                    value={input.nickname}
+                    onChange={(e) => handleChange(e) }/>
+                                        {
+                            errors.nickname && (
+                                <p className='ErrorText'>{errors.nickname}</p>
+                            )
+                        }
+                    <input type="text" 
+                    name='name' 
+                    placeholder='Name'
+                    value={input.name}
+                    onChange={(e) => handleChange(e) }/>
+                                        {
+                            errors.name && (
+                                <p className='ErrorText'>{errors.name}</p>
+                            )
+                        }
+                    <input type="text" 
+                    name='surname' 
+                    placeholder='Surname'
+                    value={input.surname}
+                    onChange={(e) => handleChange(e) }/>
+                                        {
+                            errors.surname && (
+                                <p className='ErrorText'>{errors.surname}</p>
+                            )
+                        }
+                    <input type="email" 
+                    name='email' 
+                    placeholder='Email'
+                    value={input.email}
+                    onChange={(e) => handleChange(e)}
+                    />
+                                        {
+                            errors.email && (
+                                <p className='ErrorText'>{errors.email}</p>
+                            )
+                        }
+                    <input type="password" 
+                    name='password' 
+                    placeholder='Password'
+                    value={input.password}
+                    onChange={(e) => handleChange(e)}/>
+                                                        {
+                            errors.password && (
+                                <p className='ErrorText'>{errors.password}</p>
+                            )
+                        }
+                    <input type="password" 
+                    name='passwordCheck' 
+                    placeholder='Repeat password'
+                    value={input.passwordCheck}
+                    onChange={(e) => handleChange(e)}/>
+                                        {
+                            errors.passwordCheck && (
+                                <p className='ErrorText'>{errors.passwordCheck}</p>
+                            )
+                        }
+                    <button className='RegisterAvatarButton' 
+                    onClick={openAvatar} 
+                    name="avatar">
+                        Select an avatar
+                    </button>
+                    <img className='RegisterAvatarSelected' src={allAvatars[input.avatar -1]?.imageUrl}/>
+                    <button className='RegisterButtonSubmit'
+                    type='submit'
+                    onClick={handleSubmit}>
+                        Create user
+                    </button>
+                </form>
+                {modalAvatar === true ?
+                        <div onClick={closeAvatar} className='AvatarModalBackground'>
+                        </div>
+                        : 
+                        null
                     }
-                <input type="text" 
-                name='name' 
-                placeholder='Name'
-                value={input.name}
-                onChange={(e) => handleChange(e) }/>
-                                    {
-                        errors.name && (
-                            <p className='ErrorText'>{errors.name}</p>
-                        )
-                    }
-                <input type="text" 
-                name='surname' 
-                placeholder='Surname'
-                value={input.surname}
-                onChange={(e) => handleChange(e) }/>
-                                    {
-                        errors.surname && (
-                            <p className='ErrorText'>{errors.surname}</p>
-                        )
-                    }
-                <input type="email" 
-                name='email' 
-                placeholder='Email'
-                value={input.email}
-                onChange={(e) => handleChange(e)}
-                />
-                                    {
-                        errors.email && (
-                            <p className='ErrorText'>{errors.email}</p>
-                        )
-                    }
-                <input type="password" 
-                name='password' 
-                placeholder='Password'
-                value={input.password}
-                onChange={(e) => handleChange(e)}/>
-                                                    {
-                        errors.password && (
-                            <p className='ErrorText'>{errors.password}</p>
-                        )
-                    }
-                <input type="password" 
-                name='passwordCheck' 
-                placeholder='Repeat password'
-                value={input.passwordCheck}
-                onChange={(e) => handleChange(e)}/>
-                                    {
-                        errors.passwordCheck && (
-                            <p className='ErrorText'>{errors.passwordCheck}</p>
-                        )
-                    }
-                <select className='RegisterSelect' onChange={handleSelect} name="avatar">
-                    <option value='hidden' hidden>Select Avatar</option>
-                    <option className='RegisterOptionAvatar1' value="1">Avatar1</option>
-                    <option className='RegisterOptionAvatar2' value="2">Avatar2</option>
-                    <option className='RegisterOptionAvatar3' value="3">Avatar3</option>
-                    <option className='RegisterOptionAvatar4' value="4">Avatar4</option>
-                    <option className='RegisterOptionAvatar5' value="5">Avatar5</option>
-                    <option className='RegisterOptionAvatar6' value="6">Avatar6</option>
-                    <option className='RegisterOptionAvatar7' value="7">Avatar7</option>
-                </select>
-                <button className='ButtonSubmit'
-                type='submit'
-                onClick={handleSubmit}
-                >Create user</button>
-            </form>
+                {modalAvatar === true ?
+                    <div className='AvatarModalContainer'>
+                        <button onClick={closeAvatar} className="AvatarModalCloseButton">X</button>
+                        {allAvatars.map((avatar) => {
+                            return (
+                            <button className={input.avatar === avatar.idNumber ? "AvatarModalButtonSelected" :'AvatarModalButton'} onClick={() => setAvatar(avatar.idNumber)}>
+                                <img className="AvatarModalImage" src={avatar.imageUrl}/>
+                            </button>)
+                        })}
+                    </div>
+                    : 
+                    null
+                }
         </div>
     )
 }

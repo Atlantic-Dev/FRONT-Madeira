@@ -1,10 +1,7 @@
 import React from 'react'
-import './home.css'
-import HallOfFame from '../halloffame/hallOfFame'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllCustomers } from '../../redux/actions'
-import { useEffect } from 'react'
-import banner from '../../images/Banner.png'
+import './Home.css'
+import HallOfFame from '../HallOfFame/HallOfFame'
+import banner from '../../Images/Banner.png'
 
 const Home = () => {
 
