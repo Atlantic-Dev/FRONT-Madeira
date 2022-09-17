@@ -6,7 +6,7 @@ import { deleteCustomer, getAllAvatars, getAllCustomers, getProfile } from '../.
 import './Profile.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
-import ChangePassword from '../dashboard/ChangePassword/ChangePassword'
+import ChangePassword from '../Dashboard/ChangePassword/ChangePassword'
 
 
 const Profile = () => {

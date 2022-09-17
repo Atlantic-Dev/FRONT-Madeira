@@ -6,9 +6,9 @@ import Header from './components/Header/Header';
 import About from './components/About/About';
 import Register from './components/Register/Register';
 import List from './components/List/List';
-import Dashboard from './components/dashboard/Dashboard';
+import Dashboard from './components/Dashboard/Dashboard';
 import Account from './components/Account/Account';
-import ChangePassword from './components/dashboard/ChangePassword/ChangePassword';
+import ChangePassword from './components/Dashboard/ChangePassword/ChangePassword';
 
 const App = () => {
   const navigate = useNavigate()

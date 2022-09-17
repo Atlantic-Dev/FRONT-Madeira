@@ -27,7 +27,7 @@ const AvatarUpload = () => {
 
     return (
         <div className='DashboardAvatar'>
-            <form onSubmit={handleAvatar} className='DashboardForm'>
+            <form /* onSubmit={handleAvatar} */ className='DashboardForm'>
                 <button
                     className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} 
                     for="UploadImage"
