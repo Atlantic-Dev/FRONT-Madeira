@@ -54,6 +54,12 @@ const EditProfile = (props) => {
         else if(input.name && input.name.length > 15 ){
             errors.name = 'Maximum 15 letters'
         }
+        else if(input.name && !/^[A-z]+$/.test(input.name)){ 
+            errors.name = "Name must contain only letters"
+        }
+        else if(input.surname && !/^[A-z]+$/.test(input.surname)){ 
+            errors.surname = "Surname must contain only letters"
+          }
         else if(input.surname && input.surname.length < 4){
             errors.surname = 'Minimum 4 letters'
         }
