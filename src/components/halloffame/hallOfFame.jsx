@@ -1,7 +1,7 @@
 import React from 'react'
 import './HallOfFame.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCustomers } from '../../redux/actions'
+import { getAllAvatars, getAllCustomers } from '../../redux/actions'
 import { useEffect } from 'react'
 
 const HallOfFame = () => {
@@ -10,8 +10,10 @@ const HallOfFame = () => {
     
     useEffect(() => {
         dispatch(getAllCustomers())
+        dispatch(getAllAvatars())
     },[])
-    
+
+    const allAvatars = useSelector((state) => state.avatars)
     const allCustomers = useSelector((state) => state.customers)
 
     const topTen = allCustomers?.slice(0, 10)
@@ -65,7 +67,7 @@ const HallOfFame = () => {
                                     <img className='HofTopImg' src={`./images/${rankOf(player)}.png`}/>
                                 </div>
                                 <div className='HofTopAvatar'>
-                                    <img className='HofTopAvatar' src={`./images/avatar${player.avatar}.png`}/>
+                                    <img className='HofTopAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
                                 </div>
                             </div>
                             <div className='HofTopTextCont'>
@@ -100,7 +102,7 @@ const HallOfFame = () => {
                                     <img className='HofTopImg' src={`./images/${rankOf(player)}.png`}/>
                                 </div>
                                 <div className='HofTopAvatar'>
-                                    <img className='HofTopAvatar' src={`./images/avatar${player.avatar}.png`}/>
+                                    <img className='HofTopAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
                                 </div>
                             </div>
                             <div className='HofTopTextCont'>

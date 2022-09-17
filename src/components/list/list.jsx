@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllCustomers, searchCustomers } from "../../redux/actions"
+import { getAllAvatars, getAllCustomers, searchCustomers } from "../../redux/actions"
 import './List.css'
 import {BsSearch} from 'react-icons/bs'
 
@@ -10,12 +10,15 @@ const List = () => {
     
     useEffect(() => {
         dispatch(getAllCustomers())
+        dispatch(getAllAvatars())
     },[])
-    
+
     //Lista completa de users
     const allCustomers = useSelector((state) => state.customers)
     const backUpList = useSelector((state) => state.backup)
-    /*const completeList = allCustomers?.Ruby?.concat(allCustomers?.Diamond.concat(allCustomers?.Platinum.concat(allCustomers?.Gold.concat(allCustomers?.Silver.concat(allCustomers?.Bronze.concat(allCustomers?.Copper.concat())))))) */
+    
+    //Lista de avatars
+    const allAvatars = useSelector((state) => state.avatars)
 
     //Paginado
     const customersPerPage = 100
@@ -219,7 +222,7 @@ const List = () => {
                                         <span>{rankOf(player)}</span>
                                     </div>
                                     <div className='ListCustomerAvatar'>
-                                        <img className='ListCustomerAvatar' src={'./images/avatar'+player.avatar+'.png'}/>
+                                        <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
                                     </div>
                                 </div>
                                 <div className='ListCustomerSecond'>
@@ -249,7 +252,7 @@ const List = () => {
                                         <span>{rankOf(player)}</span>
                                     </div>
                                     <div className='ListCustomerAvatar'>
-                                        <img className='ListCustomerAvatar' src={`./images/avatar${player.avatar}.png`}/>
+                                        <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
                                     </div>
                                 </div>
                                 <div className='ListCustomerSecond'>
