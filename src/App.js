@@ -9,7 +9,6 @@ import List from './components/list/List';
 import Dashboard from './components/dashboard/Dashboard';
 import Account from './components/account/Account';
 import ChangePassword from './components/dashboard/ChangePassword/ChangePassword';
-import Loading from './components/loading/Loading';
 
 const App = () => {
   const navigate = useNavigate()
@@ -25,7 +24,6 @@ const App = () => {
       token !== null
       ?
         <>
-          <Route path='/loading' element={<Loading/>}/>
           <Route path='/' element={<Home/>}/>
           <Route path='/profile/:id' element={<Profile/>}/>
           <Route path='/about' element={<About/>}/>
