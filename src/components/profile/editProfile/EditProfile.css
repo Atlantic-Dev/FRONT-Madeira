@@ -1,0 +1,80 @@
+.EditProfile{
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.EditProfileTitle{
+    color: white;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.EditProfileTitle>p{
+    margin: 0;
+}
+
+.EditProfileData{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: 30px;
+}
+.EditProfileInputCont{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.EditProfileForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.EditProfileInput{
+    color:white;
+    font-family: 'Kanit';
+    font-size: 20px;
+    width: 400px;
+    border-radius: 15px;
+    border: none;
+    padding: 7px 12px;
+    background-color: #31313C;    
+}
+
+.EditProfileInputSubmit{
+    background-color: #B76935;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 23px;
+    width: fit-content;
+    font-family: 'Kanit';
+    transition: all 0.4s ease;
+}
+
+.EditProfileInputSubmit:hover{
+    border: none;
+    background-color: #F98702;
+    transition-delay: 0.2s;
+    transition: 0.5s;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.EditProfileAvatarDiv{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    gap: 30px;
+    min-width: 310px;
+    max-width: 500px;
+}

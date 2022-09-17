@@ -244,3 +244,30 @@ export function getAllAvatars(){
         }
     }
 }
+
+export function editCustomer(data, id, token){
+    return async function(){
+        try{
+            const response = await axios.patch(`${process.env.REACT_APP_SERVER_URL}customers/${id}`,
+            data,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            if (response.data.email === data.email){
+            Swal.fire("Profile edited successfully","Login again to see changes", "success")
+            .then((result) => {
+                if(result.isConfirmed){
+                    localStorage.removeItem("token")
+                    window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
+                }
+            })
+            } else {
+                console.log("no entro",response.data)
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+}
