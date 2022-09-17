@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../../redux/actions'
 import AvatarUpload from './AvatarUpload/AvatarUpload'
 import Create from './CreateUser/Create'
-import './dashboard.css'
+import './Dashboard.css'
 import Delete from './DeleteUser/Delete'
 import Password from './ChangePassword/ChangePassword'
 
@@ -48,7 +48,7 @@ const Dashboard = () => {
             :
             tab === "password"
             ?
-            <Password/>
+            <Password id={token.id}/>
             :
             tab === "create"
             ?

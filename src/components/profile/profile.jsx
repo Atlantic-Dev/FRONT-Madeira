@@ -2,19 +2,22 @@ import React from 'react'
 import decode from 'jwt-decode'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllCustomers, getProfile } from '../../redux/actions'
-import './profile.css'
+import { deleteCustomer, getAllCustomers, getProfile } from '../../redux/actions'
+import './Profile.css'
+import { useState } from 'react'
+import Swal from 'sweetalert2'
+import ChangePassword from '../dashboard/ChangePassword/ChangePassword'
 
 
 const Profile = () => {
     const dispatch = useDispatch()
-    
+    const [modalEdit, setModalEdit] = useState(false)
+    const [modalPassword, setModalPassword] = useState(false)
+
     const pathLoc = window.location.pathname
-    
     const idCustomer = pathLoc.substring(pathLoc.lastIndexOf('/') + 1)
     
-    let token = ''
-    token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
@@ -27,14 +30,44 @@ const Profile = () => {
     
     const allCustomers = useSelector((state) => state.customers)
     const customer = useSelector((state) => state.profile)
+
+    function openEdit(e){
+        e.preventDefault()
+        setModalEdit(true)
+    }
+    function closeEdit(e){
+        e.preventDefault()
+        setModalEdit(false)
+    }
+
+    function openPassword(e){
+        e.preventDefault()
+        setModalPassword(true)
+    }
+    function closePassword(e){
+        e.preventDefault()
+        setModalPassword(false)
+    }
     
+    function handleDelete(customer){
+        Swal.fire({
+            title: "Are you sure?", 
+            text: `The account of ${customer.email} will be disabled`, 
+            showCancelButton: true,
+            confirmButtonText: "Sure",
+            cancelButtonText: "No, cancel!",
+            icon: "warning"})
+        .then((result) => {
+            if (result.isConfirmed){
+                dispatch(deleteCustomer(customer._id, token))
+            }
+        })
+    }
+
     //Numero de ranking
     function rankOf (data) {
         return allCustomers?.findIndex((p) => p._id === data?._id)+1
     }
-    
-    console.log(customer)
-
     return (
         <div className='Profile'>
             <div className='ProfileContainer'>
@@ -63,15 +96,17 @@ const Profile = () => {
                         tokenDecode?.type === "user" || tokenDecode?.type === "superAdmin" ?
                         <div className='ProfileDataBtnCont'>
                             <div className='ProfileDataButtons'>
-                                <button className='ProfileDataEditBtn'>EDIT PROFILE</button>
-                                <button className='ProfileDataDeleteBtn'>DELETE PROFILE</button>
+                                <button onClick={() => openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                                <button onClick={() => handleDelete(customer)} className='ProfileDataDeleteBtn'>DELETE PROFILE</button>
                             </div>
                         </div>
                         :
                         idCustomer === tokenDecode?.id ?
                         <div className='ProfileDataBtnCont'>
                             <div className='ProfileDataButtons'>
-                                <button className='ProfileDataEditBtn'>EDIT PROFILE</button>                            </div>
+                                <button onClick={() => openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                                <button onClick={openPassword} className='ProfileDataPasswordBtn'>EDIT PASSWORD</button>
+                            </div>
                         </div>
                         :
                         null
@@ -88,6 +123,31 @@ const Profile = () => {
                         <h3>{customer?.totalGames !== 0 ? Math.round((customer?.totalWins / customer?.totalGames ) * 100) : 0}%</h3>
                     </div>
                 </div> 
+                {modalEdit === true ?
+                    <div onClick={closeEdit} className='ProfileModalBackground'>
+                    </div>
+                    : 
+                    null
+                }
+                {modalEdit === true ?
+                    <div className='ProfileModalEdit'>
+                    </div>
+                : 
+                null
+                }
+                {modalPassword === true ?
+                    <div onClick={closePassword} className='ProfileModalBackground'>
+                    </div>
+                    : 
+                    null
+                }
+                {modalPassword === true ?
+                    <div className='ProfileModalPassword'>
+                        <ChangePassword/>
+                    </div> 
+                    : 
+                    null
+                }
             </div>
         </div>
     )
