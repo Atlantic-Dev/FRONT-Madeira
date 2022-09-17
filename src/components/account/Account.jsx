@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../redux/actions'
-import ChangePassword from '../Dashboard/ChangePassword/ChangePassword'
+import ChangePassword from '../dashboard/ChangePassword/ChangePassword'
 import './Account.css'
 
 const Account = () => {
