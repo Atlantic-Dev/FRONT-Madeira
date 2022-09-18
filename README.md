@@ -1,12 +1,13 @@
-## MADEIRA-FRONTEND
+<p align="center">
+<code>
+<img width="50%"heigth="50%" src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663529605/Banner.45044716e3473aa288dd_wei4gu.png">
+</code>
+</p>
 
 Git clone for starter repository
 
 https://github.com/Atlantic-Dev/FRONT-Madeira
 
-## Download .env
-
-LINK DEL .ENV
 
 ## Installation
 
@@ -14,6 +15,12 @@ LINK DEL .ENV
 $ npm install
 ```
 
+## Deploy in AWS
+Teniendo instalado AWS CLI dentro de nuestro equipo, utilizar el siguiente comando, pararse en la raiz del repositorio y ejecutar:
+
+```bash
+$ bash deploy.sh
+```
 ## Running the app
 
 ```bash
@@ -31,7 +38,7 @@ $ npm run start:prod
 
 ```bash
 # unit tests
-$ npm run test
+$ npm test
 
 # e2e tests
 $ npm run test:e2e
@@ -71,11 +78,9 @@ $ docker-compose down
 
 $ Deploy main:
 
-LINK DEL DEPLOY.
-
-## Test
-
-$ npm test
+```bash
+http://react-alb-1195746012.us-east-1.elb.amazonaws.com/
+```
 
 ## Team members
 
