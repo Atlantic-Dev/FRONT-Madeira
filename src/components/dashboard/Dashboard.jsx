@@ -37,9 +37,9 @@ const Dashboard = () => {
         <div className="Dashboard">
             <div className='DashboardContainer'>
                 <button onClick={openPassword} className='DashboardButtonPassword'>Change password</button>
-                <button onClick={openCreate} className='DashboardButtonCreate'>Create a User admin</button>
-                <button onClick={openDelete} className='DashboardButtonDelete'>Delete a User admin</button>
-                <button onClick={openAvatar} className='DashboardButtonAvatars'>Manage avatar images</button>
+                <button onClick={openCreate} className='DashboardButtonCreate'>Create an User admin</button>
+                <button onClick={openDelete} className='DashboardButtonDelete'>Delete an User admin</button>
+                <button onClick={openAvatar} className='DashboardButtonAvatars'>Upload avatar images</button>
             </div>
             { tab === "none" 
             ?
