@@ -82,9 +82,9 @@ const EditProfile = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(input.nickname === customer.nickname && input.surname === customer.surname && input.name === customer.name && input.avatar === customer.avatar) Swal.fire("Please edit your data","You must complete at least 1 option or change your avatar", "info")
-        else if (errors.nickname !== '') return Swal.fire(errors.nickname,"","info")
-        else if (errors.name !== '') return Swal.fire(errors.name,"","info")
-        else if (errors.surname !== '') return Swal.fire(errors.surname,"","info")
+        else if (errors.nickname !== undefined) return Swal.fire(errors.nickname,"","info")
+        else if (errors.name !== undefined) return Swal.fire(errors.name,"","info")
+        else if (errors.surname !== undefined) return Swal.fire(errors.surname,"","info")
         else {
             let userData = {
                 nickname: input.nickname === undefined ? customer.nickname : input.nickname,
