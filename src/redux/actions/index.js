@@ -111,10 +111,15 @@ export function getProfile(id, token){
     }
 }
 
-export function getAllUsers(){
+export function getAllUsers(token){
     return async function (dispatch){
         try{
-            let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/`)
+            let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/`,
+            {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+              })
             dispatch({type: "GET_USERS", payload: response.data})
         } catch (e){
             console.log(e)

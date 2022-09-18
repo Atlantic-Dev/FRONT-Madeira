@@ -18,11 +18,10 @@ const Dashboard = () => {
     const openAvatar = () => setTab("avatar")
 
     useEffect(() => {
-        dispatch(getAllUsers())
+        dispatch(getAllUsers(token))
     }, [])
     
-    let token = ''
-    token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
