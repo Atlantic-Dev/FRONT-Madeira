@@ -189,7 +189,7 @@ const List = () => {
                         </form>
                         <hr className="ListPageSearchHr"/>
                         <select onChange={handleSelect} className="ListPageFilterSelect">
-                            <option value="all">All</option>
+                            <option value="all">All status</option>
                             <option value="Ruby">Ruby</option>
                             <option value="Diamond">Diamond</option>
                             <option value="Platinum">Platinum</option>

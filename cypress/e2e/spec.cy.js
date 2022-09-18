@@ -26,9 +26,10 @@ describe('Tests sign up', () => {
     //cy.get('[name="nickname"]').type('{selectall}{backspace}')
     //cy.get('[name="nickname"]').type(`Prueba_test_${randomNumber}`) 
     //click. Deberia fallar porque no selecciono nada
-    cy.get('.RegisterSelect').select('Avatar3')
-    cy.get('.ButtonSubmit').click()
-    cy.get('.swal2-confirm').click()
+    cy.get('[name="avatar"]').click()
+    cy.get('AvatarModalContainer > AvatarModalButton').click()
+   /*  cy.get('.ButtonSubmit').click()
+    cy.get('.swal2-confirm').click() */
   })
 })
 
@@ -39,23 +40,23 @@ describe('Tests sign up', () => {
 
 
 
- describe('Tests log in', () => {
+ //describe('Tests log in', () => {
   //beforeEach(() => {
    // cy.visit(`${process.env.REACT_APP_CLIENT_DEPLOY}`)
  // }) 
   /* it('visits the site', () => {
     cy.visit('http://react-alb-1195746012.us-east-1.elb.amazonaws.com/')
   }) */
-  it('should display the log in modal', () => {
+/*   it('should display the log in modal', () => {
     cy.get(':nth-child(5) > .HeaderButton').click()
   })
   it('tries to log in with wrong password', () => {
     cy.get('.LoginInputEmail').type(`Prueba_email_${randomNumber}`)
-    cy.get('.LoginInputEmail').type('@email.com')
+    cy.get('.LoginInputEmail').type('@email.com') */
     /* cy.get('.LoginInputEmail').type('luchinni8@gmail.com') */
-    cy.get('.LoginInputPassword').type('Hola123')
+/*     cy.get('.LoginInputPassword').type('Hola123') */
     /* cy.get('.LoginInputPassword').type('Hola123') */
-    cy.get('.LoginSubmit').click()
+/*     cy.get('.LoginSubmit').click()
     cy.get('.swal2-confirm').click()
   })
   it('should clear password input and type the right one', () => {
@@ -63,9 +64,9 @@ describe('Tests sign up', () => {
     cy.get('.LoginInputPassword').type('Hola1234')
     cy.get('.LoginSubmit').click()
   })
-}) 
+})  */
 
-describe('tests ui interface', () => {
+/* describe('tests ui interface', () => {
   //encontrar alguna forma de que se haga un tipo await
   it('should access a player', () => {
     cy.contains('Luciano_Aufderhar').click()
@@ -75,6 +76,6 @@ describe('tests ui interface', () => {
     
   })
   
-  })
+  }) */
 
 
