@@ -71,8 +71,14 @@ const Register = () => {
         else if(input.name.length > 15 ){
             errors.name = 'Maximum 15 letters'
         }
+        else if(input.name && !/^[A-z]+$/.test(input.name)){ 
+            errors.name = "Name must contain only letters"
+        }
         else if(input.surname === ""){
             errors.surname = 'The surname field is required'
+        }
+        else if(input.surname && !/^[A-z]+$/.test(input.surname)){ 
+            errors.surname = "Surname must contain only letters"
         }
         else if(input.surname.length < 4){
             errors.surname = 'Minimum 4 letters'
@@ -104,19 +110,6 @@ const Register = () => {
            ...input,
            [e.target.name]: e.target.value
        })
-        setErrors(validate({
-            ...input,
-            [e.target.name]: e.target.value
-        }))
-    }
-
-    //Cambios de estado y verificacion de errores de select avatar
-    const handleSelect = (e) => {
-        e.preventDefault()
-        setInput({
-            ...input,
-            avatar: e.target.value
-        })
         setErrors(validate({
             ...input,
             [e.target.name]: e.target.value
