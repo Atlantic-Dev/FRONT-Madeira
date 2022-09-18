@@ -70,23 +70,26 @@ const EditProfile = (props) => {
            [e.target.name]: e.target.value
        })
         setErrors(validate({
-            ...input,
+            ...errors,
             [e.target.name]: e.target.value
         }))
+        console.log("name",errors.name)
+        console.log("nickname",errors.nickname)
+        console.log("surname",errors.surname)
     }
 
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {
         e.preventDefault();
         if(input.nickname === customer.nickname && input.surname === customer.surname && input.name === customer.name && input.avatar === customer.avatar) Swal.fire("Please edit your data","You must complete at least 1 option or change your avatar", "info")
-        else if (errors.nickname) Swal.fire(errors.nickname,"","info")
-        else if (errors.name) Swal.fire(errors.name,"","info")
-        else if (errors.surname) Swal.fire(errors.surname,"","info")
+        else if (errors.nickname !== '') return Swal.fire(errors.nickname,"","info")
+        else if (errors.name !== '') return Swal.fire(errors.name,"","info")
+        else if (errors.surname !== '') return Swal.fire(errors.surname,"","info")
         else {
             let userData = {
-                nickname: input.nickname === '' ? customer.nickname : input.nickname,
-                name: input.name === '' ? customer.name : input.name,
-                surname: input.surname === '' ? customer.surname : input.surname,
+                nickname: input.nickname === undefined ? customer.nickname : input.nickname,
+                name: input.name === undefined ? customer.name : input.name,
+                surname: input.surname === undefined ? customer.surname : input.surname,
                 avatar: input.avatar,
                 email: customer.email
             }
