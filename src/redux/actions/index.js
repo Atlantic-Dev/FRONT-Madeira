@@ -271,3 +271,26 @@ export function editCustomer(data, id, token){
         }
     }
 }
+
+
+export function checkToken(token){
+    return async function(){
+        try{
+            const date = new Date
+            const actualTime = Math.ceil(date.getTime()/1000)
+            const tokenExp = token.exp
+            if (tokenExp < actualTime) {
+                localStorage.removeItem("token")
+                window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
+            } else if (actualTime < tokenExp && actualTime + 900 > tokenExp){
+                localStorage.removeItem("token")
+                Swal.fire("Your session is expired","Please, log in again", "info")
+                window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
+            } else {
+                return "valid token"
+            }
+        }catch(e){
+            console.log(e)
+        }
+    }
+}

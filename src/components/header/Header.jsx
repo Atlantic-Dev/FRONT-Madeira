@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { setCloseModal, setOpenModal } from '../../redux/actions';
+import { checkToken, setCloseModal, setOpenModal } from '../../redux/actions';
 import Login from '../Login/Login';
 import './Header.css';
 import decode from 'jwt-decode';
@@ -16,12 +16,15 @@ const Header = () => {
 
     const modal = useSelector((state) => state.openModal)
 
-    let token = ''
-    token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
+
+    useEffect(()=> {
+        dispatch(checkToken(tokenDecode))
+    },[tokenDecode])
 
     function handleOpenModal(e) {
         e.preventDefault(e)
