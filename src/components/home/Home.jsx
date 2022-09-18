@@ -4,12 +4,14 @@ import HallOfFame from '../halloffame/HallOfFame'
 import banner from '../../images/Banner.png'
 import { useState } from 'react'
 import Loading from '../loading/Loading'
+import { useEffect } from 'react'
 
 const Home = () => {
     const [loading, setLoading] = useState(true)
     useState(() => {
         setTimeout(() => setLoading(false), 3500)
     })
+
     return ( 
         <>{
         loading === true ?
