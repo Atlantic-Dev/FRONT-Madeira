@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
 import { registerUser } from '../../../redux/actions'
 
 const Create = () => {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const token = localStorage.getItem("token")
 
     const [input, setInput] = useState({

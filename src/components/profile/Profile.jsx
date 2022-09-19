@@ -8,10 +8,12 @@ import { useState } from 'react'
 import Swal from 'sweetalert2'
 import ChangePassword from '../dashboard/ChangePassword/ChangePassword'
 import EditProfile from './editProfile/EditProfile'
+import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [modalEdit, setModalEdit] = useState(false)
     const [modalPassword, setModalPassword] = useState(false)
 
@@ -68,6 +70,14 @@ const Profile = () => {
         .then((result) => {
             if (result.isConfirmed){
                 dispatch(deleteCustomer(customer._id, token))
+                Swal.fire("Customer deleted","","success")
+                .then((result) => {
+                    if (result.isConfirmed){
+                    navigate('/', {replace: true})
+                    } else {
+                    navigate('/', {replace: true})
+                    }
+                })
             }
         })
     }
