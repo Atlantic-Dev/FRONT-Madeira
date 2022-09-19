@@ -19,14 +19,14 @@ test('Guest`s header view', async () => {
                 </Router>,
                 )
 
-    // Testea que un guest (invitado sin sesión iniciada) vea estos botones
+    // Tests that a guest user (with no session initialized) sees these buttons in the header
     expect(screen.getByText('HOME')).toBeInTheDocument()
     expect(screen.getByText('ABOUT')).toBeInTheDocument()
     expect(screen.getByText('PLAYERS LIST')).toBeInTheDocument()
     expect(screen.getByText('REGISTER')).toBeInTheDocument()
     expect(screen.getByText('LOG IN')).toBeInTheDocument()
 
-    //y no vea estos botones que se renderizan solo con la sesión iniciada
+    // and does not see these buttons that are only visible when the session is initialized
     const logOut = screen.queryByText('LOG OUT')
     expect(logOut).not.toBeInTheDocument()
     const dashboard = screen.queryByText('DASHBOARD')

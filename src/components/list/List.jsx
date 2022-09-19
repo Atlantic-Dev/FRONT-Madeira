@@ -14,22 +14,22 @@ const List = () => {
         dispatch(getAllAvatars())
     },[])
 
-    //Lista completa de users
+    //Customers complete list
     const allCustomers = useSelector((state) => state.customers)
     const backUpList = useSelector((state) => state.backup)
     
-    //Lista de avatars
+    //Avatar list
     const allAvatars = useSelector((state) => state.avatars)
 
-    //Paginado
+    //Pagination
     const customersPerPage = 100
     const [currentPage, setCurrentPage] = useState(1)
 
-    //Valores del Slice
+    //Slice values
     const indexOfLast = currentPage * customersPerPage
     const indexOfFirst = indexOfLast - customersPerPage 
 
-    //Filtro por status
+    //Status filter
     const [filter, setFilter] = useState('all')
 
     function handleSelect(e){
@@ -37,7 +37,7 @@ const List = () => {
         setCurrentPage(1)
     }
 
-    //Ordenamiento rank ascendente o descendente
+    //Rank sorting asc & des
     const [sort, setSort] = useState("asc")
 
     const handleAsc = (e) => {
@@ -75,7 +75,7 @@ const List = () => {
           })
     }
 
-    //Pagina mostrada
+    //Shown page
 
     let filtredList = allCustomers
     if (filter !== 'all') {
@@ -84,7 +84,7 @@ const List = () => {
 
     const slicedList = filtredList?.slice(indexOfFirst, indexOfLast)
 
-    //Cantidad de paginas
+    //Pages amount
     let pageLimit = Math.ceil(filtredList?.length  / customersPerPage)
     let pageNumbers = []
     if (pageLimit < 8){
@@ -102,7 +102,7 @@ const List = () => {
         pageNumbers.push(i)
     }}
 
-    //Cambio de pagina
+    //Page change
     const handlePage = (e) =>{
         e.preventDefault()
         setCurrentPage(parseInt(e.target.id));
@@ -128,24 +128,24 @@ const List = () => {
         if(currentPage+5 < pageLimit+1)setCurrentPage(currentPage+5)
     }
 
-    //Renderizado de botones
+    //Buttons render
     const pagination = pageNumbers.map((p) => {
         return (             
             <button className={currentPage === p ? "ListPageButtonActive" : "ListPageButton"} key={p} id={p} onClick={handlePage}> {p} </button>             
         )}
     )
 
-    //Numero de ranking
+    //Ranking number
     function rankOf (customer) {
         return backUpList?.findIndex(cus => cus._id === customer._id)+1
     }
 
-    //Par o impar para definir className del div (diferentes BG-color)
+    //Even or not to define div`s classname (different background color)
     function isEven(n) {
         return n % 2
     }
 
-    //Conexión del search al reducer
+    //Connecting search with action and reducer
     function handleSearch(e){
         e.preventDefault()
         let inputValue = document.getElementsByClassName("ListPageSearch")[0].value
@@ -154,7 +154,7 @@ const List = () => {
         setCurrentPage(1)
     }
 
-    //Loading visible
+    //Visible loading
     const [loading, setLoading] = useState(true)
     useState(() => {
         setTimeout(() => setLoading(false), 3500)

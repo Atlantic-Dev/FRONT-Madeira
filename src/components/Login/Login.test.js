@@ -20,10 +20,12 @@ test('Login modal inputs and button', async () => {
                 </Router>,
                 )
 
-    // tiene que tener un input de email, uno de password y un boton de login 
+    // should have an email input
     const inputName = screen.getByPlaceholderText('Email')
     expect(inputName).toBeInTheDocument()
+    // should have a password input
     const inputPassword = screen.getByPlaceholderText('Password')
     expect(inputPassword).toBeInTheDocument()
+    // should have a Log in button
     expect(screen.getByText('Log in')).toBeInTheDocument()
 })

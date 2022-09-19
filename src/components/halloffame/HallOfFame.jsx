@@ -18,12 +18,12 @@ const HallOfFame = () => {
 
     const topTen = allCustomers?.slice(0, 10)
 
-    //Numero de ranking
+    //Ranking number
     function rankOf (customer) {
         return allCustomers?.indexOf(customer)+1
     }
 
-    //Par o impar para definir className del div (diferentes BG-color)
+    //Even or not to define div`s classname (different background color)
     function isEven(n) {
         return n % 2
     }

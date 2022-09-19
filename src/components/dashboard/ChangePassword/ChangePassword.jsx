@@ -76,7 +76,7 @@ const ChangePassword = () => {
         
         setError(error) 
 
-        // 
+        // searching type in decoded token
         if(tokenDecoded.type === 'customer'){
             setCustomer({ ...customer, [name]: value });
         } else if(tokenDecoded.type === 'user'){

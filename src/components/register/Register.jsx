@@ -92,7 +92,7 @@ const Register = () => {
         return errors
       }
 
-    //Cambios de estado y verificacion de errores de inputs Text
+    // State change and text input errors verification
     function handleChange(e) {
         setInput({
            ...input,
@@ -104,7 +104,7 @@ const Register = () => {
         }))
     }
 
-    //Control de información y dispatch de action register
+    // Information control and register action dispatch
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!input.nickname || !input.email || !input.password || !input.passwordCheck) Swal.fire("All fields must be filled out","","info")
@@ -132,7 +132,7 @@ const Register = () => {
         }
     } 
 
-    //Open modal para el boton de already have an account
+    //Open modal to "the already have an account" button
     function handleOpenModal(e) {
         e.preventDefault(e)
         dispatch(setOpenModal())

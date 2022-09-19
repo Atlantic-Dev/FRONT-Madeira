@@ -58,18 +58,7 @@ const AvatarUpload = () => {
                 <input className={image === "upload" ? 'DashboardFormAvatarSubmit' : 'DashboardFormAvatarSubmitDisabled'} type="submit" value="Upload" />
             </form>
         </div>
-    ); /* 
-    return(
-        <div className='DashboardAvatar'>
-            <form  className='DashboardForm'>
-                <div className='DashboardFormInputFileDiv'>
-                    <label className={image !== '' ? 'DashboardFormInputFileLabelUploaded' :'DashboardFormInputFileLabel'} for="UploadImage">{image !== '' ? "Image uploaded. Click to change" :"Select image"}</label>
-                    <input onChange={handleUpload} id="UploadImage" className='DashboardFormInputFile' type="file" accept="image/*"/>
-                </div>
-                
-            </form>
-        </div>
-    )  */
+    );
 }
 
 export default AvatarUpload

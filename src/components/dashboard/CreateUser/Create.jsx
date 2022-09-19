@@ -56,7 +56,7 @@ const Create = () => {
         return errors
       }
 
-    //Cambios de estado y verificacion de errores de inputs Text
+    //State changes and text input errors verification
     function handleChange(e) {
         setInput({
            ...input,
@@ -67,7 +67,8 @@ const Create = () => {
             [e.target.name]: e.target.value
         }))
     }
-    //Control de información y dispatch de action register
+    
+    // Information control and register action dispatch
     const handleSubmit = (e) => {
         e.preventDefault();
         if(!input.email || !input.name || !input.surname || !input.password || !input.passwordCheck) alert("Input cannot be an empty value")

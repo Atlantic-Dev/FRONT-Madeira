@@ -61,7 +61,7 @@ const EditProfile = (props) => {
         return errors
       }
 
-    //Cambios de estado y verificacion de errores de inputs Text
+    //State changes and text input errors verification
     function handleChange(e) {
         setInput({
            ...input,
@@ -73,7 +73,7 @@ const EditProfile = (props) => {
         }))
     }
 
-    //Control de información y dispatch de action register
+    // Information control and register action dispatch
     const handleSubmit = (e) => {
         e.preventDefault();
         if(input.nickname === customer.nickname && input.surname === customer.surname && input.name === customer.name && input.avatar === customer.avatar) Swal.fire("Please edit your data","You must complete at least 1 option or change your avatar", "info")

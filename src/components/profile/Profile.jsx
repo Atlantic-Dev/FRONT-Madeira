@@ -74,7 +74,7 @@ const Profile = () => {
         })
     }
 
-    //Numero de ranking
+    //Ranking number
     function rankOf (data) {
         return allCustomers?.findIndex((p) => p._id === data?._id)+1
     }
