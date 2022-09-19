@@ -11,7 +11,7 @@ describe('Super Admin logs in', () => {
     it('should display the log in modal', () => {
         cy.get(':nth-child(5) > .HeaderButton').click()
     })
-    it('should log in successfully, access dashboard, create an user and delete it', () => {
+    it('should log in successfully, access dashboard, and create an user', () => {
         cy.get('.LoginInputEmail').type(`${env.superAdminEmail}`)
         cy.get('.LoginInputPassword').type(`${env.superAdminPassword}`) 
         cy.get('.LoginSubmit').click()
@@ -30,5 +30,8 @@ describe('Super Admin logs in', () => {
         cy.wait(1000)
         cy.get('.DashboardButtonDelete').click()
         cy.contains(`Test_admin_${randomNumber}@email.com`)
+        cy.wait(1000)
+        cy.get(':nth-child(5) > .HeaderButton').click()
+        cy.get('.swal2-confirm').click()
     })
 })
