@@ -64,9 +64,9 @@ export function deleteCustomer(id, token){
             Swal.fire("Customer account disabled successfully", "", "success")
             .then((result) => {
                 if (result.isConfirmed){
-                navigate('/', {replace: true})
+                   return window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
                 } else {
-                navigate('/', {replace: true})
+                   return window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
                 }
             })
         }catch (e){
