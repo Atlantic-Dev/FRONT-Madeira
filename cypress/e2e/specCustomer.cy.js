@@ -15,7 +15,7 @@ describe('Tests sign up', () => {
     // validacion de todo el form
     // usuario ya ocupado (el error salta al final)
     /* cy.get('[name="nickname"]').type('Julia.Bechtelar') */
-    cy.get('[name="nickname"]').type(`Test_random_player_${randomNumber}`) 
+    cy.get('[name="nickname"]').type(`Test_player_${randomNumber}`) 
     // nombre muy corto
     cy.get('[name="name"]').type('Ju')
     cy.get('[name="name"]').type('lia')
@@ -24,7 +24,7 @@ describe('Tests sign up', () => {
     cy.get('[name="surname"]').type('{selectall}{backspace}')
     cy.get('[name="surname"]').type('Bech')
     // email sin @ ni .
-    cy.get('[name="email"]').type(`Test_random_email_${randomNumber}`)
+    cy.get('[name="email"]').type(`Test_email_${randomNumber}`)
     // email sin .
     cy.get('[name="email"]').type('@email')
     cy.get('[name="email"]').type('.com')
@@ -56,7 +56,7 @@ describe('Tests sign up', () => {
     cy.get(':nth-child(5) > .HeaderButton').click()
   })
   it('tries to log in with wrong password', () => {
-    cy.get('.LoginInputEmail').type(`Test_random_email_${randomNumber}`)
+    cy.get('.LoginInputEmail').type(`Test_email_${randomNumber}`)
     cy.get('.LoginInputEmail').type('@email.com')
     cy.get('.LoginInputPassword').type('Hola123') 
     cy.get('.LoginSubmit').click()
@@ -95,7 +95,7 @@ describe('Tests sign up', () => {
       cy.get(':nth-child(5) > .HeaderButton').click()
     })
     it('tries to log in with old password', () => {
-      cy.get('.LoginInputEmail').type(`Test_random_email_${randomNumber}`)
+      cy.get('.LoginInputEmail').type(`Test_email_${randomNumber}`)
       cy.get('.LoginInputEmail').type('@email.com')
       cy.get('.LoginInputPassword').type('Hola1234') 
       cy.get('.LoginSubmit').click()

@@ -45,7 +45,7 @@
     border-radius: 15px;
     width: 30%;
     height: auto;
-
+    min-width: 650px;
 }
 
 .HeaderShadow{

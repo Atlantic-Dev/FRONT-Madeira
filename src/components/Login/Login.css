@@ -7,6 +7,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px 7px #31313C; 
     width: auto;
+    min-width: 650px;
 }
 
 .LoginInputEmail{

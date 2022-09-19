@@ -29,7 +29,7 @@ This command will create an updated docker image and automatically upload and de
 
 ```bash
 # development
-$ npm run start
+$ npm start
 
 # watch mode
 $ npm run start:dev
