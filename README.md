@@ -1,75 +1,89 @@
-# Getting Started with Create React App
+<p align="center">
+<code>
+<img width="50%"heigth="50%" src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663529605/Banner.45044716e3473aa288dd_wei4gu.png">
+</code>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Git clone for starter repository
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://github.com/Atlantic-Dev/FRONT-Madeira
 
 
-### DEPLOY ###
-En el directorio raiz ejecutar bash delpoy.sh
-Automaticamente se hara el deploy en http://react-alb-1195746012.us-east-1.elb.amazonaws.com/
+## Installation
+
+```bash
+$ npm install
+```
+
+## Deploy in AWS
+Having the AWS CLI installed on our computer, use the following command, stop at the root of the repository and run:
+
+```bash
+$ bash deploy.sh
+```
+
+This command will create an updated docker image and automatically upload and deploy it to your AWS instance
+
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+$ npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm test
+
+# e2e tests
+$ npm run cypress:open
+```
+
+### Environment Variables Allowed
+
+```bash
+# Application
+- REACT_APP_SERVER_URL
+- REACT_APP_CLIENT_URL
+
+# Token
+- REACT_APP_JWT_SECRET
+
+
+## Docker
+
+```bash
+# create build
+$ docker build
+
+```
+
+## Links
+
+Deploy:
+
+```bash
+http://react-alb-1195746012.us-east-1.elb.amazonaws.com/
+```
+
+## Technologies
+  <a href="https://es.reactjs.org/" target="blank"><img src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663567530/react_fxhhhe.png" width=8% alt="React Logo" /></a> 
+  <a href="https://es.redux.js.org/" target="blank"><img src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663567530/redux_whribl.png" width=8% alt="Redux Logo" /></a>
+  <a href="https://aws.amazon.com/es/" target="blank"><img src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663554113/aws_tdfzqq.png" width=8% alt="AWS Logo" /></a>
+  <a href="https://www.docker.com/" target="blank"><img src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663554113/docker_zq7kse.png" width=8% alt="Docker Logo" top="50px"/></a>
+  <a href="https://www.cypress.io/" target="blank"><img src="https://res.cloudinary.com/db0jqczp4/image/upload/v1663568302/cypress_qwynvy.png" width=8% alt="Cypress Logo" /></a>
+## Team members
+
+- **FrontEnd** - Lucia Chinni - luchinni8@gmail.com
+- **FrontEnd** - Hilber Fraiese - hilberfraiese92@gmail.com
+- **FrontEnd** - Franco Fraiese - fraancofraiese@gmail.com
+- **FrontEnd** - Gustavo Esperguin - duduespeguin1@gmail.com

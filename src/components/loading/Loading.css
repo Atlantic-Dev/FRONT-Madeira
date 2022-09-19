@@ -1,0 +1,44 @@
+.Loading{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    width: 70vw;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    margin: 0 15vw;
+}
+.LoadingImageCont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    top: 40;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation: animate 3.5s linear infinite;
+}
+@keyframes animate {
+    0%
+    {
+      width: 18vw;
+    }
+    25%
+    {
+      width: 62vw;
+    }
+    62%{
+        width: 70vw;
+    }
+    63%{
+        width: 62vw;
+    }
+    100%{
+        width: 70vw;
+    }
+  }
+
+  .LoadingImage{
+    width: 70vw;
+  }

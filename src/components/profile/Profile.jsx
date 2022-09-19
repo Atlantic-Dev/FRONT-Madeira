@@ -7,10 +7,13 @@ import './Profile.css'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
 import ChangePassword from '../dashboard/ChangePassword/ChangePassword'
+import EditProfile from './editProfile/EditProfile'
+import { useNavigate } from 'react-router-dom'
 
 
 const Profile = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const [modalEdit, setModalEdit] = useState(false)
     const [modalPassword, setModalPassword] = useState(false)
 
@@ -103,7 +106,7 @@ const Profile = () => {
                         tokenDecode?.type === "user" || tokenDecode?.type === "superAdmin" ?
                         <div className='ProfileDataBtnCont'>
                             <div className='ProfileDataButtons'>
-                                <button onClick={() => openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                                <button onClick={openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
                                 <button onClick={() => handleDelete(customer)} className='ProfileDataDeleteBtn'>DELETE PROFILE</button>
                             </div>
                         </div>
@@ -111,7 +114,7 @@ const Profile = () => {
                         idCustomer === tokenDecode?.id ?
                         <div className='ProfileDataBtnCont'>
                             <div className='ProfileDataButtons'>
-                                <button onClick={() => openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
+                                <button onClick={openEdit} className='ProfileDataEditBtn'>EDIT PROFILE</button>
                                 <button onClick={openPassword} className='ProfileDataPasswordBtn'>EDIT PASSWORD</button>
                             </div>
                         </div>
@@ -138,6 +141,7 @@ const Profile = () => {
                 }
                 {modalEdit === true ?
                     <div className='ProfileModalEdit'>
+                        <EditProfile  customer={customer}/>
                     </div>
                 : 
                 null
