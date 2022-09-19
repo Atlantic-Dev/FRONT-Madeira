@@ -44,11 +44,8 @@ $ npm run start:prod
 $ npm test
 
 # e2e tests
-$ npm run test:e2e
+$ npm run cypress:open
 
-# test coverage
-$ npm run test:cov
-```
 
 ### Environment Variables Allowed
 

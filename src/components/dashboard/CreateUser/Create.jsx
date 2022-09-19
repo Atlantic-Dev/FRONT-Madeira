@@ -64,7 +64,6 @@ const Create = () => {
             ...input,
             [e.target.name]: e.target.value
         }))
-        console.log(input)
     }
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {

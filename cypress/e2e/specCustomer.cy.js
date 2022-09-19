@@ -1,4 +1,6 @@
-const randomNumber = (Math.floor(Math.random() * 300)).toString()
+
+// Function to generate a random number so each time we run the test, the nickname and email (which are meant to be unique) don`t repeat
+const randomNumber = (Math.floor(Math.random() * 999)).toString()
 
 describe('Tests sign up', () => {
   it('visits the site', () => {
@@ -44,18 +46,10 @@ describe('Tests sign up', () => {
     
     cy.get('.ButtonSubmit').click()
     cy.get('.swal2-confirm').click() */
-    /* cy.get('AvatarModalContainer > AvatarModalButton').click() */
   })
 })
 
  describe('Tests log in', () => {
-  //beforeEach(() => {
-   // cy.visit(`${process.env.REACT_APP_CLIENT_DEPLOY}`)
- // }) 
- it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
-    //cy.visit('http://react-alb-1195746012.us-east-1.elb.amazonaws.com/')
-  }) 
   it('should display the log in modal', () => {
     cy.get(':nth-child(5) > .HeaderButton').click()
   })
@@ -71,85 +65,55 @@ describe('Tests sign up', () => {
     cy.get('.LoginInputPassword').type('{selectall}{backspace}')
     cy.get('.LoginInputPassword').type('Hola1234')
     cy.get('.LoginSubmit').click()
-  })
-})  
-
-describe('searchs players and orders and filters the results', () => {
-  it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
-  })
-  it('access the players list and search', () => {
-    cy.get(':nth-child(2) > .HeaderButton').click()
-    cy.get('.ListPageSearch').type('lu')
-    cy.get('.ListPageSearchSubmit').click()
-  }) 
-  it('orders the results by rank', () => {
+    cy.wait(1000)
+    cy.get('[data-testid="HeaderButtonList"]').click()
+    cy.get('[data-testid="ListPageSearch"]').type('lu')
+    cy.get('[data-testid="ListPageSearchSubmit"]').click()
+    cy.wait(1000)
     cy.contains('▼').click()
     cy.contains('▲').click()
-  })
-  it('filters the results by status', () => {
     cy.get('.ListPageFilterSelect').select('Silver')
     cy.get('.ListPageFilterSelect').select('Diamond')
-
-  })
-})
-
-
-describe('access about component', () => {
-  it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
-  })
-  it('access about', () => {
-    cy.get(':nth-child(3) > .HeaderButton').click({force:true})
-
-  })
-})
-
-
-describe('access its own profile and edits it', () => {
-  it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
-  })
-  //entrar en profile 
-  it('access its own profile', () => {
-    cy.get(':nth-child(4) > .HeaderButton').click({force:true})
-
-  })
-  //editar el perfil 
-  it('opens edit profile modal', () => {
-    cy.get('.ProfileDataEditBtn').click()
-    cy.get('[name="name"]').type('Luchi')
-    cy.get('[value="change"]').click()
-    cy.containes('OK').click()
-  })
-
-  // cambiar la contraseña
-  it('opens edit password modal', () => {
+    cy.wait(1000)
+    cy.get(':nth-child(4) > .HeaderButton').click()
     cy.get('.ProfileDataPasswordBtn').click()
-    cy.get('[input="oldPassword"]').type('Hola1234')
-    cy.get('[input="newPassword"]').type('Hola12345')
-    cy.get('[input="newPasswordRepeat"]').type('Hola12345')
-    cy.get('[input="submit change password"]').click()
+    cy.get('[name="oldPassword"]').type('Hola1234')
+    cy.get('[name="newPassword"]').type('Hola12345')
+    cy.get('[name="newPasswordRepeat"]').type('Hola12345')
+    cy.get('[name="submit change password"]').click()
+    cy.get('.swal2-confirm').click()
   })
-})
+ })
+
+  describe('Tests log in with changed password', () => {
+    it('visits the site', () => {
+      cy.visit('http://localhost:3001/')
+    }) 
+    it('should display the log in modal', () => {
+      cy.get(':nth-child(5) > .HeaderButton').click()
+    })
+    it('tries to log in with old password', () => {
+      cy.get('.LoginInputEmail').type(`Prueba_email_random_${randomNumber}`)
+      cy.get('.LoginInputEmail').type('@email.com')
+      cy.get('.LoginInputPassword').type('Hola1234') 
+      cy.get('.LoginSubmit').click()
+      cy.get('.swal2-confirm').click()
+    })
+    it('should clear password input and type the right one, and log out', () => {
+      cy.get('.LoginInputPassword').type('{selectall}{backspace}')
+      cy.get('.LoginInputPassword').type('{selectall}{backspace}')
+      cy.get('.LoginInputPassword').type('Hola12345')
+      cy.get('.LoginSubmit').click()
+      cy.wait(1000)
+      cy.get(':nth-child(5) > .HeaderButton').click()
+      cy.get('.swal2-confirm').click()
+    })
+
+  })  
+  
 
 
 
 
 
 
-// alternativas de log out
-describe('Tests log out', () => {
-  it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
-  })
-  it('should log out when clicks the button', () => {
-    cy.get(':nth-child(5) > .HeaderButton').click()
-  })
-})
-
-/* describe('Tests log out', () => {
-  it('should log out when clicks the button', () => {
-    cy.contains('LOG OUT').click({force:true})
-  })
-})  */

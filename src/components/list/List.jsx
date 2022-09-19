@@ -182,8 +182,8 @@ const List = () => {
                     </div>
                     <div className="ListPageSearchFilter">
                         <form onSubmit={handleSearch} className="ListPageSearchForm">
-                            <input type="text" className="ListPageSearch" placeholder="Search a player"/>
-                            <button type="submit" className="ListPageSearchSubmit" name="" id="">
+                            <input data-testid="ListPageSearch" type="text" className="ListPageSearch" placeholder="Search a player"/>
+                            <button data-testid="ListPageSearchSubmit" type="submit" className="ListPageSearchSubmit" name="" id="">
                                 <BsSearch alt="SearchIcon" className="ListPageSearchIcon" />
                             </button>
                         </form>
@@ -213,7 +213,7 @@ const List = () => {
                             </div>
                             <div className="ListRankingTitleSecond">
                                 <span className="ListRankingTitleText">
-                                    User
+                                    Player
                                 </span>
                                 <div className="ListRankingTitleSecondSub">
                                     <span className="ListRankingTitleText">
