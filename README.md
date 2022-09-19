@@ -21,6 +21,9 @@ Teniendo instalado AWS CLI dentro de nuestro equipo, utilizar el siguiente coman
 ```bash
 $ bash deploy.sh
 ```
+Este comando creara una imagen de docker actualizada y lo subira y deployara automaticamente en su instancia de AWS
+
+
 ## Running the app
 
 ```bash
@@ -62,16 +65,8 @@ $ npm run test:cov
 
 ```bash
 # create build
-$ docker-compose build
+$ docker build
 
-# docker up
-$ docker-compose up
-
-# docker logs
-$ docker-compose logs --f
-
-# docker down
-$ docker-compose down
 ```
 
 ## Links
