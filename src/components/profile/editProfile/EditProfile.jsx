@@ -23,7 +23,6 @@ const EditProfile = (props) => {
         email: customer.email,
         avatar: customer.avatar
     })
-    console.log(input)
 
     function setAvatar(id){
         setInput({
@@ -73,9 +72,6 @@ const EditProfile = (props) => {
             ...errors,
             [e.target.name]: e.target.value
         }))
-        console.log("name",errors.name)
-        console.log("nickname",errors.nickname)
-        console.log("surname",errors.surname)
     }
 
     //Control de información y dispatch de action register
