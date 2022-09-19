@@ -12,6 +12,8 @@ const Create = () => {
         email: "",
         password: "",
         passwordCheck: "",
+        type: "user",
+        isActive: true
     })
     
     const [errors, setErrors] = useState({})
@@ -82,7 +84,8 @@ const Create = () => {
                 surname: "",
                 email: "",
                 password: "",
-                passwordCheck: "",
+                type: "user",
+                isActive: true
             })   
         }
     } 
@@ -152,6 +155,7 @@ const Create = () => {
                         )
                     }
                 <button 
+                data-testid="DashboardFormSubmitCreate"
                 className='DashboardFormSubmitCreate'
                 type='submit'
                 onClick={handleSubmit}

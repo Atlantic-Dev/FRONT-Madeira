@@ -151,7 +151,13 @@ export function getUser(id, token){
 export function registerUser(value, token){
     return async function(){
         try{
-        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, value, token)
+        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, 
+        value,  
+        {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            }})
+            console.log("response", response.data)
         Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
         } catch (e) {
             console.log(e)
