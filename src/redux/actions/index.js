@@ -109,9 +109,7 @@ export function getProfile(id, token){
                   Authorization: `Bearer ${token}`,
                 },
               })
-            dispatch({type: "PROFILE", payload: response.data}) 
-            console.log(`${process.env.REACT_APP_SERVER_URL}customers/${id}`)
-            console.log("action executed", response.data)
+            dispatch({type: "PROFILE", payload: response.data})
         }catch (e){
             console.log("This ID doesn't match any customer")
         }
@@ -184,7 +182,7 @@ export function deleteUser(id, token){
             :
             Swal.fire("Something went wrong", "Please try again or contact support", "error")
         } catch (e){
-            console.log("entro al catch?",e)
+            console.log(e)
         }
     }
 }
@@ -231,17 +229,14 @@ export function changeCurrentPassword(data, token){
                     Authorization: `Bearer ${token}`,
                 },
             })
-            if(response.data === "Wrong current password"){
-                Swal.fire("Wrong current password. Please try again.","warning")
-            } else {
-                Swal.fire("Password changed successfully!", "Please, log in again with the new password", "success")
+             Swal.fire("Password changed successfully!", "Please, log in again with the new password", "success")
                 .then(()=> {
                     localStorage.removeItem("token")
                     window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
                 })       
-            }
+            
         } catch (error){
-            console.log(error)
+            Swal.fire("Wrong current password. Please try again.","warning")
         }
     }
 }
@@ -275,9 +270,7 @@ export function editCustomer(data, id, token){
                     window.open(`${process.env.REACT_APP_CLIENT_URL}profile/${id}`, "_self")
                 }
             })
-            } else {
-                console.log("no entro",response.data)
-            }
+            } 
         }catch(e){
             console.log(e)
         }

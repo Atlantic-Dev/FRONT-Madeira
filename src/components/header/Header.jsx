@@ -60,7 +60,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className='HeaderButtonDiv'>               
-                    <a data-test-id='HeaderButtonList' href='/list' className={ pathLoc === '/list' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a data-testid='HeaderButtonList' href='/list' className={ pathLoc === '/list' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     PLAYERS LIST
                     </a>
                 </div>

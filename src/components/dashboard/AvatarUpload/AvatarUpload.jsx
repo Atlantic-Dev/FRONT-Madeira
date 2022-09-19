@@ -22,7 +22,6 @@ const AvatarUpload = () => {
         e.preventDefault()
         const data = new FormData();
         data.append("image", files)
-        console.log("data", data)
         try {
             dispatch(uploadAvatar(data))
         }catch (e) {

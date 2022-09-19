@@ -29,8 +29,7 @@ const ChangePassword = () => {
 
     const [ error, setError ] = useState({
         newPassword: "", 
-        confirmPassword: "", 
-        disabled: true
+        confirmPassword: ""
     })
 
     const sendChange = () => {
@@ -49,20 +48,11 @@ const ChangePassword = () => {
         }
     }
 
-    
-
-    const validateForm = (errors) => {
-        console.log("errors pw", errors)
-        console.log("user", user)
-        console.log("custom", customer)
-    }
-
+   
     const handleInputChange = (e) => {
         e.preventDefault()
         const value = e.target.value;
         const name = e.target.name;
-
-        let errors = error
         
         
         switch (name) {
@@ -84,10 +74,9 @@ const ChangePassword = () => {
             break;
         } 
         
-        setError(error)
-    
-        validateForm(errors)  
+        setError(error) 
 
+        // 
         if(tokenDecoded.type === 'customer'){
             setCustomer({ ...customer, [name]: value });
         } else if(tokenDecoded.type === 'user'){
