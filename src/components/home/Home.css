@@ -4,20 +4,9 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: auto;
     justify-content: center;
     background-color: #202224;
     gap: 50px
-}
-
-.HomeHidden{
-    visibility: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: hidden;
 }
 
 .HomeBanner{
@@ -58,14 +47,4 @@
     cursor: pointer;
     color: #0C0F11;
     transform: scale(1.1);
-}
-
-.LoadingContainer{
-    position:absolute;
-    top: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #202224;
 }

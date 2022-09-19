@@ -27,6 +27,7 @@ const Register = () => {
         passwordCheck: "",
         avatar: 1,
     })
+    console.log(input)
 
     const [modalAvatar, setModalAvatar] = useState(false)
     
@@ -50,44 +51,49 @@ const Register = () => {
 
     const [errors, setErrors] = useState({})
 
-    function validate(input){
+    function validate (input){
         let errors = {};
-        let newPasswordPattern = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/;
-        if(input.nickname && input.nickname.length < 4){
+        if(!input.nickname){
+            errors.nickname = 'The nickname field is required'
+        }
+        else if(input.nickname.length < 4){
             errors.nickname = 'Minimum 4 characters'
         }
-        else if(input.nickname && input.nickname.length > 15 ){
+        else if(input.nickname.length > 15 ){
             errors.nickname = 'Maximum 15 characters'
         }
-        else if(input.name && input.name.length < 4){
+        else if(input.name === ""){
+            errors.name = 'The name field is required'
+        }
+        else if(input.name.length < 4){
             errors.name = 'Minimum 4 letters'
         }
-        else if(input.name && input.name.length > 15 ){
+        else if(input.name.length > 15 ){
             errors.name = 'Maximum 15 letters'
         }
-        else if(input.name && !/^[A-z]+$/.test(input.name)){ 
-            errors.name = "Name must contain only letters"
+        else if(input.surname === ""){
+            errors.surname = 'The surname field is required'
         }
-        else if(input.surname && !/^[A-z]+$/.test(input.surname)){ 
-            errors.surname = "Surname must contain only letters"
-        }
-        else if(input.surname && input.surname.length < 4){
+        else if(input.surname.length < 4){
             errors.surname = 'Minimum 4 letters'
         }
-        else if(input.surname && input.surname.length > 15 ){
+        else if(input.surname.length > 15 ){
             errors.surname = 'Maximum 15 letters'
+        }   
+        else if(!input.email){
+            errors.email = 'The email field is required'
         }
-        else if(input.password && !newPasswordPattern.test(input.password)){
-            errors.password= 'Password must contain at least 8 characters, 1 number, 1 capital letter and optional symbol at the end'
+        else if(!input.email.includes("@") || !input.email.includes(".")){
+            errors.email= 'Enter a valid email'
+          }
+        else if(!input.password){
+          errors.password = 'The password field is required'
         }
-        else if(input.passwordCheck && !newPasswordPattern.test(input.passwordCheck)){
-            errors.passwordCheck= 'Password must contain at least 8 characters, 1 number, 1 capital letter and optional symbol at the end'
+        else if(!input.passwordCheck){
+          errors.passwordCheck = 'The password field is required'
         }
         else if(input.password !== input.passwordCheck){
           errors.passwordCheck = 'The password must match' 
-        }
-        else if(input.email && !input.email.includes("@") || input.email && !input.email.includes(".")){
-            errors.email= 'Enter a valid email'
         }
         return errors
       }
@@ -104,14 +110,28 @@ const Register = () => {
         }))
     }
 
+    //Cambios de estado y verificacion de errores de select avatar
+    const handleSelect = (e) => {
+        e.preventDefault()
+        setInput({
+            ...input,
+            avatar: e.target.value
+        })
+        setErrors(validate({
+            ...input,
+            [e.target.name]: e.target.value
+        }))
+    }
+
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!input.nickname || !input.email || !input.password || !input.passwordCheck) Swal.fire("All fields must be filled out","","info")
-        else if (errors.nickname) Swal.fire(errors.nickname, "","info")
-        else if (errors.email) Swal.fire(errors.email, "","info")
-        else if (errors.password) Swal.fire(errors.password, "","info")
-        else if (errors.passwordCheck) Swal.fire(errors.passwordCheck, "","info")
+        if(!input.nickname || !input.email || !input.password || !input.passwordCheck || input.avatar === '0') alert("Input cannot be an empty value")
+        else if (errors.nickname) alert(errors.nickname)
+        else if (errors.email) alert(errors.email)
+        else if (errors.password) alert(errors.password)
+        else if (errors.passwordCheck) alert(errors.passwordCheck)
+        else if (errors.avatar) alert(errors.avatar)
         else {
             dispatch(registerCustomer(input))
             setInput({
@@ -133,6 +153,7 @@ const Register = () => {
     } 
 
     //Open modal para el boton de already have an account
+    
     function handleOpenModal(e) {
         e.preventDefault(e)
         dispatch(setOpenModal())

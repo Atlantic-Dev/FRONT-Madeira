@@ -8,17 +8,6 @@
     padding: 10px 0;
 }
 
-.ListContainerHidden{
-    visibility: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    overflow: hidden;
-
-}
-
 .List{
     display: flex;
     flex-direction: column;

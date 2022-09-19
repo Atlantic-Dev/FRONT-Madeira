@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllAvatars, getAllCustomers, searchCustomers } from "../../redux/actions"
 import './List.css'
 import {BsSearch} from 'react-icons/bs'
-import Loading from '../loading/Loading'
 
 const List = () => {    
     const dispatch = useDispatch()
@@ -154,148 +153,134 @@ const List = () => {
         setCurrentPage(1)
     }
 
-    //Loading visible
-    const [loading, setLoading] = useState(true)
-    useState(() => {
-        setTimeout(() => setLoading(false), 3500)
-    })
-    
-    return ( 
-        <>
-        {
-            loading === true ?
-            <div className='LoadingContainer'>
-                <Loading/>
-            </div>
-            : null
-            }
-            <div className={loading === true ? "ListContainerHidden" :"ListContainer"}>
-                <div className="List">
-                    <div className="ListPageButtons">
-                        <button className={currentPage > 4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageStart}>1</button>
-                        <button className={currentPage > 5 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPagePrevFive}>{currentPage-5 < 1 ? 1 : currentPage-5}</button>
-                        <div className="ListPageButtonsNumbers">
-                            {pagination}
+
+    return(
+        <div className="ListContainer">
+            <div className="List">
+                <div className="ListPageButtons">
+                    <button className={currentPage > 4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageStart}>1</button>
+                    <button className={currentPage > 5 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPagePrevFive}>{currentPage-5 < 1 ? 1 : currentPage-5}</button>
+                    <div className="ListPageButtonsNumbers">
+                        {pagination}
+                    </div>
+                    <button className={currentPage < pageLimit-4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
+                    <button className={currentPage < pageLimit-3 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{isNaN(pageLimit) ? 10 : pageLimit}</button>
+                </div>
+                <div className="ListPageSearchFilter">
+                    <form onSubmit={handleSearch} className="ListPageSearchForm">
+                        <input type="text" className="ListPageSearch" placeholder="Search a player"/>
+                        <button type="submit" className="ListPageSearchSubmit" name="" id="">
+                            <BsSearch alt="SearchIcon" className="ListPageSearchIcon" />
+                        </button>
+                    </form>
+                    <hr className="ListPageSearchHr"/>
+                    <select onChange={handleSelect} className="ListPageFilterSelect">
+                        <option value="all">All</option>
+                        <option value="Ruby">Ruby</option>
+                        <option value="Diamond">Diamond</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Bronze">Bronze</option>
+                        <option value="Copper">Copper</option>
+                    </select>
+                </div>
+                <div className="ListRanking">
+                    <div className='ListRankingTitle'>
+                        <div className='ListRankingTitleFirst'>
+                            <span className="ListRankingTitleText">
+                                <a onClick={handleAsc} className={sort === "asc" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▲</a>
+                                Rank
+                                <a onClick={handleDes} className={sort === "des" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▼</a>
+                            </span>
+                            <span className="ListRankingTitleText">
+                                Avatar
+                            </span>
                         </div>
-                        <button className={currentPage < pageLimit-4 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageNextFive}>{currentPage > pageLimit-5 ? pageLimit : currentPage+5}</button>
-                        <button className={currentPage < pageLimit-3 && pageLimit > 7 ? "ListPageButton" : "ListPageButtonDisabled"} onClick={setPageEnd}>{isNaN(pageLimit) ? 10 : pageLimit}</button>
-                    </div>
-                    <div className="ListPageSearchFilter">
-                        <form onSubmit={handleSearch} className="ListPageSearchForm">
-                            <input data-testid="ListPageSearch" type="text" className="ListPageSearch" placeholder="Search a player"/>
-                            <button data-testid="ListPageSearchSubmit" type="submit" className="ListPageSearchSubmit" name="" id="">
-                                <BsSearch alt="SearchIcon" className="ListPageSearchIcon" />
-                            </button>
-                        </form>
-                        <hr className="ListPageSearchHr"/>
-                        <select onChange={handleSelect} className="ListPageFilterSelect">
-                            <option value="all">All status</option>
-                            <option value="Ruby">Ruby</option>
-                            <option value="Diamond">Diamond</option>
-                            <option value="Platinum">Platinum</option>
-                            <option value="Gold">Gold</option>
-                            <option value="Silver">Silver</option>
-                            <option value="Bronze">Bronze</option>
-                            <option value="Copper">Copper</option>
-                        </select>
-                    </div>
-                    <div className="ListRanking">
-                        <div className='ListRankingTitle'>
-                            <div className='ListRankingTitleFirst'>
+                        <div className="ListRankingTitleSecond">
+                            <span className="ListRankingTitleText">
+                                User
+                            </span>
+                            <div className="ListRankingTitleSecondSub">
                                 <span className="ListRankingTitleText">
-                                    <a onClick={handleAsc} className={sort === "asc" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▲</a>
-                                    Rank
-                                    <a onClick={handleDes} className={sort === "des" ? "ListRankingSortButtonSelected" : "ListRankingSortButton"}>▼</a>
+                                    Status
                                 </span>
                                 <span className="ListRankingTitleText">
-                                    Avatar
+                                    Points
                                 </span>
                             </div>
-                            <div className="ListRankingTitleSecond">
-                                <span className="ListRankingTitleText">
-                                    Player
-                                </span>
-                                <div className="ListRankingTitleSecondSub">
-                                    <span className="ListRankingTitleText">
-                                        Status
-                                    </span>
-                                    <span className="ListRankingTitleText">
-                                        Points
-                                    </span>
+                        </div>
+                    </div>
+                    <div className="ListRankingCustomers">
+                    {slicedList?.map((player, index) => {
+                        return(
+                            isEven(index) === 0 
+                            ?
+                            <div className='ListCustomerEven'>
+                                <div className='ListCustomerFirst'>
+                                    <div className='ListCustomerRank'>
+                                        <span>{rankOf(player)}</span>
+                                    </div>
+                                    <div className='ListCustomerAvatar'>
+                                        <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
+                                    </div>
+                                </div>
+                                <div className='ListCustomerSecond'>
+                                    <div className='ListCustomerNameDiv'>
+                                        <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
+                                            {player.nickname}
+                                        </a>
+                                    </div>
+                                    <div className='ListCustomerData'>
+                                        <div className='ListCustomerStatusDiv'>
+                                            <span className={`ListCustomerStatus${player.status}`}>
+                                                {player.status}
+                                            </span>
+                                        </div>
+                                        <div className='ListCustomerPointsDiv'>
+                                            <span className='ListCustomerPoints'>
+                                                {player.totalPoints}
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="ListRankingCustomers">
-                        {slicedList?.map((player, index) => {
-                            return(
-                                isEven(index) === 0 
-                                ?
-                                <div className='ListCustomerEven'>
-                                    <div className='ListCustomerFirst'>
-                                        <div className='ListCustomerRank'>
-                                            <span>{rankOf(player)}</span>
-                                        </div>
-                                        <div className='ListCustomerAvatar'>
-                                            <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
-                                        </div>
+                            :
+                            <div className='ListCustomerOdd'>
+                                <div className='ListCustomerFirst'>
+                                    <div className='ListCustomerRank'>
+                                        <span>{rankOf(player)}</span>
                                     </div>
-                                    <div className='ListCustomerSecond'>
-                                        <div className='ListCustomerNameDiv'>
-                                            <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
-                                                {player.nickname}
-                                            </a>
+                                    <div className='ListCustomerAvatar'>
+                                        <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
+                                    </div>
+                                </div>
+                                <div className='ListCustomerSecond'>
+                                    <div className='ListCustomerNameDiv'>
+                                        <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
+                                            {player.nickname}
+                                        </a>
+                                    </div>
+                                    <div className='ListCustomerData'>
+                                        <div className='ListCustomerStatusDiv'>
+                                            <span className={`ListCustomerStatus${player.status}`}>
+                                                {player.status}
+                                            </span>
                                         </div>
-                                        <div className='ListCustomerData'>
-                                            <div className='ListCustomerStatusDiv'>
-                                                <span className={`ListCustomerStatus${player.status}`}>
-                                                    {player.status}
-                                                </span>
-                                            </div>
-                                            <div className='ListCustomerPointsDiv'>
-                                                <span className='ListCustomerPoints'>
-                                                    {player.totalPoints}
-                                                </span>
-                                            </div>
+                                        <div className='ListCustomerPointsDiv'>
+                                            <span className='ListCustomerPoints'>
+                                                {player.totalPoints}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-                                :
-                                <div className='ListCustomerOdd'>
-                                    <div className='ListCustomerFirst'>
-                                        <div className='ListCustomerRank'>
-                                            <span>{rankOf(player)}</span>
-                                        </div>
-                                        <div className='ListCustomerAvatar'>
-                                            <img className='ListCustomerAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
-                                        </div>
-                                    </div>
-                                    <div className='ListCustomerSecond'>
-                                        <div className='ListCustomerNameDiv'>
-                                            <a href={`/profile/${player._id}`} className='ListCustomerNickname'>
-                                                {player.nickname}
-                                            </a>
-                                        </div>
-                                        <div className='ListCustomerData'>
-                                            <div className='ListCustomerStatusDiv'>
-                                                <span className={`ListCustomerStatus${player.status}`}>
-                                                    {player.status}
-                                                </span>
-                                            </div>
-                                            <div className='ListCustomerPointsDiv'>
-                                                <span className='ListCustomerPoints'>
-                                                    {player.totalPoints}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                        </div>
+                            </div>
+                        )
+                    })}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

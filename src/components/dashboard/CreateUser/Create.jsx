@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import { registerUser } from '../../../redux/actions'
 
 const Create = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const token = localStorage.getItem("token")
 
     const [input, setInput] = useState({
@@ -12,8 +15,6 @@ const Create = () => {
         email: "",
         password: "",
         passwordCheck: "",
-        type: "user",
-        isActive: true
     })
     
     const [errors, setErrors] = useState({})
@@ -66,6 +67,7 @@ const Create = () => {
             ...input,
             [e.target.name]: e.target.value
         }))
+        console.log(input)
     }
     //Control de información y dispatch de action register
     const handleSubmit = (e) => {
@@ -84,8 +86,7 @@ const Create = () => {
                 surname: "",
                 email: "",
                 password: "",
-                type: "user",
-                isActive: true
+                passwordCheck: "",
             })   
         }
     } 
@@ -155,7 +156,6 @@ const Create = () => {
                         )
                     }
                 <button 
-                data-testid="DashboardFormSubmitCreate"
                 className='DashboardFormSubmitCreate'
                 type='submit'
                 onClick={handleSubmit}

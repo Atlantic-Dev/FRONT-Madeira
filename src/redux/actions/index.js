@@ -62,13 +62,6 @@ export function deleteCustomer(id, token){
                 }
             })
             Swal.fire("Customer account disabled successfully", "", "success")
-            .then((result) => {
-                if (result.isConfirmed){
-                   return window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
-                } else {
-                   return window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
-                }
-            })
         }catch (e){
             return e
         }
@@ -109,22 +102,19 @@ export function getProfile(id, token){
                   Authorization: `Bearer ${token}`,
                 },
               })
-            dispatch({type: "PROFILE", payload: response.data})
+            dispatch({type: "PROFILE", payload: response.data}) 
+            console.log(`${process.env.REACT_APP_SERVER_URL}customers/${id}`)
+            console.log("action executed", response.data)
         }catch (e){
             console.log("This ID doesn't match any customer")
         }
     }
 }
 
-export function getAllUsers(token){
+export function getAllUsers(){
     return async function (dispatch){
         try{
-            let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/`,
-            {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              })
+            let response = await axios.get(`${process.env.REACT_APP_SERVER_URL}users/`)
             dispatch({type: "GET_USERS", payload: response.data})
         } catch (e){
             console.log(e)
@@ -151,13 +141,7 @@ export function getUser(id, token){
 export function registerUser(value, token){
     return async function(){
         try{
-        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, 
-        value,  
-        {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            }})
-            console.log("response", response.data)
+        let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}users/sign-up`, value, token)
         Swal.fire(`Account created!`, `The user account for ${response.data.name} ${response.data.surname} is ready to use`, "success")
         } catch (e) {
             console.log(e)
@@ -188,7 +172,7 @@ export function deleteUser(id, token){
             :
             Swal.fire("Something went wrong", "Please try again or contact support", "error")
         } catch (e){
-            console.log(e)
+            console.log("entro al catch?",e)
         }
     }
 }
@@ -207,18 +191,9 @@ export function getAvatars(){
 export function uploadAvatar(data){
     return async function(){
         try{
+            console.log("dispatch", data)
             let response = await axios.post(`${process.env.REACT_APP_SERVER_URL}avatar-image`, data)
-            if (response.data === "Success") {
-                Swal.fire("Avatar upload success", "The image will appears in register form", "success")
-                .then(() => {
-                    window.open(`${process.env.REACT_APP_CLIENT_URL}dashboard`, "_self")
-                })
-            } else {
-                Swal.fire("Avatar upload issue", "the image could not be loaded", "error")
-                .then(() => {
-                    window.open(`${process.env.REACT_APP_CLIENT_URL}dashboard`, "_self")
-                })
-            }
+            console.log("la respuesta",response.data)
         }catch(e){
             console.log(e)
         }
@@ -235,14 +210,17 @@ export function changeCurrentPassword(data, token){
                     Authorization: `Bearer ${token}`,
                 },
             })
-             Swal.fire("Password changed successfully!", "Please, log in again with the new password", "success")
+            if(response.data === "Wrong current password"){
+                Swal.fire("Wrong current password. Please try again.","warning")
+            } else {
+                Swal.fire("Password changed successfully!", "Please, log in again with the new password", "success")
                 .then(()=> {
                     localStorage.removeItem("token")
                     window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
                 })       
-            
+            }
         } catch (error){
-            Swal.fire("Wrong current password. Please try again.","warning")
+            console.log(error)
         }
     }
 }
@@ -252,54 +230,6 @@ export function getAllAvatars(){
         try{
             const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}avatar-image`)
             dispatch({type: "GET_AVATARS", payload: response.data})
-        }catch(e){
-            console.log(e)
-        }
-    }
-}
-
-export function editCustomer(data, id, token){
-    return async function(){
-        try{
-            const response = await axios.patch(`${process.env.REACT_APP_SERVER_URL}customers/${id}`,
-            data,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            })
-
-            if (response.data.email === data.email){
-            Swal.fire("Profile edited successfully","", "success")
-            .then((result) => {
-                if(result.isConfirmed){
-                    window.open(`${process.env.REACT_APP_CLIENT_URL}profile/${id}`, "_self")
-                }
-            })
-            } 
-        }catch(e){
-            console.log(e)
-        }
-    }
-}
-
-
-export function checkToken(token){
-    return async function(){
-        try{
-            const date = new Date
-            const actualTime = Math.ceil(date.getTime()/1000)
-            const tokenExp = token.exp
-            if (tokenExp < actualTime) {
-                localStorage.removeItem("token")
-                window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
-            } else if (actualTime < tokenExp && actualTime + 900 > tokenExp){
-                localStorage.removeItem("token")
-                Swal.fire("Your session is expired","Please, log in again", "info")
-                window.open(`${process.env.REACT_APP_CLIENT_URL}`, "_self")
-            } else {
-                return "valid token"
-            }
         }catch(e){
             console.log(e)
         }

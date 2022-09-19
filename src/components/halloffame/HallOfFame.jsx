@@ -42,7 +42,7 @@ const HallOfFame = () => {
                     </div>
                     <div className="HofTopSecondDiv">
                         <span className='HofTopUserTitle'>
-                            Player
+                            User
                         </span>
                         <div className='HofTopUserData'>
                             <span className='HofTopUserDataId'>
@@ -61,7 +61,9 @@ const HallOfFame = () => {
                 </div>
                 {topTen?.map((player, index) => {
                     return (
-                        <div className={isEven(index) === 0 ? 'HofTopGrey': 'HofTopDark'}>
+                        isEven(index) === 0 
+                        ? 
+                        <div className='HofTopGrey'>
                             <div className='HofTopImageCont'>
                                 <div className='HofTopImg'>
                                     <img className='HofTopImg' src={`./images/${rankOf(player)}.png`}/>
@@ -97,7 +99,45 @@ const HallOfFame = () => {
                                 </div>
                             </div>
                         </div>
-                    )})}
+                        :
+                        <div className='HofTopDark'>
+                            <div className='HofTopImageCont'>
+                                <div className='HofTopImg'>
+                                    <img className='HofTopImg' src={`./images/${rankOf(player)}.png`}/>
+                                </div>
+                                <div className='HofTopAvatar'>
+                                    <img className='HofTopAvatar' src={allAvatars[player.avatar - 1]?.imageUrl}/>
+                                </div>
+                            </div>
+                            <div className='HofTopTextCont'>
+                                <div className='HofTopNicknameDiv'>
+                                    <a href={`/profile/${player._id}`} className='HofTopNickname'>
+                                        {player.nickname}
+                                    </a>
+                                </div>
+                                <div className='HofTopData'>
+                                    <div className='HofTopIdDiv'>
+                                        <span className='HofTopId'>
+                                            {player._id}
+                                        </span>
+                                    </div>
+                                    <div className='HofTopStatusPoints'>
+                                        <div className='HofTopStatusDiv'>
+                                            <span className={`HofTopStatus${player.status}`}>
+                                                {player.status}
+                                            </span>
+                                        </div>
+                                        <div className='HofTopPointsDiv'>
+                                            <span className='HofTopPoints'>
+                                                {player.totalPoints}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        )
+                    })}
             </div>
         </div>
     )

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { checkToken, setCloseModal, setOpenModal } from '../../redux/actions';
+import { setCloseModal, setOpenModal } from '../../redux/actions';
 import Login from '../Login/Login';
 import './Header.css';
 import decode from 'jwt-decode';
@@ -16,15 +16,12 @@ const Header = () => {
 
     const modal = useSelector((state) => state.openModal)
 
-    const token = localStorage.getItem("token")
+    let token = ''
+    token = localStorage.getItem("token")
     let tokenDecode = {}
     if (token !== null){
         tokenDecode = decode(token, process.env.REACT_APP_JWT_SECRET)
     }
-
-    useEffect(()=> {
-        dispatch(checkToken(tokenDecode))
-    },[tokenDecode])
 
     function handleOpenModal(e) {
         e.preventDefault(e)
@@ -60,7 +57,7 @@ const Header = () => {
                     </a>
                 </div>
                 <div className='HeaderButtonDiv'>               
-                    <a data-testid='HeaderButtonList' href='/list' className={ pathLoc === '/list' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a data-test-id='HeaderButtonList' /* id={'HeaderButtonList'} */ href='/list' className={ pathLoc === '/list' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     PLAYERS LIST
                     </a>
                 </div>
@@ -73,7 +70,7 @@ const Header = () => {
                 tokenDecode && tokenDecode?.type === "superAdmin" 
                 ?
                 <div className='HeaderButtonDiv'>
-                    <a data-testid='HeaderButtonDashboard' href='/dashboard' className={ pathLoc === '/dashboard' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a href='/dashboard' className={ pathLoc === '/dashboard' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     DASHBOARD
                     </a> 
                 </div>  
