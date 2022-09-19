@@ -1,10 +1,12 @@
 
+const env = require('../cypress.env.json')
+
 // Function to generate a random number so each time we run the test, the nickname and email (which are meant to be unique) don`t repeat
 const randomNumber = (Math.floor(Math.random() * 999)).toString()
 
 describe('Tests sign up', () => {
   it('visits the site', () => {
-    cy.visit('http://localhost:3001/')
+    cy.visit(env.CLIENT_URL)
   })
   it('should not allow the guest to enter a customer`s profile and redirect it to register', () => {
     cy.contains('Luciano_Aufderhar').click({force:true})
@@ -13,7 +15,7 @@ describe('Tests sign up', () => {
     // validacion de todo el form
     // usuario ya ocupado (el error salta al final)
     /* cy.get('[name="nickname"]').type('Julia.Bechtelar') */
-    cy.get('[name="nickname"]').type(`Prueba_test_${randomNumber}`) 
+    cy.get('[name="nickname"]').type(`Test_random_player_${randomNumber}`) 
     // nombre muy corto
     cy.get('[name="name"]').type('Ju')
     cy.get('[name="name"]').type('lia')
@@ -22,7 +24,7 @@ describe('Tests sign up', () => {
     cy.get('[name="surname"]').type('{selectall}{backspace}')
     cy.get('[name="surname"]').type('Bech')
     // email sin @ ni .
-    cy.get('[name="email"]').type(`Prueba_email_random_${randomNumber}`)
+    cy.get('[name="email"]').type(`Test_random_email_${randomNumber}`)
     // email sin .
     cy.get('[name="email"]').type('@email')
     cy.get('[name="email"]').type('.com')
@@ -54,7 +56,7 @@ describe('Tests sign up', () => {
     cy.get(':nth-child(5) > .HeaderButton').click()
   })
   it('tries to log in with wrong password', () => {
-    cy.get('.LoginInputEmail').type(`Prueba_email_random_${randomNumber}`)
+    cy.get('.LoginInputEmail').type(`Test_random_email_${randomNumber}`)
     cy.get('.LoginInputEmail').type('@email.com')
     cy.get('.LoginInputPassword').type('Hola123') 
     cy.get('.LoginSubmit').click()
@@ -87,13 +89,13 @@ describe('Tests sign up', () => {
 
   describe('Tests log in with changed password', () => {
     it('visits the site', () => {
-      cy.visit('http://localhost:3001/')
+      cy.visit(env.CLIENT_URL)
     }) 
     it('should display the log in modal', () => {
       cy.get(':nth-child(5) > .HeaderButton').click()
     })
     it('tries to log in with old password', () => {
-      cy.get('.LoginInputEmail').type(`Prueba_email_random_${randomNumber}`)
+      cy.get('.LoginInputEmail').type(`Test_random_email_${randomNumber}`)
       cy.get('.LoginInputEmail').type('@email.com')
       cy.get('.LoginInputPassword').type('Hola1234') 
       cy.get('.LoginSubmit').click()

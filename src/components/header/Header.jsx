@@ -73,7 +73,7 @@ const Header = () => {
                 tokenDecode && tokenDecode?.type === "superAdmin" 
                 ?
                 <div className='HeaderButtonDiv'>
-                    <a href='/dashboard' className={ pathLoc === '/dashboard' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
+                    <a data-testid='HeaderButtonDashboard' href='/dashboard' className={ pathLoc === '/dashboard' && modal===false ? "HeaderButtonSelected" : "HeaderButton"}>
                     DASHBOARD
                     </a> 
                 </div>  

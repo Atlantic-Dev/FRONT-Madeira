@@ -42,7 +42,7 @@ const HallOfFame = () => {
                     </div>
                     <div className="HofTopSecondDiv">
                         <span className='HofTopUserTitle'>
-                            User
+                            Player
                         </span>
                         <div className='HofTopUserData'>
                             <span className='HofTopUserDataId'>
