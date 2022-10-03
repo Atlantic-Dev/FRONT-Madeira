@@ -11,6 +11,7 @@ const Home = () => {
     useState(() => {
         setTimeout(() => setLoading(false), 3500)
     })
+    console.log(process.env.REACT_APP_SERVER_URL)
 
     return ( 
         <>{
